@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { Phone, Mail, MapPin, Facebook, Twitter, Instagram } from 'lucide-react';
 import { CustomButton } from '../ui/custom-button';
 
 const Footer = () => {
   return (
-    <footer className="bg-hotel-darkest-green text-hotel-off-white pt-16 pb-8">
+    <footer className="bg-[#023D30] text-hotel-off-white pt-16 pb-8">
       <div className="max-w-site mx-auto px-6 md:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Hotel Info */}

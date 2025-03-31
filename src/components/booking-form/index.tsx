@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 import { Calendar as CalendarIcon, Users, ChevronDown } from 'lucide-react';
@@ -6,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { cn } from '@/lib/utils';
 import { CustomButton } from '../ui/custom-button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+
 const BookingForm = () => {
   const [checkInDate, setCheckInDate] = useState<Date | undefined>(undefined);
   const [checkOutDate, setCheckOutDate] = useState<Date | undefined>(undefined);
@@ -21,6 +23,7 @@ const BookingForm = () => {
       setIsFormValid(false);
     }
   }, [checkInDate, checkOutDate, adults]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid) return;
@@ -37,64 +40,81 @@ const BookingForm = () => {
     alert('Redirecting to checkout...');
     // In a real app, you'd use router.push('/checkout') or similar
   };
-  return <div className="rounded-lg shadow-xl p-6 md:p-8 mx-auto -mt-20 relative z-10 bg-transparent">
-      
-      
+
+  return (
+    <div className="rounded-lg shadow-xl p-6 md:p-8 mx-auto -mt-20 relative z-10 bg-transparent">
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {/* Check-in Date */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Check-in Date</label>
+          <label className="block text-sm font-medium text-white">Check-in Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <button type="button" className={cn("w-full flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", !checkInDate && "text-muted-foreground")}>
+              <button 
+                type="button" 
+                className="w-full flex items-center justify-between text-white bg-transparent border-b border-white pb-2 focus:outline-none"
+              >
                 {checkInDate ? format(checkInDate, 'PP') : <span>Select date</span>}
-                <CalendarIcon className="ml-2 h-4 w-4 opacity-50" />
+                <CalendarIcon className="ml-2 h-4 w-4 opacity-70" />
               </button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
-              <Calendar mode="single" selected={checkInDate} onSelect={setCheckInDate} disabled={date => {
-              // Can't select dates in the past
-              return date < new Date();
-            }} initialFocus className="pointer-events-auto" />
+            <PopoverContent className="w-auto p-0 bg-white" align="start">
+              <Calendar 
+                mode="single" 
+                selected={checkInDate} 
+                onSelect={setCheckInDate} 
+                disabled={(date) => date < new Date()} 
+                initialFocus 
+                className="pointer-events-auto" 
+              />
             </PopoverContent>
           </Popover>
         </div>
         
         {/* Check-out Date */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Check-out Date</label>
+          <label className="block text-sm font-medium text-white">Check-out Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <button type="button" className={cn("w-full flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50", !checkOutDate && "text-muted-foreground")}>
+              <button 
+                type="button" 
+                className="w-full flex items-center justify-between text-white bg-transparent border-b border-white pb-2 focus:outline-none"
+              >
                 {checkOutDate ? format(checkOutDate, 'PP') : <span>Select date</span>}
-                <CalendarIcon className="ml-2 h-4 w-4 opacity-50" />
+                <CalendarIcon className="ml-2 h-4 w-4 opacity-70" />
               </button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
-              <Calendar mode="single" selected={checkOutDate} onSelect={setCheckOutDate} disabled={date => {
-              // Can't select dates before check-in date
-              return date < (checkInDate || new Date());
-            }} initialFocus className="pointer-events-auto" />
+            <PopoverContent className="w-auto p-0 bg-white" align="start">
+              <Calendar 
+                mode="single" 
+                selected={checkOutDate} 
+                onSelect={setCheckOutDate} 
+                disabled={(date) => date < (checkInDate || new Date())} 
+                initialFocus 
+                className="pointer-events-auto" 
+              />
             </PopoverContent>
           </Popover>
         </div>
         
         {/* Guests */}
         <div className="space-y-2">
-          <label className="block text-sm font-medium text-gray-700">Guests</label>
+          <label className="block text-sm font-medium text-white">Guests</label>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button type="button" className="w-full flex items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2">
+              <button 
+                type="button" 
+                className="w-full flex items-center justify-between text-white bg-transparent border-b border-white pb-2 focus:outline-none"
+              >
                 <div className="flex items-center">
                   <Users className="mr-2 h-4 w-4 opacity-70" />
                   <span>
                     {adults} Adult{adults !== 1 ? 's' : ''}{children > 0 ? `, ${children} Child${children !== 1 ? 'ren' : ''}` : ''}
                   </span>
                 </div>
-                <ChevronDown className="h-4 w-4 opacity-50" />
+                <ChevronDown className="h-4 w-4 opacity-70" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-56 p-3">
+            <DropdownMenuContent align="start" className="w-56 p-3 bg-white">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-sm font-medium">Adults</span>
                 <div className="flex items-center space-x-2">
@@ -130,6 +150,8 @@ const BookingForm = () => {
           </CustomButton>
         </div>
       </form>
-    </div>;
+    </div>
+  );
 };
+
 export default BookingForm;

@@ -20,17 +20,21 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
 
+  // Calculate number of promotions to display
+  const slidesToShow = 3;
+  const slideWidth = 100 / slidesToShow;
+
   const nextSlide = () => {
     if (transitioning) return;
     setTransitioning(true);
-    setCurrent(current === promotions.length - 1 ? 0 : current + 1);
+    setCurrent((prev) => (prev >= promotions.length - slidesToShow ? 0 : prev + 1));
     setTimeout(() => setTransitioning(false), 500);
   };
 
   const prevSlide = () => {
     if (transitioning) return;
     setTransitioning(true);
-    setCurrent(current === 0 ? promotions.length - 1 : current - 1);
+    setCurrent((prev) => (prev <= 0 ? Math.max(0, promotions.length - slidesToShow) : prev - 1));
     setTimeout(() => setTransitioning(false), 500);
   };
 
@@ -45,21 +49,28 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
-        {promotions.map((promo, index) => (
-          <div key={promo.id} className="min-w-full">
-            <a href={promo.link} className="block group">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="overflow-hidden rounded-lg">
+      <div 
+        className="flex transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${current * slideWidth}%)` }}
+      >
+        {promotions.map((promo) => (
+          <div 
+            key={promo.id} 
+            className="px-2"
+            style={{ width: `${slideWidth}%`, flex: `0 0 ${slideWidth}%` }}
+          >
+            <a href={promo.link} className="block group hover-lift">
+              <div className="rounded-lg overflow-hidden">
+                <div className="overflow-hidden rounded-t-lg">
                   <img 
                     src={promo.image} 
                     alt={promo.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="flex flex-col justify-center">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-hotel-dark-green group-hover:text-hotel-darker-green transition-colors">{promo.title}</h3>
-                  <p className="text-gray-600">{promo.description}</p>
+                <div className="p-4 bg-white rounded-b-lg">
+                  <h3 className="text-lg font-bold mb-2 text-hotel-dark-green group-hover:text-hotel-darker-green transition-colors truncate">{promo.title}</h3>
+                  <p className="text-gray-600 text-sm line-clamp-2">{promo.description}</p>
                 </div>
               </div>
             </a>
@@ -87,7 +98,7 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
 
       {/* Pagination */}
       <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 py-4">
-        {promotions.map((_, index) => (
+        {Array.from({ length: Math.ceil(promotions.length - slidesToShow + 1) }).map((_, index) => (
           <button
             key={index}
             onClick={() => {
@@ -97,9 +108,9 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
               setTimeout(() => setTransitioning(false), 500);
             }}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === current ? 'bg-hotel-dark-green w-6' : 'bg-gray-300'
+              index === Math.floor(current) ? 'bg-hotel-dark-green w-6' : 'bg-gray-300'
             }`}
-            aria-label={`Go to promotion ${index + 1}`}
+            aria-label={`Go to promotion set ${index + 1}`}
           />
         ))}
       </div>

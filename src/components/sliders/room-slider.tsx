@@ -23,17 +23,21 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
   const [touching, setTouching] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
 
+  // Calculate number of rooms to display
+  const slidesToShow = 2.5;
+  const slideWidth = 100 / slidesToShow;
+
   const nextSlide = () => {
     if (transitioning) return;
     setTransitioning(true);
-    setCurrent(current === rooms.length - 1 ? 0 : current + 1);
+    setCurrent((prev) => (prev >= rooms.length - slidesToShow ? 0 : prev + 1));
     setTimeout(() => setTransitioning(false), 300);
   };
 
   const prevSlide = () => {
     if (transitioning) return;
     setTransitioning(true);
-    setCurrent(current === 0 ? rooms.length - 1 : current - 1);
+    setCurrent((prev) => (prev <= 0 ? Math.max(0, rooms.length - slidesToShow) : prev - 1));
     setTimeout(() => setTransitioning(false), 300);
   };
 
@@ -69,24 +73,29 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <div className="flex transition-transform duration-300 ease-out h-full" style={{ transform: `translateX(-${current * 100}%)` }}>
-        {rooms.map((room, index) => (
-          <div key={room.id} className="min-w-full">
-            <div className="grid md:grid-cols-2 gap-8 h-full">
-              <div className="overflow-hidden rounded-lg">
+      <div 
+        className="flex transition-transform duration-300 ease-out"
+        style={{ transform: `translateX(-${current * slideWidth}%)` }}
+      >
+        {rooms.map((room) => (
+          <div 
+            key={room.id} 
+            className="px-2" 
+            style={{ width: `${slideWidth}%`, flex: `0 0 ${slideWidth}%` }}
+          >
+            <div className="rounded-lg overflow-hidden hover-lift">
+              <div className="overflow-hidden rounded-t-lg">
                 <img 
                   src={room.image} 
                   alt={room.title} 
-                  className="w-full h-full object-cover hover-scale"
+                  className="w-full h-48 object-cover hover-scale"
                 />
               </div>
-              <div className="flex flex-col justify-center">
-                <h3 className="text-3xl md:text-4xl font-bold mb-3 text-hotel-darkest-green">{room.title}</h3>
-                <p className="text-gray-600 mb-6">{room.description}</p>
-                <p className="text-xl font-medium text-hotel-dark-green mb-6">{room.price}</p>
-                <div>
-                  <CustomButton variant="base2">Book Now</CustomButton>
-                </div>
+              <div className="p-4 bg-white">
+                <h3 className="text-xl font-bold mb-2 text-hotel-darkest-green truncate">{room.title}</h3>
+                <p className="text-gray-600 mb-3 text-sm line-clamp-2">{room.description}</p>
+                <p className="text-lg font-medium text-hotel-dark-green mb-4">{room.price}</p>
+                <CustomButton variant="base2" className="w-full">Book Now</CustomButton>
               </div>
             </div>
           </div>
@@ -113,7 +122,7 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
 
       {/* Pagination */}
       <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 pb-4">
-        {rooms.map((_, index) => (
+        {Array.from({ length: Math.ceil(rooms.length - slidesToShow + 1) }).map((_, index) => (
           <button
             key={index}
             onClick={() => {
@@ -123,9 +132,9 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
               setTimeout(() => setTransitioning(false), 300);
             }}
             className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === current ? 'bg-hotel-dark-green w-6' : 'bg-gray-300'
+              index === Math.floor(current) ? 'bg-hotel-dark-green w-6' : 'bg-gray-300'
             }`}
-            aria-label={`Go to room ${index + 1}`}
+            aria-label={`Go to room set ${index + 1}`}
           />
         ))}
       </div>
