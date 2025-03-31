@@ -38,7 +38,7 @@ const BookingForm = () => {
     // In a real app, you'd use router.push('/checkout') or similar
   };
   return <div className="rounded-lg shadow-xl p-6 md:p-8 mx-auto -mt-20 relative z-10 bg-transparent">
-      <h2 className="text-2xl font-bold text-hotel-darkest-green mb-6 text-center">Book Your Stay</h2>
+      
       
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
         {/* Check-in Date */}
