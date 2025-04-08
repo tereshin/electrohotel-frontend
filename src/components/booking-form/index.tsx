@@ -9,7 +9,12 @@ import { CustomButton } from '../ui/custom-button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import ArrowIcon from '../icons/ArrowIcon';
 
-const BookingForm = () => {
+interface BookingFormProps {
+  className?: string;
+  variant?: 'horizontal' | 'vertical';
+}
+
+const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizontal' }) => {
   const [checkInDate, setCheckInDate] = useState<Date | undefined>(undefined);
   const [checkOutDate, setCheckOutDate] = useState<Date | undefined>(undefined);
   const [adults, setAdults] = useState(1);
@@ -43,8 +48,14 @@ const BookingForm = () => {
   };
 
   return (
-    <div className="rounded-lg shadow-xl mx-auto -mt-20 relative z-10 bg-transparent">
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div className={cn("rounded-lg shadow-xl mx-auto -mt-20 relative z-10 bg-transparent", className)}>
+      <form 
+        onSubmit={handleSubmit} 
+        className={cn(
+          "grid gap-6 md:gap-8",
+          variant === 'horizontal' ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-4" : "grid-cols-1"
+        )}
+      >
         {/* Check-in Date */}
         <div className="space-y-2">
           <label className="block text-sm font-medium text-white">Заезд</label>
