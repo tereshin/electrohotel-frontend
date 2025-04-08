@@ -6,7 +6,7 @@ interface TitleLargeProps {
 
 const TitleLarge: React.FC<TitleLargeProps> = ({ children }) => {
   return (
-    <h2 className="text-4xl md:text-5xl text-hotel-darkest-green uppercase">{children}</h2>
+    <h2 className="text-4xl md:text-5xl uppercase">{children}</h2>
   );
 };
 
