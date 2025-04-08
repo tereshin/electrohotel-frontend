@@ -1,6 +1,3 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -99,11 +96,13 @@
   }
 
   body {
-    @apply bg-background text-foreground font-poppins;
+    @apply bg-background text-foreground font-['TT_Norms'];
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair;
+    @apply font-['TT_Drugs_Trial'];
+    font-weight: 300;
   }
 }
 
@@ -134,4 +133,61 @@
 .hover-lift:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('/assets/fonts/tt-norms/TTNorms-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('/assets/fonts/tt-norms/TTNorms-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('/assets/fonts/tt-norms/TTNorms-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Norms';
+  src: url('/assets/fonts/tt-norms/TTNorms-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'TT Drugs Trial';
+  src: url('/assets/fonts/tt-drugs-trial/TT Drugs Trial Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Drugs Trial';
+  src: url('/assets/fonts/tt-drugs-trial/TT Drugs Trial Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Drugs Trial';
+  src: url('/assets/fonts/tt-drugs-trial/TT Drugs Trial Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'TT Drugs Trial';
+  src: url('/assets/fonts/tt-drugs-trial/TT Drugs Trial Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
 }

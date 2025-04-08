@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ArrowIcon from '../icons/ArrowIcon';
+import TitleLarge from '../ui/TitleLarge';
+import SliderNavigation from '../ui/slider-navigation';
 
 interface TextHeroSlide {
   id: number;
@@ -38,58 +41,49 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className }) =>
 
   return (
     <div className={cn("relative overflow-hidden", className)}>
-      <div className="grid grid-cols-1 md:grid-cols-2 min-h-[60vh]">
+      <div className="flex md:h-[700px] w-full flex-col md:flex-row">
         {/* Image section */}
-        <div className="relative overflow-hidden h-[40vh] md:h-auto">
+        <div className="relative overflow-hidden h-[500px] md:h-auto w-full md:w-[calc(100%-400px)]">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
               className={cn(
-                "absolute inset-0 transition-all duration-700 ease-in-out",
+                "absolute inset-0 transition-all w-full h-full duration-700 ease-in-out bg-hotel-cream",
                 index === current 
                   ? "opacity-100 transform scale-100" 
                   : "opacity-0 transform scale-105"
               )}
             >
+              <div className="md:hidden bg-hotel-cream pt-12 pb-8 px-4"><TitleLarge>{slide.subtitle}</TitleLarge></div>
               <img 
                 src={slide.image} 
                 alt={slide.title} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover max-w-[calc(100%-40px)] lg:max-w-none mx-auto"
               />
             </div>
           ))}
         </div>
         
         {/* Content section */}
-        <div className="bg-hotel-cream p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+        <div className="bg-hotel-cream px-4 py-8 md:p-12 lg:p-16 flex flex-col justify-center">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
               className={cn(
-                "transition-opacity duration-500",
+                "transition-opacity duration-500 max-w-[365px]",
                 index === current ? "opacity-100" : "opacity-0 absolute"
               )}
               style={{ display: index === current ? 'block' : 'none' }}
             >
-              <span className="text-hotel-dark-green text-sm font-medium uppercase tracking-wide">{slide.subtitle}</span>
-              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4 text-hotel-darkest-green">{slide.title}</h2>
-              <p className="text-gray-600 mb-8">{slide.text}</p>
+              <div className="flex flex-col gap-8">
+                <div className="hidden md:block"><TitleLarge>{slide.subtitle}</TitleLarge></div>
+                <div className="flex flex-col gap-4">
+                  <h3 className="text-2xl md:text-3xl text-hotel-darkest-green uppercase">{slide.title}</h3>
+                  <p className="text-gray-600">{slide.text}</p>
+                </div>
               
-              <div className="flex space-x-3">
-                <button 
-                  onClick={prevSlide}
-                  className="border border-hotel-dark-green rounded-full p-2 hover:bg-hotel-dark-green hover:text-white transition-colors"
-                  aria-label="Previous slide"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button 
-                  onClick={nextSlide}
-                  className="border border-hotel-dark-green rounded-full p-2 hover:bg-hotel-dark-green hover:text-white transition-colors"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
+                {/* Navigation */}
+                <SliderNavigation onPrev={prevSlide} onNext={nextSlide} className="mx-auto md:mx-0 mb-5 md:mb-0" />
               </div>
             </div>
           ))}

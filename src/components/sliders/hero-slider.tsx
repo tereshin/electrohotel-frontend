@@ -6,6 +6,7 @@ import { CustomButton } from '../ui/custom-button';
 
 interface HeroSlide {
   title: string;
+  subtitle: string;
   image: string;
 }
 
@@ -43,6 +44,9 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
 
   return (
     <div className={cn("relative overflow-hidden min-h-[100dvh] w-full", className)}>
+
+    
+
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -59,32 +63,33 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
           >
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           </div>
-          <div className="relative h-full max-w-content mx-auto flex flex-col items-center justify-center px-6 md:px-10">
-            <h1 className="text-hotel-off-white text-4xl md:text-5xl lg:text-7xl font-bold text-center max-w-3xl mb-6 tracking-wide animate-fade-in">
+          <div className="relative h-full max-h-[600px] max-w-content mx-auto flex flex-col items-center justify-center px-6 md:px-10 md:max-h-[100%]">
+            {/* Pagination */}
+            <div className="relative -top-4 left-0 right-0 flex justify-center space-x-2 z-10 w-max mx-auto">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    if (transitioning) return;
+                    setTransitioning(true);
+                    setCurrent(index);
+                    setTimeout(() => setTransitioning(false), 750);
+                  }}
+                  className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                    index === current ? 'bg-hotel-off-white scale-150' : 'bg-hotel-off-white bg-opacity-40'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+            <h1 className="text-hotel-off-white text-4xl md:text-5xl lg:text-7xl uppercase text-center max-w-4xl mb-6 tracking-wide animate-fade-in">
               {slide.title}
+              <span className="block text-4xl md:text-7xl lg:text-8xl">{slide.subtitle}</span>
             </h1>
           </div>
         </div>
       ))}
 
-      {/* Pagination */}
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center space-x-2 z-10">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              if (transitioning) return;
-              setTransitioning(true);
-              setCurrent(index);
-              setTimeout(() => setTransitioning(false), 750);
-            }}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
-              index === current ? 'bg-hotel-off-white scale-125' : 'bg-hotel-off-white bg-opacity-40'
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
 
       {/* Navigation Buttons */}
       <button

@@ -7,19 +7,23 @@ import PromotionsSlider from '@/components/sliders/promotions-slider';
 import TextHeroSlider from '@/components/sliders/text-hero-slider';
 import BookingForm from '@/components/booking-form';
 import Footer from '@/components/footer';
+import TitleLarge from '@/components/ui/TitleLarge';
 
 // Sample data - In a real application, this would come from an API
 const heroSlides = [
   {
-    title: "Experience Luxury and Comfort",
+    title: "Гостиничный комплекс",
+    subtitle: "«Электросталь»",
     image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
   },
   {
-    title: "Your Perfect Getaway",
+    title: "Гостиничный комплекс",
+    subtitle: "«Электросталь»",
     image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
   },
   {
-    title: "Unforgettable Moments",
+    title: "Гостиничный комплекс",
+    subtitle: "«Электросталь»",
     image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
   }
 ];
@@ -27,21 +31,21 @@ const heroSlides = [
 const rooms = [
   {
     id: 1,
-    title: "Deluxe Ocean View Suite",
+    title: "Стандарт",
     description: "Experience luxury with breathtaking ocean views, a private balcony, and premium amenities.",
     image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     price: "From $299 per night"
   },
   {
     id: 2,
-    title: "Executive Garden Suite",
+    title: "Эконом",
     description: "Immerse yourself in tranquility with direct garden access and a private outdoor seating area.",
     image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     price: "From $259 per night"
   },
   {
     id: 3,
-    title: "Premium Family Room",
+    title: "Комфорт",
     description: "Spacious accommodation perfect for families, featuring connecting rooms and children's amenities.",
     image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
     price: "From $399 per night"
@@ -91,41 +95,39 @@ const experienceSlides = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
       
       {/* Hero Section */}
       <section className="relative">
         <HeroSlider slides={heroSlides} />
-        <div className="absolute inset-x-0 bottom-0 z-10">
+        <div className="absolute inset-x-0 bottom-[40px] md:bottom-[100px] z-10 max-w-[1400px] mx-auto px-4">
           <BookingForm />
         </div>
       </section>
 
       {/* Our Rooms Section */}
-      <section className="py-20 px-6 md:px-10">
-        <div className="max-w-content mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-hotel-darkest-green mb-4">Our Rooms</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Experience the perfect blend of luxury and comfort in our thoughtfully designed rooms and suites.</p>
+      <section className="py-8 md:py-14 px-6 md:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+          <div className="text-center">
+            <TitleLarge>Наши номера</TitleLarge>
           </div>
           <RoomSlider rooms={rooms} />
         </div>
       </section>
 
       {/* Promotions Section */}
-      <section className="py-20 px-6 md:px-10 bg-hotel-cream">
-        <div className="max-w-content mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-hotel-darkest-green mb-4">Special Offers</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">Discover our exclusive packages and special offers designed to make your stay even more memorable.</p>
+      <section className="py-8 md:py-14 px-6 md:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+          <div className="text-center">
+            <TitleLarge>Акции</TitleLarge>
           </div>
           <PromotionsSlider promotions={promotions} />
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="py-20">
+      <section className="py-14 max-w-[1600px] mx-auto">
         <TextHeroSlider slides={experienceSlides} />
       </section>
 

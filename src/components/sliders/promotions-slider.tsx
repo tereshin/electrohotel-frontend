@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ArrowIcon from '../icons/ArrowIcon';
+import SliderNavigation from '../ui/slider-navigation';
 
 interface PromotionSlide {
   id: number;
@@ -21,7 +23,13 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
   const [transitioning, setTransitioning] = useState(false);
 
   // Calculate number of promotions to display
-  const slidesToShow = 3;
+  let slidesToShow = 2.8;
+  if(window.innerWidth < 1180) {
+    slidesToShow = 2;
+  }
+  if(window.innerWidth < 768) {
+    slidesToShow = 1.1;
+  }
   const slideWidth = 100 / slidesToShow;
 
   const nextSlide = () => {
@@ -48,7 +56,7 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
   if (!promotions || promotions.length === 0) return null;
 
   return (
-    <div className={cn("relative overflow-hidden", className)}>
+    <div className={cn("relative flex flex-col gap-8 md:gap-12", className)}>
       <div 
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * slideWidth}%)` }}
@@ -56,21 +64,24 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
         {promotions.map((promo) => (
           <div 
             key={promo.id} 
-            className="px-2"
+            className="pr-5 md:pr-14" 
             style={{ width: `${slideWidth}%`, flex: `0 0 ${slideWidth}%` }}
           >
-            <a href={promo.link} className="block group hover-lift">
-              <div className="rounded-lg overflow-hidden">
-                <div className="overflow-hidden rounded-t-lg">
+            <a href={promo.link} className="block group  max-w-[450px]">
+              <div className="rounded-lg flex flex-col gap-6">
+                <div className="rounded-t-lg">
                   <img 
                     src={promo.image} 
                     alt={promo.title} 
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-[339px] md:h-[456px] object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <div className="p-4 bg-white rounded-b-lg">
-                  <h3 className="text-lg font-bold mb-2 text-hotel-dark-green group-hover:text-hotel-darker-green transition-colors truncate">{promo.title}</h3>
-                  <p className="text-gray-600 text-sm line-clamp-2">{promo.description}</p>
+                <div className="bg-white flex flex-col gap-4 items-start">
+                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green truncate uppercase flex gap-4 items-center">
+                    {promo.title}
+                    <ArrowIcon />
+                    </h3>
+                  <p className="text-gray-600 line-clamp-2">{promo.description}</p>
                 </div>
               </div>
             </a>
@@ -79,41 +90,7 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
       </div>
 
       {/* Navigation */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between px-4">
-        <button 
-          onClick={prevSlide}
-          className="bg-white rounded-full shadow-lg p-2 hover:bg-gray-100 transition-colors"
-          aria-label="Previous promotion"
-        >
-          <ChevronLeft className="w-5 h-5 text-hotel-darkest-green" />
-        </button>
-        <button 
-          onClick={nextSlide}
-          className="bg-white rounded-full shadow-lg p-2 hover:bg-gray-100 transition-colors"
-          aria-label="Next promotion"
-        >
-          <ChevronRight className="w-5 h-5 text-hotel-darkest-green" />
-        </button>
-      </div>
-
-      {/* Pagination */}
-      <div className="absolute bottom-0 left-0 right-0 flex justify-center space-x-2 py-4">
-        {Array.from({ length: Math.ceil(promotions.length - slidesToShow + 1) }).map((_, index) => (
-          <button
-            key={index}
-            onClick={() => {
-              if (transitioning) return;
-              setTransitioning(true);
-              setCurrent(index);
-              setTimeout(() => setTransitioning(false), 500);
-            }}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              index === Math.floor(current) ? 'bg-hotel-dark-green w-6' : 'bg-gray-300'
-            }`}
-            aria-label={`Go to promotion set ${index + 1}`}
-          />
-        ))}
-      </div>
+      <SliderNavigation onPrev={prevSlide} onNext={nextSlide} className="mx-auto" />
     </div>
   );
 };
