@@ -101,7 +101,7 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative">
         <HeroSlider slides={heroSlides} />
-        <div className="absolute inset-x-0 bottom-[40px] md:bottom-[100px] z-10 max-w-[1400px] mx-auto px-4">
+        <div className="absolute inset-x-0 bottom-[40px] md:bottom-[100px] z-10 max-w-[1460px] mx-auto px-4  -mt-20">
           <BookingForm />
         </div>
       </section>

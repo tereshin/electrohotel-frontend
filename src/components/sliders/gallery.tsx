@@ -39,7 +39,7 @@ const Gallery = () => {
     };
 
     return (
-        <div className="relative bg-[#01362A] h-full w-full md:w-1/2">
+        <div className="relative bg-[#01362A] w-full md:w-1/2">
             <Carousel
                 setApi={setApi}
                 className="h-full"
@@ -47,11 +47,11 @@ const Gallery = () => {
                 <CarouselContent className="h-full">
                     {images.map((image, index) => (
                         <CarouselItem key={index} className="h-full">
-                            <div className="h-full relative">
+                            <div className="h-full relative pb-[100%]">
                                 <img 
                                     src={image} 
                                     alt={`Gallery image ${index + 1}`}
-                                    className="w-full h-full object-cover"
+                                    className="w-full h-full object-cover absolute"
                                 />
                             </div>
                         </CarouselItem>
@@ -59,9 +59,9 @@ const Gallery = () => {
                 </CarouselContent>
             </Carousel>
             
-            <div className="absolute bottom-8 inset-x-0 flex flex-col items-center gap-4">
+            <div className="absolute bottom-10 md:bottom-20 inset-x-0 flex flex-col items-center gap-4 ">
                 <SliderNavigation 
-                    className="bg-hotel-off-white/10 backdrop-blur-sm p-2 rounded-full"
+                    className="text-hotel-off-white w-full justify-between absolute -bottom-4 max-w-[calc(100%-40px)] md:max-w-[calc(100%-100px)] mx-auto"
                     onPrev={() => api?.scrollPrev()}
                     onNext={() => api?.scrollNext()}
                 />

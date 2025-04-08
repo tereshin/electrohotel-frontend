@@ -2,8 +2,8 @@ import FooterForm from './form';
 import Gallery from '../sliders/gallery';
 const Footer = () => {
   return (
-    <footer>
-      <div className="flex flex-col md:flex-row-reverse">
+    <footer className="bg-[#01362A]">
+      <div className="flex flex-col-reverse md:flex-row items-center ">
         <FooterForm />
         <Gallery />
       </div>

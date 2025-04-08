@@ -48,7 +48,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
   };
 
   return (
-    <div className={cn("rounded-lg shadow-xl mx-auto -mt-20 relative z-10 bg-transparent", className)}>
+    <div className={cn("rounded-lg shadow-xl mx-auto relative z-10 bg-transparent", className)}>
       <form 
         onSubmit={handleSubmit} 
         className={cn(
