@@ -191,3 +191,15 @@
   font-weight: 300;
   font-style: normal;
 }
+
+.font-tt-drugs-trial {
+  font-family: 'TT Drugs Trial', sans-serif;
+}
+
+.font-tt-norms {
+  font-family: 'TT Norms', sans-serif;
+}
+
+.font-smoothing-auto {
+  -webkit-font-smoothing: auto;
+}
