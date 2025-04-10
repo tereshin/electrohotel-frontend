@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-[#01362A]">
       <div className="flex flex-col-reverse md:flex-row items-center ">
         <FooterForm />
-        <Gallery />
+        <Gallery className="md:w-1/2" />
       </div>
       <div className="bg-[#023D30] text-hotel-off-white pt-10 md:pt-20 pb-8">
         <div className="max-w-site mx-auto px-6 md:px-0">

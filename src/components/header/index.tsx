@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Calendar, X } from 'lucide-react';
+import { Phone, Calendar, X, Route } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { CustomButton } from '@/components/ui/custom-button';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -7,6 +7,7 @@ import LogoIcon from '../icons/LogoIcon';
 import WhatsAppIcon from '../icons/WhatsAppIcon';
 import TelegramIcon from '../icons/TelegramIcon';
 import MenuIcon from '../icons/MenuIcon';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,20 +34,20 @@ const Header = () => {
         <div className="max-w-site mx-auto flex items-center justify-between">
           {/* Logo */}
           <div className="relative z-10">
-            <a href="/" className="text-hotel-off-white tracking-wide max-w-[182px] md:w-full block">
+            <Link to="/" className="text-hotel-off-white tracking-wide max-w-[182px] md:w-full block">
               <LogoIcon />
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Menu */}
           {!isMobile && !isTablet && (
             <nav className="hidden lg:flex space-x-6 text-hotel-off-white">
-              <a href="#" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">О нас</a>
-              <a href="#" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Номера</a>
-              <a href="#" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Акции</a>
-              <a href="#" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Услуги</a>
-              <a href="#" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Контакты</a>
-              <a href="#" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">FAQ</a>
+              <Link to="/about" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">О нас</Link>
+              <Link to="/rooms" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Номера</Link>
+              <Link to="/promotions" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Акции</Link>
+              <Link to="/services" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Услуги</Link>
+              <Link to="/contacts" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">Контакты</Link>
+              <Link to="/faq" className="hover:opacity-80 transition-opacity text-sm uppercase tracking-wider font-medium">FAQ</Link>
             </nav>
           )}
 

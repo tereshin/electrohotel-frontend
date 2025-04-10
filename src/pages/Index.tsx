@@ -9,7 +9,8 @@ import Footer from '@/components/footer';
 import TitleLarge from '@/components/ui/TitleLarge';
 import { CustomButton } from '@/components/ui/custom-button';
 import ArrowIcon from '@/components/icons/ArrowIcon';
-
+import TestimonialSlider from '@/components/sliders/testimonial-slider';
+import rooms from '@/lib/rooms';
 // Sample data - In a real application, this would come from an API
 const heroSlides = [
   {
@@ -29,29 +30,7 @@ const heroSlides = [
   }
 ];
 
-const rooms = [
-  {
-    id: 1,
-    title: "Стандарт",
-    description: "Experience luxury with breathtaking ocean views, a private balcony, and premium amenities.",
-    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    price: "From $299 per night"
-  },
-  {
-    id: 2,
-    title: "Эконом",
-    description: "Immerse yourself in tranquility with direct garden access and a private outdoor seating area.",
-    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    price: "From $259 per night"
-  },
-  {
-    id: 3,
-    title: "Комфорт",
-    description: "Spacious accommodation perfect for families, featuring connecting rooms and children's amenities.",
-    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    price: "From $399 per night"
-  }
-];
+
 
 const promotions = [
   {
@@ -91,6 +70,36 @@ const experienceSlides = [
     subtitle: "Culinary Excellence",
     text: "Experience exquisite cuisine prepared by our award-winning chefs using the finest ingredients.",
     image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+  }
+];
+
+const testimonials = [
+  {
+    id: '1',
+    name: 'Алексей Пронин',
+    date: '28 ноября, 2023',
+    text: 'Хорошая гостиница. Заезд круглосуточно можно платить картой, персонал приветлив. Есть завтрак. Номера приемлемые. Белье чистое матрас мягкий. Спать не чего не мешает место тихое. Приеду еще!! Цена демократичная!!',
+    avatar: '/images/testimonials/avatar1.jpg',
+    rating: 5,
+    source: '/images/testimonials/source1.png'
+  },
+  {
+    id: '2',
+    name: 'Елена Соколова',
+    date: '15 декабря, 2023',
+    text: 'Отличный отель в центре города. Чистые номера, удобная кровать, хороший завтрак. Персонал очень внимательный и дружелюбный. Рекомендую!',
+    avatar: '/images/testimonials/avatar2.jpg',
+    rating: 5,
+    source: '/images/testimonials/source2.png'
+  },
+  {
+    id: '3',
+    name: 'Дмитрий Иванов',
+    date: '5 января, 2024',
+    text: 'Удобное расположение, тихий район. Номера чистые, уютные. Завтрак хороший. Цена соответствует качеству. Буду останавливаться еще.',
+    avatar: '/images/testimonials/avatar3.jpg',
+    rating: 4,
+    source: '/images/testimonials/source3.png'
   }
 ];
 
@@ -213,6 +222,57 @@ const Index = () => {
       {/* Experience Section */}
       <section className="py-14 max-w-[1600px] mx-auto">
         <TextHeroSlider slides={experienceSlides} />
+      </section>
+
+      {/* Testimonial Section */}
+      <section className="py-8 md:py-14 px-6 md:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+          <div className="text-center">
+            <TitleLarge>Отзывы</TitleLarge>
+          </div>
+          <TestimonialSlider testimonials={testimonials} />
+        </div>
+      </section>
+
+      {/* Group Discount Section */}
+      <section className="max-w-content mx-auto border border-[rgba(2,26,19,0.2)] mb-[60px] lg:mb-[100px]">
+        <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[60px] py-10 md:py-[60px] px-6 md:px-[60px]">
+          {/* Left image column */}
+          <div className="w-full md:w-1/2 relative">
+            <div className="w-full bg-cover bg-center" style={{ backgroundImage: "url('/assets/images/group_discount_image.png')" }}>
+            <div className="pt-[80%]"></div>
+            </div>
+          </div>
+          
+          {/* Right content column */}
+          <div className="w-full md:w-1/2 flex flex-col gap-10">
+            <div className="flex flex-col gap-8">
+              <h2 className="text-2xl md:text-[30px] text-[#093024] uppercase tracking-[0.06em] font-light leading-tight">
+                Наш отель с радостью<br />
+                принимает группы гостей,
+              </h2>
+              
+              <div className="flex flex-col gap-5">
+                <p className="text-[15px] text-[#021A13] opacity-70 leading-relaxed">
+                  Приехавших в город как по рабочим вопросам, так и для знакомства с его достопримечательностями. Мы готовы помочь с организацией комфортного размещения, координацией трансферов, бронированием экскурсий или подготовкой деловых встреч. Для туристов предложим советы по маршрутам, а командированным гостям обеспечим всё необходимое для продуктивной работы.
+                </p>
+                
+                <p className="text-[15px] text-[#021A13] opacity-70 leading-relaxed">
+                  При групповом бронировании действуют специальные условия и скидки, делая ваш визит не только удобным, но и выгодным – ПРЕДОСТАВЛЯЕМ СКИДКУ ДО 20%
+                </p>
+              </div>
+            </div>
+            
+            <CustomButton 
+              variant="base1" 
+              size="default" 
+              className="mr-auto uppercase"
+            >
+              забронировать по акции
+              <ArrowIcon />
+            </CustomButton>
+          </div>
+        </div>
       </section>
 
       <Footer />

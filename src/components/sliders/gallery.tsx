@@ -17,7 +17,11 @@ const images = [
     "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
 ];
 
-const Gallery = () => {
+interface GalleryProps {
+    className?: string;
+}
+
+const Gallery: React.FC<GalleryProps> = ({ className }) => {
     const [api, setApi] = useState<CarouselApi>();
     const [current, setCurrent] = useState(0);
     
@@ -39,7 +43,7 @@ const Gallery = () => {
     };
 
     return (
-        <div className="relative bg-[#01362A] w-full md:w-1/2">
+        <div className={cn("relative bg-[#01362A] w-full", className)}>
             <Carousel
                 setApi={setApi}
                 className="h-full"
@@ -59,9 +63,9 @@ const Gallery = () => {
                 </CarouselContent>
             </Carousel>
             
-            <div className="absolute bottom-10 md:bottom-20 inset-x-0 flex flex-col items-center gap-4 ">
+            <div className="absolute bottom-10 md:bottom-24 inset-x-0 flex flex-col items-center gap-4 ">
                 <SliderNavigation 
-                    className="text-hotel-off-white w-full justify-between absolute -bottom-4 max-w-[calc(100%-40px)] md:max-w-[calc(100%-100px)] mx-auto"
+                    className="text-hotel-off-white w-full justify-between absolute -bottom-4 max-w-[calc(100%-40px)] md:max-w-[calc(100%-200px)] mx-auto"
                     onPrev={() => api?.scrollPrev()}
                     onNext={() => api?.scrollNext()}
                 />
