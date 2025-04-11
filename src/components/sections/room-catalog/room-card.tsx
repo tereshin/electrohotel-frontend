@@ -22,7 +22,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
   return (
     <div className="flex flex-col max-w-[670px] w-full">
       {/* Room image and details */}
-      <div className="relative overflow-hidden rounded-lg aspect-[4/3]">
+      <div className="relative overflow-hidden aspect-[4/3]">
         <img
           src={room.image}
           alt={`${room.title} room`}

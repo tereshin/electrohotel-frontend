@@ -1,14 +1,20 @@
 import FooterForm from './form';
 import Gallery from '../sliders/gallery';
+const images = [
+  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+  "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80", 
+  "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
+  "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+];
 const Footer = () => {
   return (
     <footer className="bg-[#01362A]">
-      <div className="flex flex-col-reverse md:flex-row items-center ">
+      <div className="flex flex-col-reverse md:flex-row items-center max-w-[1600px] mx-auto">
         <FooterForm />
-        <Gallery className="md:w-1/2" />
+        <Gallery className="md:w-1/2" images={images} size="narrow" />
       </div>
       <div className="bg-[#023D30] text-hotel-off-white pt-10 md:pt-20 pb-8">
-        <div className="max-w-site mx-auto px-6 md:px-0">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-0">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10 md:mb-20 font-smoothing-auto">
             {/* Navigation Column */}

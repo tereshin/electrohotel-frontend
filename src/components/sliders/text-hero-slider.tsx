@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ArrowIcon from '../icons/ArrowIcon';
-import TitleLarge from '../ui/TitleLarge';
+import Title from '../ui/Title';
 import SliderNavigation from '../ui/slider-navigation';
 
 interface TextHeroSlide {
@@ -54,7 +54,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className }) =>
                   : "opacity-0 transform scale-105"
               )}
             >
-              <div className="md:hidden bg-hotel-cream pt-12 pb-8 px-4"><TitleLarge>{slide.subtitle}</TitleLarge></div>
+              <div className="md:hidden bg-hotel-cream pt-12 pb-8 px-4"><Title>{slide.subtitle}</Title></div>
               <img 
                 src={slide.image} 
                 alt={slide.title} 
@@ -76,7 +76,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className }) =>
               style={{ display: index === current ? 'block' : 'none' }}
             >
               <div className="flex flex-col gap-8">
-                <div className="hidden md:block"><TitleLarge>{slide.subtitle}</TitleLarge></div>
+                <div className="hidden md:block"><Title>{slide.subtitle}</Title></div>
                 <div className="flex flex-col gap-4">
                   <h3 className="text-2xl md:text-3xl text-hotel-darkest-green uppercase">{slide.title}</h3>
                   <p className="text-gray-600">{slide.text}</p>

@@ -1,15 +1,15 @@
 import Footer from "@/components/footer";
 import FirstSection from "@/components/sections/first-section";
-import RoomCatalog from "@/components/sections/room-catalog";
+import ContactMap from "@/components/sections/contact-map";
 
-const Rooms = () => {
+const Contacts = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
-      <FirstSection title="Номерной фонд" />
-      <RoomCatalog />
+      <FirstSection title="Контакты" />
+      <ContactMap />
       <Footer />
     </div>
   );
 };
 
-export default Rooms;
+export default Contacts; 

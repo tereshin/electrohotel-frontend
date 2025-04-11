@@ -28,10 +28,10 @@ const Header = () => {
   return (
     <>
       <header className={cn(
-        'fixed top-0 left-0 right-0 z-[60] w-full transition-all duration-300 px-4 md:px-10 py-7 md:py-11',
+        'fixed top-0 left-0 right-0 z-[60] w-full transition-all duration-300 py-7 md:py-11',
         isScrolled ? 'bg-hotel-darkest-green bg-opacity-90 backdrop-blur-sm shadow-lg' : 'bg-transparent'
       )}>
-        <div className="max-w-site mx-auto flex items-center justify-between">
+        <div className="max-w-site mx-auto flex items-center justify-between px-4 md:px-10">
           {/* Logo */}
           <div className="relative z-10">
             <Link to="/" className="text-hotel-off-white tracking-wide max-w-[182px] md:w-full block">

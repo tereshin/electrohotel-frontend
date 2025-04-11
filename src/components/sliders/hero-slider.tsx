@@ -43,7 +43,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
   if (!slides || slides.length === 0) return null;
 
   return (
-    <div className={cn("relative overflow-hidden min-h-[100dvh] w-full", className)}>
+    <div className={cn("relative overflow-hidden h-[100dvh] max-h-[1000px] w-full", className)}>
 
     
 

@@ -1,18 +1,24 @@
 import React from 'react';
-import TitleLarge from '../ui/TitleLarge';
+import Title from '../ui/Title';
 
 interface FeatureItemProps {
-  iconSrc: string;
+  icon: string;
   text: string;
 }
 
-const FeatureItem: React.FC<FeatureItemProps> = ({ iconSrc, text }) => {
+const FeatureItem: React.FC<FeatureItemProps> = ({ icon, text }) => {
   return (
-    <div className="flex items-center gap-6 md:gap-9">
-      <div className="min-w-10 w-10 h-10 md:min-w-12 md:w-12 md:h-12 rounded-full border border-[#021A13] flex items-center justify-center">
-        <img src={iconSrc} alt={text} className="w-5 h-5 md:w-6 md:h-6" />
-      </div>
-      <p className="text-[#021A13] uppercase text-sm md:text-base tracking-[0.02em] leading-[1.4em]">{text}</p>
+    <div className="flex items-center gap-4 md:gap-9 min-w-[25%]">
+      {typeof icon === 'string' ? (
+        <div className="min-w-[82px] w-[82px] h-[82px] rounded-full border border-[#021A13] flex items-center justify-center">
+          <img src={icon} alt={text} className="w-12 h-12" />
+        </div>
+      ) : (
+        <div className="min-w-[82px] w-[82px] h-[82px] rounded-full border border-[#021A13] flex items-center justify-center">
+          {icon}
+        </div>
+      )}
+      <p className="uppercase text-[#021A13] text-sm md:text-base tracking-[0.02em] leading-[1.4em]">{text}</p>
     </div>
   );
 };
@@ -67,24 +73,24 @@ const FeaturesSection = () => {
   return (
     <section className="bg-white py-10 md:py-16 lg:py-[50px] lg:pb-[100px] px-5 md:px-10">
       <div className="flex flex-col gap-8 md:gap-[40px] lg:gap-[60px] max-w-content mx-auto">
-        <TitleLarge>Также вы всегда можете<br className="hidden md:block" /> рассчитывать на:</TitleLarge>
+        <Title>Также вы всегда можете<br className="hidden md:block" /> рассчитывать на:</Title>
         
-        <div className="flex flex-col md:flex-row gap-10 md:gap-[40px] flex-wrap">
-          <div className="w-full md:w-[calc(50%-20px)] flex flex-col gap-10">
+        <div className="flex flex-col gap-10 md:gap-[40px] flex-wrap">
+          <div className="w-full flex flex-col md:flex-row gap-10">
             {firstColumnFeatures.map((feature) => (
               <FeatureItem 
                 key={feature.id}
-                iconSrc={feature.icon}
+                icon={feature.icon}
                 text={feature.text}
               />
             ))}
           </div>
           
-          <div className="w-full md:w-[calc(50%-20px)] flex flex-col gap-10">
+          <div className="w-full flex flex-col md:flex-row gap-10">
             {secondColumnFeatures.map((feature) => (
               <FeatureItem 
                 key={feature.id}
-                iconSrc={feature.icon}
+                icon={feature.icon}
                 text={feature.text}
               />
             ))}

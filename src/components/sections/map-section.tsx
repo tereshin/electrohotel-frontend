@@ -1,5 +1,5 @@
 import React from 'react';
-import TitleLarge from '../ui/TitleLarge';
+import Title from '../ui/Title';
 import { CustomButton } from '../ui/custom-button';
 import ArrowIcon from '../icons/ArrowIcon';
 
@@ -51,7 +51,7 @@ const MapSection = () => {
             <div className="bg-white rounded-[4px] shadow-xl p-8 md:p-[50px] w-full max-w-[457px]">
             <div className="flex flex-col gap-[30px]">
                 <div className="uppercase text-[#093024]">
-                <TitleLarge>отзывы</TitleLarge>
+                <Title>отзывы</Title>
                 </div>
                 
                 <div className="flex flex-col gap-5 w-full">

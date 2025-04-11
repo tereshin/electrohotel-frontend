@@ -1,15 +1,15 @@
 import Footer from "@/components/footer";
 import FirstSection from "@/components/sections/first-section";
-import RoomCatalog from "@/components/sections/room-catalog";
+import PromotionsList from "@/components/sections/promotions-list";
 
-const Rooms = () => {
+const Promotions = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
-      <FirstSection title="Номерной фонд" />
-      <RoomCatalog />
+      <FirstSection title="Акции" />
+      <PromotionsList />
       <Footer />
     </div>
   );
 };
 
-export default Rooms;
+export default Promotions;

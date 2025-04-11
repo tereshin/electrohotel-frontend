@@ -6,11 +6,12 @@ import PromotionsSlider from '@/components/sliders/promotions-slider';
 import TextHeroSlider from '@/components/sliders/text-hero-slider';
 import BookingForm from '@/components/booking-form';
 import Footer from '@/components/footer';
-import TitleLarge from '@/components/ui/TitleLarge';
+import Title from '@/components/ui/Title';
 import { CustomButton } from '@/components/ui/custom-button';
 import ArrowIcon from '@/components/icons/ArrowIcon';
 import TestimonialSlider from '@/components/sliders/testimonial-slider';
 import rooms from '@/lib/rooms';
+import promotions from '@/lib/promotions';
 // Sample data - In a real application, this would come from an API
 const heroSlides = [
   {
@@ -31,30 +32,6 @@ const heroSlides = [
 ];
 
 
-
-const promotions = [
-  {
-    id: 1,
-    title: "Summer Escape Package",
-    description: "Enjoy 20% off on stays of 3 nights or more, including breakfast and spa access.",
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    link: "#"
-  },
-  {
-    id: 2,
-    title: "Romantic Getaway",
-    description: "Special couple's package including champagne, dinner, and late checkout.",
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    link: "#"
-  },
-  {
-    id: 3,
-    title: "Early Bird Special",
-    description: "Book 60 days in advance and save 25% on your stay.",
-    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    link: "#"
-  }
-];
 
 const experienceSlides = [
   {
@@ -105,7 +82,8 @@ const testimonials = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="overflow-x-hidden">
+      <div className="min-h-screen bg-white max-w-[2048px] mx-auto">
       <Header />
       
       {/* Hero Section */}
@@ -117,10 +95,10 @@ const Index = () => {
       </section>
 
       {/* About Hotel Section */}
-      <section className="py-8 md:py-14 px-6 md:px-10 md:mt-10">
+      <section className="py-8 md:py-14 px-4 md:px-10 md:mt-10">
         <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
           <div className="text-center">
-            <TitleLarge>Об отеле</TitleLarge>
+            <Title>Об отеле</Title>
           </div>
           
           <div className="flex flex-col md:flex-row gap-10 items-center justify-between">
@@ -200,20 +178,20 @@ const Index = () => {
       </section>
       
       {/* Our Rooms Section */}
-      <section className="py-8 md:py-14 px-6 md:px-10">
+      <section className="py-8 md:py-14 px-4 md:px-10">
         <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
           <div className="text-center">
-            <TitleLarge>Наши номера</TitleLarge>
+            <Title>Наши номера</Title>
           </div>
           <RoomSlider rooms={rooms} />
         </div>
       </section>
 
       {/* Promotions Section */}
-      <section className="py-8 md:py-14 px-6 md:px-10">
+      <section className="py-8 md:py-14 px-4 md:px-10">
         <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
           <div className="text-center">
-            <TitleLarge>Акции</TitleLarge>
+            <Title>Акции</Title>
           </div>
           <PromotionsSlider promotions={promotions} />
         </div>
@@ -225,17 +203,17 @@ const Index = () => {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-8 md:py-14 px-6 md:px-10">
+      <section className="py-8 md:py-14 px-4 md:px-10">
         <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
           <div className="text-center">
-            <TitleLarge>Отзывы</TitleLarge>
+            <Title>Отзывы</Title>
           </div>
           <TestimonialSlider testimonials={testimonials} />
         </div>
       </section>
 
       {/* Group Discount Section */}
-      <section className="max-w-content mx-auto border border-[rgba(2,26,19,0.2)] mb-[60px] lg:mb-[100px]">
+      <section className="max-w-content border border-[rgba(2,26,19,0.2)] mb-[60px] lg:mb-[100px] mx-4 md:mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-[60px] py-10 md:py-[60px] px-6 md:px-[60px]">
           {/* Left image column */}
           <div className="w-full md:w-1/2 relative">
@@ -276,6 +254,7 @@ const Index = () => {
       </section>
 
       <Footer />
+      </div>
     </div>
   );
 };

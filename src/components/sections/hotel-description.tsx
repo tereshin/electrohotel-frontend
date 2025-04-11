@@ -1,27 +1,7 @@
 import React from "react";
-import TitleLarge from "../ui/TitleLarge";
-const FeatureItem = ({ 
-  icon, 
-  text 
-}: { 
-  icon: string | React.ReactNode;
-  text: string;
-}) => {
-  return (
-    <div className="flex items-center gap-4 md:gap-9">
-      {typeof icon === 'string' ? (
-        <div className="min-w-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#021A13] flex items-center justify-center">
-          <img src={icon} alt={text} className="w-5 h-5 md:w-6 md:h-6" />
-        </div>
-      ) : (
-        <div className="min-w-10 w-10 h-10 md:w-12 md:h-12 rounded-full border border-[#021A13] flex items-center justify-center">
-          {icon}
-        </div>
-      )}
-      <p className="uppercase text-[#021A13] text-sm md:text-base tracking-[0.02em] leading-[1.4em]">{text}</p>
-    </div>
-  );
-};
+import Title from "../ui/Title";
+
+import FeatureIcon from "../ui/FeatureIcon";
 
 const HotelDescription = () => {
   const cafeIcon = (
@@ -34,13 +14,13 @@ const HotelDescription = () => {
   );
 
   return (
-    <section className="bg-[#FAF6F1] py-8 px-5 md:py-16 lg:py-[100px] md:px-10 lg:px-[100px]">
-      <div className="flex flex-col gap-8 md:gap-10">
+    <section className="bg-[#FAF6F1] py-8 px-5 md:py-16 lg:py-[100px]">
+      <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">
         <div className="flex flex-col gap-6 md:gap-10">
-          <TitleLarge>
+          <Title>
           уютное и современное пространство для тех,<br className="hidden md:block" />
           кто ценит комфорт без лишней суеты
-          </TitleLarge>
+          </Title>
           
           <div className="flex flex-col lg:flex-row gap-6">
             <p className="text-[#021A13] text-sm md:text-[15px] leading-[1.73em] opacity-70 lg:w-1/2">
@@ -67,19 +47,19 @@ const HotelDescription = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10">
-          <FeatureItem 
+          <FeatureIcon 
             icon="/icons/location-icon.svg" 
             text="Центр города со своей территорией <4400 м" 
           />
-          <FeatureItem 
+          <FeatureIcon 
             icon="/icons/wifi-icon.svg" 
             text="Бесплатный Wi-FI" 
           />
-          <FeatureItem 
+          <FeatureIcon 
             icon="/icons/park-icon.svg" 
             text='60 Га площадь парка "Авангард" (2 мн пешком)' 
           />
-          <FeatureItem 
+          <FeatureIcon 
             icon={cafeIcon} 
             text="Уютное кафе (завтраки, обеды, ужины)" 
           />
