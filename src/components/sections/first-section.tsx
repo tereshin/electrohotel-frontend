@@ -30,7 +30,7 @@ const FirstSection: React.FC<FirstSectionProps> = ({ title = 'Заголовок
         </h1>
         
         {/* Booking form at the bottom */}
-        <div className="w-full mt-auto">
+        <div className="w-full mt-auto  text-white">
           <BookingForm  />
         </div>
       </div>

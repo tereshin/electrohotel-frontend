@@ -10,7 +10,7 @@ const FeatureIcon = ({ icon, text, caption }: FeatureIconProps) => {
     return (
         <div className="flex items-center gap-4 md:gap-9">
           {typeof icon === 'string' ? (
-            <div className="min-w-[82px] w-[82px] h-[82px] rounded-full border border-[#021A13] flex items-center p-5 justify-center">
+            <div className="min-w-[82px] w-[82px] h-[82px] rounded-full border border-[#021A13] flex items-center p-4 justify-center">
               <img src={icon} alt={text} className="w-12 h-12" />
             </div>
           ) : (

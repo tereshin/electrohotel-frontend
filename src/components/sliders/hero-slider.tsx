@@ -63,7 +63,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
           >
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           </div>
-          <div className="relative h-full max-h-[600px] max-w-content mx-auto flex flex-col items-center justify-center px-6 md:px-10 md:max-h-[100%]">
+          <div className="relative h-full max-h-[60dvh] max-w-content mx-auto flex flex-col items-center justify-center px-6 md:px-10 md:max-h-[100%]">
             {/* Pagination */}
             <div className="relative -top-4 left-0 right-0 flex justify-center space-x-2 z-10 w-max mx-auto">
               {slides.map((_, index) => (
@@ -93,14 +93,14 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
 
       {/* Navigation Buttons */}
       <button
-        className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
+        className="hidden md:block absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
         onClick={prevSlide}
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6 text-hotel-off-white" />
       </button>
       <button
-        className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
+        className="hidden md:block absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
         onClick={nextSlide}
         aria-label="Next slide"
       >

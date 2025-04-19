@@ -38,7 +38,7 @@ const MapSection = () => {
 
   return (
     
-    <section className=" w-full h-[500px] md:h-[600px] lg:h-[700px] py-10 md:py-16 lg:py-[50px] px-5 md:px-10">
+    <section className=" w-full h-[700px] md:h-[600px] lg:h-[700px] py-10 md:py-12 lg:py-[50px] px-5 md:px-10">
         <div className="max-w-content mx-auto h-full relative">
         {/* Map background image */}
         <div 

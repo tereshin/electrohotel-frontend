@@ -1,10 +1,11 @@
 import FooterForm from './form';
 import Gallery from '../sliders/gallery';
+import { Link } from 'react-router-dom';
 const images = [
-  "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-  "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80", 
-  "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-  "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+  "/images/home/1.webp",
+  "/images/home/6.webp",
+  "/images/home/3.webp",
+  "/images/home/2.webp"
 ];
 const Footer = () => {
   return (
@@ -23,13 +24,13 @@ const Footer = () => {
                 <h3 className="text-xl uppercase font-tt-norms">Карта сайта</h3>
               </div>
               <nav className="flex flex-col gap-5">
-                <a href="/" className="text-hotel-off-white hover:opacity-80 transition-opacity">Главная</a>
-                <a href="/about" className="text-hotel-off-white hover:opacity-80 transition-opacity">О нас</a>
-                <a href="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Номера</a>
-                <a href="/promotions" className="text-hotel-off-white hover:opacity-80 transition-opacity">Акции</a>
-                <a href="/services" className="text-hotel-off-white hover:opacity-80 transition-opacity">Услуги</a>
-                <a href="/contacts" className="text-hotel-off-white hover:opacity-80 transition-opacity">Контакты</a>
-                <a href="/faq" className="text-hotel-off-white hover:opacity-80 transition-opacity">FAQ</a>
+                <Link to="/" className="text-hotel-off-white hover:opacity-80 transition-opacity">Главная</Link>
+                <Link to="/about" className="text-hotel-off-white hover:opacity-80 transition-opacity">О нас</Link>
+                <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Номера</Link>
+                <Link to="/promotions" className="text-hotel-off-white hover:opacity-80 transition-opacity">Акции</Link>
+                <Link to="/services" className="text-hotel-off-white hover:opacity-80 transition-opacity">Услуги</Link>
+                <Link to="/contacts" className="text-hotel-off-white hover:opacity-80 transition-opacity">Контакты</Link>
+                <Link to="/faq" className="text-hotel-off-white hover:opacity-80 transition-opacity">FAQ</Link>
               </nav>
             </div>
 
@@ -39,13 +40,13 @@ const Footer = () => {
                 <h3 className="text-xl uppercase font-tt-norms">Услуги</h3>
               </div>
               <nav className="flex flex-col gap-5">
-                <a href="/services/cafe" className="text-hotel-off-white hover:opacity-80 transition-opacity">Уютное кафе</a>
-                <a href="/services/ecopark" className="text-hotel-off-white hover:opacity-80 transition-opacity">Экопарк "Авангард"</a>
-                <a href="/services/laundry" className="text-hotel-off-white hover:opacity-80 transition-opacity">Прачечная</a>
-                <a href="/services/parking" className="text-hotel-off-white hover:opacity-80 transition-opacity">Бесплатная парковка</a>
-                <a href="/services/territory" className="text-hotel-off-white hover:opacity-80 transition-opacity">Приватная территория</a>
-                <a href="/services/room-service" className="text-hotel-off-white hover:opacity-80 transition-opacity">Обслуживание номеров</a>
-                <a href="/services/early-checkin" className="text-hotel-off-white hover:opacity-80 transition-opacity">Ранний заезд / поздний выезд</a>
+                <Link to="/services/cafeteria" className="text-hotel-off-white hover:opacity-80 transition-opacity">Уютное кафе</Link>
+                <Link to="/services/eco-park" className="text-hotel-off-white hover:opacity-80 transition-opacity">Экопарк "Авангард"</Link>
+                <Link to="/services/laundry" className="text-hotel-off-white hover:opacity-80 transition-opacity">Прачечная</Link>
+                <Link to="/services/parking" className="text-hotel-off-white hover:opacity-80 transition-opacity">Бесплатная парковка</Link>
+                <Link to="/services/private-terrace" className="text-hotel-off-white hover:opacity-80 transition-opacity">Приватная территория</Link>
+                <Link to="/services/room-service" className="text-hotel-off-white hover:opacity-80 transition-opacity">Обслуживание номеров</Link>
+                <Link to="/services/check-in" className="text-hotel-off-white hover:opacity-80 transition-opacity">Ранний заезд / поздний выезд</Link>
               </nav>
             </div>
 
@@ -55,12 +56,12 @@ const Footer = () => {
                 <h3 className="text-xl uppercase font-tt-norms">Номера</h3>
               </div>
               <nav className="flex flex-col gap-5">
-                <a href="/rooms/standard-single" className="text-hotel-off-white hover:opacity-80 transition-opacity">Стандарт одноместный</a>
-                <a href="/rooms/standard" className="text-hotel-off-white hover:opacity-80 transition-opacity">Стандарт</a>
-                <a href="/rooms/standard-plus" className="text-hotel-off-white hover:opacity-80 transition-opacity">Стандарт +</a>
-                <a href="/rooms/junior-suite" className="text-hotel-off-white hover:opacity-80 transition-opacity">Полулюкс</a>
-                <a href="/rooms/junior-suite-plus" className="text-hotel-off-white hover:opacity-80 transition-opacity">Полулюкс +</a>
-                <a href="/rooms/suite" className="text-hotel-off-white hover:opacity-80 transition-opacity">Люкс</a>
+                <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Стандарт одноместный</Link>
+                <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Стандарт</Link>
+                <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Стандарт +</Link>
+                <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Полулюкс</Link>
+                <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Полулюкс +</Link>
+                <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Люкс</Link>
               </nav>
             </div>
           </div>
@@ -75,7 +76,7 @@ const Footer = () => {
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Звоните по бронированию отеля</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <a href="tel:+79963652330" className="text-2xl font-tt-drugs-trial">+7 996 365 23 30</a>
+                  <a href="https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-2xl font-tt-drugs-trial" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Пишите в WhatsApp и Telegram</p>
                 </div>
               </div>
@@ -98,8 +99,8 @@ const Footer = () => {
           <div className="border-t border-hotel-off-white border-opacity-10 pt-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-sm">
               <p>Гостиница «Электросталь» © 2006 – 2025</p>
-              <a href="/privacy" className="hover:opacity-80 transition-opacity">Политика обработки персональных данных</a>
-              <a href="/terms" className="hover:opacity-80 transition-opacity">Правила использования сайта</a>
+              <Link to="/privacy" className="hover:opacity-80 transition-opacity">Политика обработки персональных данных</Link>
+              <Link to="/terms" className="hover:opacity-80 transition-opacity">Правила использования сайта</Link>
             </div>
           </div>
         </div>

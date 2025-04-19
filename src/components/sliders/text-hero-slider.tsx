@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect, TouchEvent } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ArrowIcon from '../icons/ArrowIcon';
@@ -22,6 +21,47 @@ interface TextHeroSliderProps {
 const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className }) => {
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  // Minimum swipe distance in pixels
+  const minSwipeDistance = 50;
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (!transitioning) {
+        setTransitioning(true);
+        setCurrent(current === slides.length - 1 ? 0 : current + 1);
+        setTimeout(() => setTransitioning(false), 500);
+      }
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, [current, slides.length, transitioning]);
+
+  const onTouchStart = (e: TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+  };
 
   const nextSlide = () => {
     if (transitioning) return;
@@ -40,10 +80,15 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className }) =>
   if (!slides || slides.length === 0) return null;
 
   return (
-    <div className={cn("relative overflow-hidden", className)}>
+    <div 
+      className={cn("relative overflow-hidden", className)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <div className="flex md:h-[700px] w-full flex-col md:flex-row">
         {/* Image section */}
-        <div className="relative overflow-hidden h-[500px] md:h-auto w-full md:w-[calc(100%-400px)]">
+        <div className="relative overflow-hidden h-[370px] md:h-auto w-full md:w-[calc(100%-400px)]">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
@@ -58,7 +103,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className }) =>
               <img 
                 src={slide.image} 
                 alt={slide.title} 
-                className="w-full h-full object-cover max-w-[calc(100%-40px)] lg:max-w-none mx-auto"
+                className="w-full lg:h-full object-cover max-w-[calc(100%-40px)] lg:max-w-none mx-auto"
               />
             </div>
           ))}

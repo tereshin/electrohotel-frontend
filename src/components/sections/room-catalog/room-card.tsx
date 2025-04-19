@@ -34,7 +34,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           {/* Area info */}
           <div className="flex items-center bg-black bg-opacity-50 text-white px-6 py-3 rounded-full">
             <img src="/images/rooms/area-icon-1.svg" className="w-5 h-5 mr-2" alt="Area" />
-            <span className="text-sm">{room.area}</span>
+            <span className="text-sm">{room.area} м²</span>
           </div>
           
           {/* Bed info */}
@@ -62,7 +62,16 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         {/* Room description */}
         <div className="flex flex-col gap-3">
           <p className="text-black opacity-70 text-[15px] leading-[1.7em]">{room.description}</p>
-          <p className="text-black opacity-70 text-[15px] leading-[1.7em]">{room.capacity}<br/>{room.bed}</p>
+          <ul className="flex flex-col gap-3 text-sm md:text-[15px] leading-[1.73em] lg:w-1/2 ml-2">
+              <li className="text-[15px] leading-[1.35em] opacity-70 flex gap-3">
+                <div className="min-w-1 h-1 bg-[#021A13] rounded-full relative top-2" />
+                {room.capacity}
+              </li>
+              <li className="text-[15px] leading-[1.35em] opacity-70 flex gap-3">
+                <div className="min-w-1 h-1 bg-[#021A13] rounded-full relative top-2" />
+                {room.bed}
+              </li>
+            </ul>
         </div>
         
         {/* Price and booking button */}
@@ -75,7 +84,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           <CustomButton
             variant="base2"
             size="default"
-            
+            onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}
           >
             <span className="flex items-center gap-4">
               забронировать

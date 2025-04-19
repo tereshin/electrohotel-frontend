@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
     Carousel, 
     CarouselContent, 
@@ -33,6 +32,16 @@ const Gallery: React.FC<GalleryProps> = ({ className, images, size = 'wide' }) =
         };
     }, [api, handleSelect]);
 
+    useEffect(() => {
+        if (!api) return;
+        
+        const interval = setInterval(() => {
+            api.scrollNext();
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, [api]);
+
     const goToSlide = (index: number) => {
         api?.scrollTo(index);
     };
@@ -46,7 +55,7 @@ const Gallery: React.FC<GalleryProps> = ({ className, images, size = 'wide' }) =
                 <CarouselContent className="h-full">
                     {images.map((image, index) => (
                         <CarouselItem key={index} className="h-full">
-                            <div className={cn("h-full relative", size === 'narrow' ? 'pb-[100%]' : 'pb-[50%]')}>
+                            <div className={cn("h-full relative", size === 'narrow' ? 'pb-[100%]' : 'pb-[100%] md:pb-[35%]')}>
                                 <img 
                                     src={image} 
                                     alt={`Gallery image ${index + 1}`}

@@ -2,32 +2,72 @@ const rooms = [
     {
       id: 1,
       title: "Стандарт",
-      description: "Experience luxury with breathtaking ocean views, a private balcony, and premium amenities.",
+      description: "Номера категории Стандарт — отличный вариант для категории туристов, которым важно соотношение цены и качества. Идеально для кратковременного размещения.",
       capacity: "Подходит для размещения 1 гостя",
       bed: "Одноместная кровать Smart Slip",
-      image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-      price: "1 500 ₽",
-      area: "25 кв.м"
+      image: "/images/rooms/1.webp",
+      price: "3 500 ₽",
+      area: "14"
     },
     {
       id: 2,
-      title: "Эконом",
-      description: "Immerse yourself in tranquility with direct garden access and a private outdoor seating area.",
-      capacity: "Подходит для размещения 1 гостя",
-      bed: "Одноместная кровать Smart Slip",
-      image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-      price: "1 500 ₽",
-      area: "25 кв.м"
+      title: "Комфорт",
+      description: "Для Гостей, которые ценят личное пространство и возможность плодотворно работать. При въезде вас будет ждать чай, кофе, круассан и вода. Рекомендуется для длительного пребывания.",
+      capacity: "Подходит для размещения 1-2 гостей",
+      bed: "Двухместная кровать Premier Lux",
+      image: "/images/rooms/2.webp",
+      price: "4 400 ₽",
+      area: "16"
     },
     {
       id: 3,
-      title: "Комфорт",
-      description: "Spacious accommodation perfect for families, featuring connecting rooms and children's amenities.",
-      capacity: "Подходит для размещения 1 гостя",
-      bed: "Одноместная кровать Smart Slip",
-      image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-      price: "1 500 ₽",
-      area: "25 кв.м"
+      title: "Комфорт Плюс",
+      description: "Номера повышенного комфорта с одной просторной кроватью и уютным диваном. Прекрасный вид на тихий внутренний двор. Больше дневного освещения за счёт большего количества окон.",
+      capacity: "Подходит для размещения 1-2 гостей",
+      bed: "Двухместная кровать Premier Lux",
+      image: "/images/rooms/3.webp",
+      price: "4 900 ₽",
+      area: "22"
+    },
+    {
+      id: 4,
+      title: "Комфорт плюс с террасой",
+      description: "Комфортабельные номера с террасой отличаются выходом на балкон гостиницы с собственной зоной отдыха, подвесным креслом и уютным столиком. Рекомендуется для длительного...",
+      capacity: "Подходит для размещения 1-2 гостей",
+      bed: "Двухместная кровать Premier Lux / Две одноместные кровати Smart Slip",
+      image: "/images/rooms/4.webp",
+      price: "5 400 ₽",
+      area: "25"
+    },
+    {
+      id: 5,
+      title: "Делюкс",
+      description: "Номера «Делюкс» — это элегантные и просторные номера с разными сценариями освещения и подсветки. Ортопедический матрас и эргономичный диван с журнальным столиком позволят...",
+      capacity: "Подходит для размещения 1-3 гостей",
+      bed: "Двухместная кровать Grand Deluxe + эргономичный диван",
+      image: "/images/rooms/5.webp",
+      price: "5 900 ₽",
+      area: "26"
+    },
+    {
+      id: 6,
+      title: "Делюкс 2 кровати",
+      description: "Номера «Делюкс» — это элегантные и просторные номера с разными сценариями освещения и подсветки. Ортопедический матрас и эргономичный диван с журнальным столиком позволят...",
+      capacity: "Подходит для размещения 1-3 гостей",
+      bed: "Две одноместные кровати Smart Slip + эргономичный диван",
+      image: "/images/rooms/6.webp",
+      price: "5 900 ₽",
+      area: "26"
+    },
+    {
+      id: 7,
+      title: "Двухкомнатный Люкс",
+      description: "Самый большой по площади номер в отеле. Оснащен KingSize кроватью, интерьерной подсветкой и двухместным диваном. Просторная планировка с отдельной гостиной...",
+      capacity: "Подходит для размещения 1-4 гостей",
+      bed: "Двухместная кровать King Size + двухместный диван",
+      image: "/images/rooms/7.webp",
+      price: "7 900 ₽",
+      area: "35"
     }
   ];    
 

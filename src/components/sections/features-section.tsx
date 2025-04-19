@@ -27,22 +27,22 @@ const FeaturesSection = () => {
   const firstColumnFeatures = [
     {
       id: 1,
-      icon: '/icons/features/wifi-icon.svg',
+      icon: '/icons/wifi-icon.svg',
       text: 'Wi-Fi на всей территории отеля и в номерах'
     },
     {
       id: 2,
-      icon: '/icons/features/business-icon.svg',
+      icon: '/icons/business-icon.svg',
       text: 'Бизнес услуги: сканирование, отправка e-mail'
     },
     {
       id: 3,
-      icon: '/icons/features/food-icon.svg',
+      icon: '/icons/food-icon.svg',
       text: 'Питание, согласно выбранного тарифа'
     },
     {
       id: 4,
-      icon: '/icons/features/parking-icon.svg',
+      icon: '/icons/parking-icon.svg',
       text: 'Парковка на территории отеля'
     }
   ];
@@ -50,28 +50,28 @@ const FeaturesSection = () => {
   const secondColumnFeatures = [
     {
       id: 5,
-      icon: '/icons/features/water-icon.svg',
+      icon: '/icons/water-icon.svg',
       text: 'Вода и круассаны в каждом номере'
     },
     {
       id: 6,
-      icon: '/icons/features/iron-icon.svg',
+      icon: '/icons/iron-icon.svg',
       text: 'Утюг и гладильная доска на каждом этаже'
     },
     {
       id: 7,
-      icon: '/icons/features/surveillance-icon.svg',
+      icon: '/icons/surveillance-icon.svg',
       text: 'Круглосуточное наружное видеонаблюдение'
     },
     {
       id: 8,
-      icon: '/icons/features/excursion-icon.svg',
+      icon: '/icons/excursion-icon.svg',
       text: 'Заказ экскурсии'
     }
   ];
 
   return (
-    <section className="bg-white py-10 md:py-16 lg:py-[50px] lg:pb-[100px] px-5 md:px-10">
+    <section className="bg-white py-10 md:py-12 lg:py-[50px] lg:pb-[70px] px-5 md:px-10">
       <div className="flex flex-col gap-8 md:gap-[40px] lg:gap-[60px] max-w-content mx-auto">
         <Title>Также вы всегда можете<br className="hidden md:block" /> рассчитывать на:</Title>
         

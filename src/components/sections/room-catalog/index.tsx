@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import RoomCard from "./room-card"
-import FilterSection from "./filter-section";
 import rooms from '@/lib/rooms';
 
 const RoomCatalog: React.FC = () => {
-  const [filteredRooms, setFilteredRooms] = useState(rooms);
 
   // Create pairs of rooms for the rows
   const createRoomPairs = () => {
     const pairs = [];
-    for (let i = 0; i < filteredRooms.length; i += 2) {
-      pairs.push(filteredRooms.slice(i, i + 2));
+    for (let i = 0; i < rooms.length; i += 2) {
+      pairs.push(rooms.slice(i, i + 2));
     }
     return pairs;
   };

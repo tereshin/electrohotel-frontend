@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, TouchEvent } from 'react';
 import { cn } from '@/lib/utils';
 import SliderNavigation from '../ui/slider-navigation';
 import StarIcon from '../icons/StarIcon';
 
 interface Testimonial {
-  id: string;
   name: string;
   date: string;
   text: string;
-  avatar: string;
+  image: string;
   rating: number;
-  source: string;
 }
 
 interface TestimonialSliderProps {
@@ -21,6 +19,8 @@ interface TestimonialSliderProps {
 const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, className }) => {
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Calculate number of testimonials to display
   let slidesToShow = 3;
@@ -46,6 +46,32 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, cla
     setTimeout(() => setTransitioning(false), 500);
   };
 
+  const handleTouchStart = (e: TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: TouchEvent) => {
+    setTouchEnd(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    }
+    if (isRightSwipe) {
+      prevSlide();
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
@@ -60,10 +86,13 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, cla
       <div 
         className="flex transition-transform duration-500 ease-in-out"
         style={{ transform: `translateX(-${current * slideWidth}%)` }}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
-        {testimonials.map((testimonial) => (
+        {testimonials.map((testimonial, index) => (
           <div 
-            key={testimonial.id} 
+            key={index} 
             className="pr-5 md:pr-14" 
             style={{ width: `${slideWidth}%`, flex: `0 0 ${slideWidth}%` }}
           >
@@ -72,7 +101,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, cla
                 <div className="flex items-start gap-6">
                   <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                     <img 
-                      src={testimonial.avatar} 
+                      src={testimonial.image} 
                       alt={testimonial.name} 
                       className="w-full h-full object-cover"
                     />
@@ -82,7 +111,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, cla
                     <p className="text-sm text-[#021A13]">{testimonial.date}</p>
                   </div>
                 </div>
-                <p className="text-base text-[#021A13]">{testimonial.text}</p>
+                <p className="text-base text-[#021A13] line-clamp-5">{testimonial.text}</p>
               </div>
               <div className="flex items-center justify-between mt-auto">
                 <div className="flex gap-1">
@@ -96,7 +125,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, cla
                   ))}
                 </div>
                 <img
-                  src={testimonial.source}
+                  src="/assets/images/ya.svg"
                   alt="Source logo"
                   className="h-5 w-auto"
                 />

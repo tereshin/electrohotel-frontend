@@ -81,7 +81,7 @@ const EventsSlider = () => {
   };
 
   return (
-    <section className="bg-white py-[50px] md:py-[75px] lg:py-[100px] px-5 md:px-10">
+    <section className="bg-white py-[50px] md:py-[75px] lg:py-[70px] px-5 md:px-10">
       <div className="flex flex-col gap-[30px] md:gap-[60px] max-w-content mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <Title>афиша мероприятий</Title>

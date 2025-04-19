@@ -18,7 +18,7 @@ const AttractionsSection = () => {
         </div>
         
         {/* Content side */}
-        <div className="w-full md:w-1/2 bg-[#FAF6F1] py-10 md:py-16 px-5 md:px-10 lg:px-[100px] flex flex-col justify-center">
+        <div className="w-full md:w-1/2 bg-[#FAF6F1] py-10 md:py-12 px-5 md:px-10 lg:px-[100px] flex flex-col justify-center">
           <div className="flex flex-col gap-10">
             <Title>
               13 достопри-<br />мечательностей Электростали

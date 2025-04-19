@@ -2,7 +2,7 @@ import React from 'react';
 import { CustomButton } from './custom-button';
 import ArrowIcon from '../icons/ArrowIcon';
 import Title from './Title';
-
+import { useNavigate } from 'react-router-dom';
 interface ServiceProps {
   title: string;
   description: string;
@@ -18,19 +18,19 @@ const ServiceCard: React.FC<ServiceProps> = ({
 }) => {
   // Split description by \n to create paragraphs
   const paragraphs = description.split('\n').filter(Boolean);
-
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-20 w-full">
-      <div className="w-full lg:w-1/2 h-[260px] lg:h-[440px]">
+    <div className="flex flex-col items-center gap-8 lg:gap-8 w-full h-full">
+      <div className="w-full h-[260px] lg:h-[440px]">
         <img 
           src={image} 
           alt={title} 
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="w-full lg:w-1/2 flex flex-col gap-10">
-        <div className="flex flex-col gap-8">
-          <Title size="medium">
+      <div className="w-full flex flex-col gap-6 h-full md:gap-10">
+        <div className="flex flex-col gap-5">
+          <Title size="medium" className="w-full md:w-[70%]">
             {title}
           </Title>
           
@@ -43,8 +43,8 @@ const ServiceCard: React.FC<ServiceProps> = ({
           </div>
         </div>
         
-        <CustomButton variant="base1" className="w-max">
-          подробнее
+        <CustomButton onClick={() => navigate(link)} variant="base1" className="w-max mt-auto">
+          Узнать подробнее 
           <ArrowIcon />
         </CustomButton>
       </div>

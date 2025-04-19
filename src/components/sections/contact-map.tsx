@@ -4,11 +4,11 @@ import ArrowIcon from '../icons/ArrowIcon';
 import FeatureIcon from '../ui/FeatureIcon';
 const ContactMap: React.FC = () => {
   return (
-    <section className="w-full py-[100px] bg-white">
-      <div className="container mx-auto px-4">
+    <section className="w-full py-10 md:py-[100px] px-4 bg-white">
+      <div className="max-w-[1400px] mx-auto w-full">
         <div className="w-full flex flex-col items-center gap-[60px]">
           {/* Map container */}
-          <div className="w-full relative h-[500px] rounded-md overflow-hidden">
+          <div className="w-full relative h-[700px] md:h-[500px] rounded-md overflow-hidden">
             {/* Background Map Image */}
             <div 
               className="w-full h-full bg-cover bg-center"
@@ -18,7 +18,7 @@ const ContactMap: React.FC = () => {
             </div>
             
             {/* Map overlay with location info */}
-            <div className="absolute top-10 left-10 bg-white p-[50px] flex flex-col gap-[30px] max-w-md">
+            <div className="absolute top-6 left-6 md:top-10 md:left-10 bg-white p-8 md:p-[50px] flex flex-col gap-[30px] max-w-md">
               <h3 className="text-[30px] uppercase tracking-[0.06em] font-light text-[#093024]">
                 как нас найти
               </h3>
@@ -30,7 +30,7 @@ const ContactMap: React.FC = () => {
                 </p>
               </div>
               
-              <CustomButton variant="base1" className="w-max">
+              <CustomButton variant="base1" className="w-max" onClick={() => window.open('https://yandex.ru/maps/org/gostinitsa_elektrostal/1110996853?si=qbb2f19ukeajhyx839mfd3krzc', '_blank')}>
                 построить маршрут
                 <ArrowIcon />
               </CustomButton>
@@ -41,17 +41,17 @@ const ContactMap: React.FC = () => {
           <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {/* Phone */}
             <FeatureIcon 
-                icon="/icons/features/phone-icon.svg" 
+                icon="/icons/phone-icon.svg" 
                 text="+7 496 574 42 72"
                 caption="Звоните по бронированию отеля"
               />
             <FeatureIcon 
-                icon="/icons/features/phone-icon.svg" 
+                icon="/icons/phone-icon.svg" 
                 text="+7 996 365 23 30"
                 caption="Пишите в WhatsApp и Telegram"
               />
             <FeatureIcon 
-                icon="/icons/features/email-icon.svg" 
+                icon="/icons/email-icon.svg" 
                 text="UTShotel@yandex.ru"
               />
            
