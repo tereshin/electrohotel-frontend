@@ -36,7 +36,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 6000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [current]);
 

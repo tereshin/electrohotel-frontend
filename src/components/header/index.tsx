@@ -109,6 +109,7 @@ const Header = () => {
               size="icon"
               className="rounded-full"
               aria-label="Telegram"
+              onClick={() => window.open('https://t.me/hotelelectrostal', '_blank')}
             >
               <TelegramIcon />
             </CustomButton>

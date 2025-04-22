@@ -24,12 +24,12 @@ const heroSlides = [
   {
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
-   image: "/assets/images/front.jpg"
+    image: "/images/home/6.webp"
   },
   {
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
-   image: "/images/home/2.webp"
+   image: "/assets/images/front.jpg"
   },
   {
     title: "Гостиничный комплекс",
@@ -49,9 +49,8 @@ const heroSlides = [
   {
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
-    image: "/images/home/6.webp"
+   image: "/images/home/2.webp"
   }
-  
 ];
 
 
