@@ -38,7 +38,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
       nextSlide();
     }, 3000);
     return () => clearInterval(interval);
-  }, [current]);
+  }, [current, slides.length, transitioning]);
 
   if (!slides || slides.length === 0) return null;
 

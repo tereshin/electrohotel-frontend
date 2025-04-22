@@ -2,6 +2,7 @@ import React, { useState, useEffect, TouchEvent } from 'react';
 import { cn } from '@/lib/utils';
 import SliderNavigation from '../ui/slider-navigation';
 import StarIcon from '../icons/StarIcon';
+import { useNavigate } from 'react-router-dom';
 
 interface Testimonial {
   name: string;
@@ -21,6 +22,7 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, cla
   const [transitioning, setTransitioning] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   // Calculate number of testimonials to display
   let slidesToShow = 3;
@@ -127,7 +129,11 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({ testimonials, cla
                 <img
                   src="/assets/images/ya.svg"
                   alt="Source logo"
-                  className="h-5 w-auto"
+                  className="h-8 w-auto cursor-pointer"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open('https://yandex.ru/maps/org/elektrostal/1110996853/reviews/');
+                  }}
                 />
               </div>
             </div>

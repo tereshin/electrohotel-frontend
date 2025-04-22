@@ -22,7 +22,7 @@ const Gallery: React.FC<GalleryProps> = ({ className, images, size = 'wide' }) =
     const handleSelect = React.useCallback(() => {
         if (!api) return;
         setCurrent(api.selectedScrollSnap());
-    }, [api]);
+    }, [api, current]);
 
     React.useEffect(() => {
         if (!api) return;
@@ -33,14 +33,14 @@ const Gallery: React.FC<GalleryProps> = ({ className, images, size = 'wide' }) =
     }, [api, handleSelect]);
 
     useEffect(() => {
-        if (!api) return;
+        if (!api || images.length === 0) return;
         
         const interval = setInterval(() => {
-            api.scrollNext();
+            api.scrollTo((current + 1) % images.length);
         }, 4000);
 
         return () => clearInterval(interval);
-    }, [api]);
+    }, [api, current, images.length]);
 
     const goToSlide = (index: number) => {
         api?.scrollTo(index);

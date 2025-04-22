@@ -51,7 +51,7 @@ const HotelDescription = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-10">
           <FeatureIcon 
             icon="/icons/location-icon.svg" 
-            text="Центр города со своей территорией <4400 м" 
+            text="Центр города со своей территорией <4500 м" 
           />
           <FeatureIcon 
             icon="/icons/wifi-icon.svg" 
