@@ -4,8 +4,7 @@ import GroupDiscountSection from "@/components/sections/GroupDiscountSection";
 import Title from "@/components/ui/Title";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
-import { CustomButton } from "@/components/ui/custom-button";
-import ArrowIcon from "@/components/icons/ArrowIcon";
+import { BookingButton } from "@/components/ui/booking-button";
 
 const Migration = () => {
   const images = [
@@ -58,9 +57,7 @@ const Migration = () => {
               <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
               Важно! Для того чтобы мы могли качественно и своевременно оказать данную услугу, пожалуйста, предупреждайте нас о необходимости миграционного учета заранее при бронировании номера. Это позволит избежать лишних хлопот и спокойно наслаждаться вашим отдыхом.
               </p>
-              <CustomButton variant="base1" size="default" className="w-max mt-5" onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}>
-                  Забронировать номер <ArrowIcon />
-              </CustomButton>
+              <BookingButton />
             </div>
           </div>
         </div>

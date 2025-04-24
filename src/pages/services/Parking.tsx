@@ -4,8 +4,7 @@ import GroupDiscountSection from "@/components/sections/GroupDiscountSection";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
 import Title from "@/components/ui/Title";
-import { CustomButton } from "@/components/ui/custom-button";
-import ArrowIcon from "@/components/icons/ArrowIcon";
+import { BookingButton } from "@/components/ui/booking-button";
 const images = [
   "/images/services/parking/1.webp",
   "/images/services/parking/2.webp",
@@ -34,7 +33,7 @@ const Parking = () => {
       <Gallery images={images} size="wide" />
       <section className="py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/images/services/parking/image.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+          <img src="/assets/images/3.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 md:gap-10 w-full">
             <Title size='medium'>
             Мы гарантируем
@@ -48,7 +47,7 @@ const Parking = () => {
                 </li>
                 <li className="text-[15px] leading-[1.35em] text-[#021A13] opacity-70 flex gap-3">
                   <div className="min-w-1 h-1 bg-[#021A13] rounded-full relative top-2" />
-                  Абсолютную безопасность
+                  Более 15 парковочных мест
                 </li>
                 <li className="text-[15px] leading-[1.35em] text-[#021A13] opacity-70 flex gap-3">
                   <div className="min-w-1 h-1 bg-[#021A13] rounded-full relative top-2" />
@@ -56,9 +55,7 @@ const Parking = () => {
                 </li>
               </ul>
               
-              <CustomButton variant="base1" size="default" className="w-max mt-5" onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}>
-                  Забронировать номер <ArrowIcon />
-              </CustomButton>
+              <BookingButton />
             </div>
           </div>
         </div>

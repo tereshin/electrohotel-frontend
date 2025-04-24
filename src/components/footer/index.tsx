@@ -2,22 +2,26 @@ import FooterForm from './form';
 import Gallery from '../sliders/gallery';
 import { Link } from 'react-router-dom';
 const images = [
-  "/images/home/1.webp",
-  "/images/home/6.webp",
+  "/assets/images/1.jpg",
+  "/assets/images/2.jpg",
+  "/assets/images/3.jpg",
+  "/assets/images/4.jpg",
   "/images/home/3.webp",
-  "/images/home/2.webp"
+  "/assets/images/9.jpg",
+  "/assets/images/7.jpg",
+  "/assets/images/8.jpg",
 ];
 const Footer = () => {
   return (
     <footer className="bg-[#01362A]">
-      <div className="flex flex-col-reverse md:flex-row items-center max-w-[1600px] mx-auto">
+      <div className="flex flex-col-reverse lg:flex-row items-center max-w-[1600px] mx-auto">
         <FooterForm />
-        <Gallery className="md:w-1/2" images={images} size="narrow" />
+        <Gallery className="lg:w-1/2" images={images} size="narrow" />
       </div>
-      <div className="bg-[#023D30] text-hotel-off-white pt-10 md:pt-20 pb-8">
-        <div className="max-w-[1400px] mx-auto px-4 md:px-0">
+      <div className="bg-[#023D30] text-hotel-off-white pt-10 lg:pt-20 pb-8">
+        <div className="max-w-[1400px] mx-auto px-4 lg:px-0">
           {/* Main Footer Content */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10 md:mb-20 font-smoothing-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-10 lg:mb-20 font-smoothing-auto">
             {/* Navigation Column */}
             <div className="flex flex-col gap-8">
               <div className="border-b border-hotel-off-white border-opacity-10 pb-4">
@@ -68,9 +72,9 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div className="border-t border-hotel-off-white border-opacity-10 pt-10 mb-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
               {/* Phone Numbers */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-3">
                   <a href="tel:+74965744272" className="text-2xl font-tt-drugs-trial">+7 496 574 42 72</a>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Звоните по бронированию отеля</p>
@@ -82,7 +86,7 @@ const Footer = () => {
               </div>
 
               {/* Email and Address */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-3">
                   <a href="mailto:UTShotel@yandex.ru" className="text-2xl font-tt-drugs-trial">UTShotel@yandex.ru</a>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Пишите по любым вопросам</p>
@@ -97,7 +101,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="border-t border-hotel-off-white border-opacity-10 pt-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 text-sm">
               <p>Гостиница «Электросталь» © 2006 – 2025</p>
               <Link to="/privacy" className="hover:opacity-80 transition-opacity">Политика обработки персональных данных</Link>
               <Link to="/terms" className="hover:opacity-80 transition-opacity">Правила использования сайта</Link>

@@ -4,8 +4,7 @@ import GroupDiscountSection from "@/components/sections/GroupDiscountSection";
 import Title from "@/components/ui/Title";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
-import { CustomButton } from "@/components/ui/custom-button";
-import ArrowIcon from "@/components/icons/ArrowIcon";
+import { BookingButton } from "@/components/ui/booking-button";
 
 interface PriceItemProps {
   price: string;
@@ -77,9 +76,7 @@ const RoomService = () => {
               <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
                При этом стоит отметить, что используя качественные моющие средства, гипоаллергенные стиральные порошки, а также элитные кондиционеры и смягчители, мы можем гарантировать абсолютно безопасную и эффективную стирку любых вещей.
               </p>
-              <CustomButton variant="base1" size="default" className="w-max mt-5" onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}>
-                  Забронировать номер <ArrowIcon />
-              </CustomButton>
+              <BookingButton />
             </div>
           </div>
         </div>

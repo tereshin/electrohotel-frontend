@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import ArrowIcon from '../icons/ArrowIcon';
 import SliderNavigation from '../ui/slider-navigation';
 import BookingDialog from '../booking-dialog';
+import { BookingButton } from '../ui/booking-button';
 
 interface RoomSlide {
   id: number;
@@ -27,9 +28,6 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
   const [transitioning, setTransitioning] = useState(false);
   const [touching, setTouching] = useState(false);
   const [touchStart, setTouchStart] = useState(0);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
-  const [selectedRoom, setSelectedRoom] = useState<RoomSlide | null>(null);
-
   // Calculate number of rooms to display
   let slidesToShow = 1.9;
   if(window.innerWidth < 768) {
@@ -74,11 +72,6 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
     setTouching(false);
   };
 
-  const handleBookingClick = (room: RoomSlide) => {
-    setSelectedRoom(room);
-    setIsBookingOpen(true);
-  };
-
   if (!rooms || rooms.length === 0) return null;
 
   return (
@@ -105,9 +98,10 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
                     src={room.image} 
                     alt={room.title} 
                     className="w-full h-[227px] md:h-[446px] object-cover hover-scale"
+                    loading="lazy"
                   />
                   <div className="flex items-center bg-black bg-opacity-50 text-white px-6 py-3 rounded-full absolute bottom-4 left-4">
-                    <img src="/images/rooms/area-icon-1.svg" className="w-5 h-5 mr-2" alt="Area" />
+                    <img src="/images/rooms/area-icon-1.svg" className="w-5 h-5 mr-2" alt="Area" loading="lazy" />
                     <span className="text-sm">{room.area} м²</span>
                   </div>
                 </div>
@@ -124,13 +118,7 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
                       {room.bed}
                     </li>
                   </ul>
-                  <CustomButton 
-                    variant="base2"
-                    onClick={() => handleBookingClick(room)}
-                  >
-                    Забронировать номер
-                    <ArrowIcon />
-                  </CustomButton>
+                  <BookingButton variant="base2" />
                 </div>
               </div>
             </div>
@@ -140,12 +128,6 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
         {/* Navigation */}
         <SliderNavigation onPrev={prevSlide} onNext={nextSlide} className="mx-auto" />
       </div>
-
-      <BookingDialog
-        open={isBookingOpen}
-        onOpenChange={setIsBookingOpen}
-        roomTitle={selectedRoom?.title}
-      />
     </>
   );
 };

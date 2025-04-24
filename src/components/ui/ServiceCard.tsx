@@ -25,7 +25,7 @@ const ServiceCard: React.FC<ServiceProps> = ({
         <img 
           src={image} 
           alt={title} 
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover lg:h-[435px]"
         />
       </div>
       <div className="w-full flex flex-col gap-6 h-full md:gap-10">

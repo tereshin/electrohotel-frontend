@@ -1,7 +1,6 @@
 import React from 'react';
 import Title from '../../ui/Title';
-import { CustomButton } from '../../ui/custom-button';
-import ArrowIcon from '../../icons/ArrowIcon';
+import { BookingButton } from '@/components/ui/booking-button';
 
 interface PriceItemProps {
   price: string;
@@ -40,9 +39,7 @@ const OperatingHoursSection: React.FC = () => {
               <PriceItem price="750 ₽" label="Стоимость обеда" />
               <PriceItem price="650 ₽" label="Стоимость ужина" />
             </div>
-            <CustomButton variant="base1" size="default" className="w-max mt-5" onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}>
-                Забронировать номер <ArrowIcon />
-            </CustomButton>
+            <BookingButton />
           </div>
         </div>
       </div>

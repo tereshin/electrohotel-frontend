@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '@/components/header';
-import BookingForm from '@/components/booking-form';
+import { BookingForm } from '@/components/booking-form';
 
 interface FirstSectionProps {
   title?: string;

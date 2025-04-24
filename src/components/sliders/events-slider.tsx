@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import Title from "../ui/Title";
 import SliderNavigation from "../ui/slider-navigation";
 import { CustomButton } from "../ui/custom-button";
-
+import { fetchAfishaEvents } from "@/lib/events-service";
 
 interface EventData {
   id: number;
@@ -11,43 +11,30 @@ interface EventData {
   title: string;
   dates: string;
   price: string;
+  link: string;
 }
-
-const eventsData: EventData[] = [
-  {
-    id: 1,
-    image: "/images/events/event-standup.jpg",
-    type: "концерт",
-    title: "StandUp: Валентин Сидоров",
-    dates: "20 и 25 апреля, На 2 площадках",
-    price: "От 1500 ₽",
-  },
-  {
-    id: 2,
-    image: "/images/events/event-film.jpg",
-    type: "фильм",
-    title: "Пальма 2",
-    dates: "Россия, 2024",
-    price: "От 1500 ₽",
-  },
-  {
-    id: 3,
-    image: "/images/events/event-burito.jpg",
-    type: "концерт",
-    title: "burito",
-    dates: "29 марта, 12 и 13 апреля, На 3 площадках",
-    price: "От 1500 ₽",
-  },
-];
 
 const EventsSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visibleSlides, setVisibleSlides] = useState(3);
   const [slideWidth, setSlideWidth] = useState(0);
+  const [eventsData, setEventsData] = useState<EventData[]>([]);
   const sliderRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  useEffect(() => {
+    const loadEvents = async () => {
+      const events = await fetchAfishaEvents();
+      setEventsData(events);
+      //trigger window resize
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 100);
+    };
+    loadEvents();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -117,12 +104,15 @@ const EventsSlider = () => {
 
   const translateX = -(currentSlide * (slideWidth + 60));
 
+  if (eventsData.length === 0) {
+    return null;
+  }
   
   return (
-    <section className="bg-white py-[50px] md:py-[75px] lg:py-[70px] px-5 md:px-10">
-      <div className="flex flex-col gap-[30px] md:gap-[60px] max-w-content mx-auto">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <Title>афиша мероприятий</Title>
+    <section className="bg-white py-[50px] lg:py-[75px] lg:py-[70px] px-5 lg:px-10">
+      <div className="flex flex-col-reverse lg:flex-col gap-[30px] lg:gap-[60px] max-w-content mx-auto">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+          <Title className="hidden lg:block">Афиша мероприятий</Title>
           <SliderNavigation 
             onPrev={handlePrev} 
             onNext={handleNext} 
@@ -171,14 +161,14 @@ const EventsSlider = () => {
 
                       <div className="absolute bottom-6 left-6 right-6">
                         <div className="flex flex-col gap-4">
-                          <h3 className="text-[#F3EEE7] uppercase text-2xl md:text-[30px] font-light tracking-[0.06em] leading-[1.15em]">
+                          <h3 className="text-[#F3EEE7] uppercase text-2xl lg:text-[30px] font-light tracking-[0.06em] leading-[1.15em]">
                             {event.title}
                           </h3>
                           <p className="text-[#F3EEE7] opacity-70 text-base leading-[1.625em]">
                             {event.dates}
                           </p>
                           <div className="inline-block">
-                            <CustomButton variant="base1">
+                            <CustomButton variant="base1" onClick={() => window.open('https://www.afisha.ru'+event.link, '_blank')}>
                               {event.price}
                             </CustomButton>
                           </div>
@@ -190,6 +180,9 @@ const EventsSlider = () => {
               );
             })}
           </div>
+        </div>
+        <div className="flex lg:hidden items-center justify-between gap-8">
+          <Title>Афиша мероприятий</Title>
         </div>
       </div>
     </section>

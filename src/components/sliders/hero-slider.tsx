@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -18,6 +17,7 @@ interface HeroSliderProps {
 const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<{ [key: string]: boolean }>({});
 
   const nextSlide = () => {
     if (transitioning) return;
@@ -40,13 +40,14 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
     return () => clearInterval(interval);
   }, [current, slides.length, transitioning]);
 
+  const handleImageLoad = (imageUrl: string) => {
+    setLoadedImages(prev => ({ ...prev, [imageUrl]: true }));
+  };
+
   if (!slides || slides.length === 0) return null;
 
   return (
     <div className={cn("relative overflow-hidden h-[100dvh] max-h-[1000px] w-full", className)}>
-
-    
-
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -59,8 +60,14 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
         >
           <div 
             className="absolute inset-0 bg-no-repeat bg-cover bg-center"
-            style={{ backgroundImage: `url(${slide.image})` }}
           >
+            <img
+              src={slide.image}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              onLoad={() => handleImageLoad(slide.image)}
+            />
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           </div>
           <div className="relative h-full max-h-[60dvh] max-w-content mx-auto flex flex-col items-center justify-center px-6 md:px-10 md:max-h-[100%]">
@@ -89,7 +96,6 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
           </div>
         </div>
       ))}
-
 
       {/* Navigation Buttons */}
       <button

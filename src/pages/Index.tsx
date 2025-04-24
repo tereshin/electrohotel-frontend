@@ -3,7 +3,7 @@ import HeroSlider from '@/components/sliders/hero-slider';
 import RoomSlider from '@/components/sliders/room-slider';
 import PromotionsSlider from '@/components/sliders/promotions-slider';
 import TextHeroSlider from '@/components/sliders/text-hero-slider';
-import BookingForm from '@/components/booking-form';
+import { BookingForm } from '@/components/booking-form';
 import Footer from '@/components/footer';
 import Title from '@/components/ui/Title';
 import { CustomButton } from '@/components/ui/custom-button';
@@ -134,23 +134,23 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative">
         <HeroSlider slides={heroSlides} />
-        <div className="absolute inset-x-0 bottom-[40px] md:bottom-[100px] z-10 max-w-[1460px] mx-auto px-4  -mt-20  text-white">
+        <div className="absolute inset-x-0 bottom-[40px] lg:bottom-[100px] z-10 max-w-[1460px] mx-auto px-4  -mt-20  text-white">
           <BookingForm />
         </div>
       </section>
 
       {/* About Hotel Section */}
-      <section className="py-8 md:py-10 px-4 md:px-10 md:mt-10">
-        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+      <section className="py-8 lg:py-10 px-4 lg:px-10 lg:mt-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
           <div className="text-center">
             <Title>Об отеле</Title>
           </div>
           
-          <div className="flex flex-col md:flex-row gap-10 items-center justify-between">
+          <div className="flex flex-col lg:flex-row gap-10 items-center justify-between">
             {/* Left column with text and button */}
-            <div className="w-full md:max-w-[500px] flex flex-col gap-10 ">
+            <div className="w-full lg:max-w-[500px] flex flex-col gap-10 ">
               <div className="flex flex-col gap-5">
-                <h2 className="text-2xl md:text-3xl uppercase tracking-widest">
+                <h2 className="text-2xl lg:text-3xl uppercase tracking-widest">
                   Уютное и современное пространство для тех, кто ценит комфорт без лишней суеты
                 </h2>
                 <p className="text-base text-[#021A13] opacity-70">
@@ -161,7 +161,7 @@ const Index = () => {
               <CustomButton 
                 variant="base1" 
                 size="default" 
-                className="w-full md:w-[309px] h-[76px] rounded-[90px] flex items-center justify-center gap-4"
+                className="w-full lg:w-[309px] h-[76px] rounded-[90px] flex items-center justify-center gap-4"
                 onClick={() => navigate('/about')}
               >
                 Узнать больше
@@ -170,7 +170,7 @@ const Index = () => {
             </div>
             
             {/* Center image */}
-            <div className="w-full h-[0px] pb-[100%] md:max-w-[431px] md:h-[428px] md:pb-0  relative overflow-hidden">
+            <div className="w-full h-[0px] pb-[100%] lg:max-w-[431px] lg:h-[428px] lg:pb-0  relative overflow-hidden">
               <img 
                 src="/assets/images/about.jpeg" 
                 alt="Отель Электросталь" 
@@ -179,14 +179,14 @@ const Index = () => {
             </div>
             
             {/* Right column with features */}
-            <div className="w-full md:w-[283px] flex flex-col gap-10 uppercase tracking-light">
+            <div className="w-full lg:w-[283px] flex flex-col gap-10 uppercase tracking-light">
               {/* Feature 1 */}
               <div className="flex gap-9 items-center">
                 <div className="w-[82px] h-[82px] min-w-[82px] rounded-full border border-[#01362A] flex items-center justify-center">
                   <svg width="31" height="47" viewBox="0 0 31 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.5964 16.0163C24.5964 14.2409 24.0629 12.5054 23.0633 11.0292C22.0638 9.55301 20.6432 8.40247 18.981 7.72305C17.3189 7.04364 15.4899 6.86588 13.7254 7.21224C11.9609 7.5586 10.3401 8.41353 9.06791 9.66892C7.79576 10.9243 6.92942 12.5238 6.57843 14.2651C6.22745 16.0063 6.40759 17.8112 7.09607 19.4515C7.78455 21.0917 8.95045 22.4937 10.4463 23.48C11.9422 24.4664 13.7009 24.9928 15.5 24.9928C17.9117 24.9901 20.2238 24.0435 21.9291 22.3607C23.6344 20.6778 24.5936 18.3962 24.5964 16.0163ZM7.51771 16.0163C7.51781 14.4584 7.98605 12.9355 8.86322 11.6401C9.74039 10.3448 10.9871 9.33525 12.4457 8.73912C13.9043 8.143 15.5092 7.98707 17.0576 8.29107C18.606 8.59507 20.0282 9.34534 21.1445 10.447C22.2608 11.5487 23.021 12.9522 23.329 14.4802C23.6369 16.0082 23.4788 17.5921 22.8746 19.0314C22.2705 20.4707 21.2473 21.7009 19.9347 22.5665C18.622 23.432 17.0787 23.894 15.5 23.894C13.3836 23.8915 11.3547 23.0608 9.85821 21.5839C8.36176 20.1071 7.52004 18.1048 7.51771 16.0163ZM27.3232 38.6445C24.869 37.8232 22.3181 37.3165 19.733 37.1367C24.6828 30.5123 30.9917 21.8419 30.9917 16.2325C30.9917 12.178 29.3596 8.28948 26.4543 5.42248C23.549 2.55549 19.6087 0.944824 15.5 0.944824C11.3913 0.944824 7.45096 2.55549 4.5457 5.42248C1.64044 8.28948 0.00828722 12.178 0.00828722 16.2325C0.00828722 21.8414 6.31715 30.5112 11.2665 37.1367C8.66118 37.3165 6.09069 37.8303 3.61979 38.6649C0.627728 39.7791 0 41.0671 0 41.9498C0 45.1948 7.98592 46.9448 15.5 46.9448C23.0141 46.9448 31 45.1948 31 41.9508C31 40.673 29.729 39.5297 27.3232 38.6445ZM15.5 2.04472C19.3118 2.04892 22.9663 3.54511 25.6617 6.20504C28.357 8.86496 29.873 12.4714 29.8771 16.233C29.8771 21.731 23.1171 30.7642 18.1808 37.3601C17.204 38.6649 16.2717 39.911 15.5 40.9899C14.7283 39.911 13.796 38.6654 12.8192 37.3611C7.88285 30.7678 1.12287 21.732 1.12287 16.234C1.1267 12.4722 2.64262 8.86555 5.33798 6.2054C8.03334 3.54525 11.688 2.04892 15.5 2.04472ZM25.9057 44.5687C22.5145 45.4714 19.0119 45.9011 15.5 45.8454C11.988 45.9008 8.48547 45.4707 5.09433 44.5677C2.63936 43.8378 1.11406 42.8355 1.11406 41.9518C1.11406 40.4809 5.20051 38.6675 12.0382 38.1789H12.0449C13.218 39.7464 14.2337 41.1065 15.0411 42.2646C15.0923 42.3381 15.1608 42.3982 15.2407 42.4397C15.3207 42.4812 15.4097 42.5029 15.5 42.5029C15.5903 42.5029 15.6793 42.4812 15.7593 42.4397C15.8392 42.3982 15.9077 42.3381 15.9589 42.2646C16.7663 41.1065 17.7815 39.7469 18.9546 38.1799C25.8005 38.667 29.8859 40.4732 29.8859 41.9529C29.8859 42.8345 28.3606 43.8368 25.9057 44.5667V44.5687Z" fill="#021A13"/></svg>
                 </div>
                 <p>
-                  Центр города со своей территорией 4400&nbsp;м
+                  Центр города со своей территорией 4500&nbsp;м
                 </p>
               </div>
               
@@ -224,8 +224,8 @@ const Index = () => {
       </section>
       
       {/* Our Rooms Section */}
-      <section className="py-8 md:py-10 px-4 md:px-10">
-        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+      <section className="py-8 lg:py-10 px-4 lg:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
           <div className="text-center">
             <Title>Наши номера</Title>
           </div>
@@ -234,8 +234,8 @@ const Index = () => {
       </section>
 
       {/* Promotions Section */}
-      <section className="py-8 md:py-10 px-4 md:px-10">
-        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+      <section className="py-8 lg:py-10 px-4 lg:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
           <div className="text-center">
             <Title>Акции</Title>
           </div>
@@ -249,8 +249,8 @@ const Index = () => {
       </section>
 
       {/* Testimonial Section */}
-      <section className="py-8 md:py-10 px-4 md:px-10">
-        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+      <section className="py-8 lg:py-10 px-4 lg:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
           <div className="text-center">
             <Title>Отзывы</Title>
           </div>

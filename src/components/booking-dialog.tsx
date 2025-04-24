@@ -5,7 +5,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import BookingForm from '@/components/booking-form';
+import { BookingForm } from '@/components/booking-form';
 
 interface BookingDialogProps {
   open: boolean;

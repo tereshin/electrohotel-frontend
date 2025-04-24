@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 import { Button } from '@/components/ui/button';
 import { CustomButton } from '@/components/ui/custom-button';
 import ArrowIcon from '@/components/icons/ArrowIcon';
+import { BookingForm, BookingFormRef } from '@/components/booking-form';
+import '@/styles/embla.css';
 
 interface RoomProps {
   id: number;
@@ -12,6 +15,7 @@ interface RoomProps {
   price: string;
   area: string;
   image: string;
+  gallery: string[];
 }
 
 interface RoomCardProps {
@@ -19,15 +23,43 @@ interface RoomCardProps {
 }
 
 const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
+  const bookingFormRef = useRef<BookingFormRef>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const autoplay = () => {
+      emblaApi.scrollNext();
+    };
+
+    const interval = setInterval(autoplay, 3000);
+    return () => clearInterval(interval);
+  }, [emblaApi]);
+
+  const handleBookingClick = () => {
+    if (bookingFormRef.current) {
+      bookingFormRef.current.submitForm();
+    }
+  };
+
   return (
     <div className="flex flex-col max-w-[670px] w-full">
       {/* Room image and details */}
       <div className="relative overflow-hidden aspect-[4/3]">
-        <img
-          src={room.image}
-          alt={`${room.title} room`}
-          className="w-full h-full object-cover"
-        />
+        <div className="embla overflow-hidden" ref={emblaRef}>
+          <div className="embla__container flex">
+            {room.gallery.map((image, index) => (
+              <div className="embla__slide flex-[0_0_100%] min-w-0" key={index}>
+                <img
+                  src={image}
+                  alt={`${room.title} room - slide ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
         
         {/* Room features overlay */}
         <div className="absolute bottom-4 left-4 flex flex-row gap-2">
@@ -84,7 +116,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           <CustomButton
             variant="base2"
             size="default"
-            onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}
+            onClick={handleBookingClick}
           >
             <span className="flex items-center gap-4">
               забронировать
@@ -92,6 +124,11 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
             </span>
           </CustomButton>
         </div>
+      </div>
+
+      {/* Hidden booking form */}
+      <div className="hidden">
+        <BookingForm ref={bookingFormRef} />
       </div>
     </div>
   );

@@ -27,6 +27,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
   const [transitioning, setTransitioning] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
 
   // Minimum swipe distance in pixels
   const minSwipeDistance = 50;
@@ -81,6 +82,10 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
     setTimeout(() => setTransitioning(false), 500);
   };
 
+  const handleImageLoad = (imageUrl: string) => {
+    setLoadedImages(prev => new Set(prev).add(imageUrl));
+  };
+
   if (!slides || slides.length === 0) return null;
 
   return (
@@ -90,9 +95,9 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div className="flex md:h-[700px] w-full flex-col md:flex-row">
+      <div className="flex lg:h-[700px] w-full flex-col lg:flex-row">
         {/* Image section */}
-        <div className="relative overflow-hidden h-[370px] md:h-auto w-full md:w-[calc(100%-400px)]">
+        <div className="relative overflow-hidden h-[370px] lg:h-auto w-full lg:w-[calc(100%-400px)]">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
@@ -103,7 +108,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
                   : "opacity-0 transform scale-105"
               )}
             >
-              <div className="md:hidden bg-hotel-cream pt-12 pb-8 px-4"
+              <div className="lg:hidden bg-hotel-cream pt-12 pb-8 px-4"
                onClick={(e) => {
                 e.preventDefault();
                 navigate(href);
@@ -114,17 +119,35 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
                     e.preventDefault();
                     navigate(href);
                   }}>
-                    <img src={slide.image} alt={slide.title} className="w-full lg:h-full object-cover max-w-[calc(100%-40px)] lg:max-w-none mx-auto" />
+                    <img 
+                      src={slide.image} 
+                      alt={slide.title} 
+                      className={cn(
+                        "w-full lg:h-full object-cover max-w-[calc(100%-40px)] lg:max-w-none mx-auto",
+                        !loadedImages.has(slide.image) && "opacity-0"
+                      )}
+                      loading="lazy"
+                      onLoad={() => handleImageLoad(slide.image)}
+                    />
                   </a>
                 ) : (
-                  <img src={slide.image} alt={slide.title} className="w-full lg:h-full object-cover max-w-[calc(100%-40px)] lg:max-w-none mx-auto" />
+                  <img 
+                    src={slide.image} 
+                    alt={slide.title} 
+                    className={cn(
+                      "w-full lg:h-full object-cover max-w-[calc(100%-40px)] lg:max-w-none mx-auto",
+                      !loadedImages.has(slide.image) && "opacity-0"
+                    )}
+                    loading="lazy"
+                    onLoad={() => handleImageLoad(slide.image)}
+                  />
                 )}
             </div>
           ))}
         </div>
         
         {/* Content section */}
-        <div className="bg-hotel-cream px-4 py-8 md:p-12 lg:p-16 flex flex-col justify-center">
+        <div className="bg-hotel-cream px-4 py-8 lg:p-12 lg:p-16 flex flex-col justify-center">
           {slides.map((slide, index) => (
             <div
               key={slide.id}
@@ -135,7 +158,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
               style={{ display: index === current ? 'block' : 'none' }}
             >
               <div className="flex flex-col gap-8">
-                <div className="hidden md:block"
+                <div className="hidden lg:block"
                  onClick={(e) => {
                   e.preventDefault();
                   navigate(href);
@@ -145,7 +168,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
                 {href ? (<h3  onClick={(e) => {
                         e.preventDefault();
                         navigate(href);
-                      }}  className="text-2xl md:text-3xl text-hotel-darkest-green uppercase">{slide.title}</h3> ) : (<h3 className="text-2xl md:text-3xl text-hotel-darkest-green uppercase">{slide.title}</h3>)}
+                      }}  className="text-2xl lg:text-3xl text-hotel-darkest-green uppercase">{slide.title}</h3> ) : (<h3 className="text-2xl lg:text-3xl text-hotel-darkest-green uppercase">{slide.title}</h3>)}
                   {href ? (
                       <a href={href} onClick={(e) => {
                         e.preventDefault();
@@ -159,7 +182,7 @@ const TextHeroSlider: React.FC<TextHeroSliderProps> = ({ slides, className, navi
                 </div>
               
                 {/* Navigation */}
-                <SliderNavigation onPrev={prevSlide} onNext={nextSlide} className="mx-auto md:mx-0 mb-5 md:mb-0" />
+                <SliderNavigation onPrev={prevSlide} onNext={nextSlide} className="mx-auto lg:mx-0 mb-5 lg:mb-0" />
               </div>
             </div>
           ))}

@@ -4,8 +4,7 @@ import GroupDiscountSection from "@/components/sections/GroupDiscountSection";
 import Gallery from "@/components/sliders/gallery";
 import Title from "@/components/ui/Title";
 import FeatureIcon from "@/components/ui/FeatureIcon";
-import { CustomButton } from "@/components/ui/custom-button";
-import ArrowIcon from "@/components/icons/ArrowIcon"; 
+import { BookingButton } from "@/components/ui/booking-button";
 import { ServiceContacts } from '../../components/ServiceContacts';
 
 interface PriceItemProps {
@@ -34,14 +33,14 @@ const Laundry = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
       <FirstSection title="Прачечная" />
-      <section className="bg-[#FAF6F1] py-8 px-5 md:py-12 lg:py-[70px]">
-        <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">
-          <div className="flex flex-col gap-6 md:gap-10">
+      <section className="bg-[#FAF6F1] py-8 px-5 lg:py-12 lg:py-[70px]">
+        <div className="flex flex-col gap-8 lg:gap-10 max-w-[1400px] mx-auto">
+          <div className="flex flex-col gap-6 lg:gap-10">
             <div className="flex flex-col lg:flex-row gap-6">
-              <p className="text-[#021A13] text-sm md:text-[15px] leading-[1.73em] opacity-70 lg:w-1/2">
+              <p className="text-[#021A13] text-sm lg:text-[15px] leading-[1.73em] opacity-70 lg:w-1/2">
               Часто случается так, что во время поездки у отдыхающих «заканчиваются» чистые вещи. И если вы остановились в отеле, стирать их приходится вручную, что отнимает время, силы и нервы. Благо, гости Гостиничного комплекса Электросталь могут воспользоваться услугами гостиничной прачечной и заказать стирку вещей с последующей доставкой в номер!
               </p>
-              <p className="text-[#021A13] text-sm md:text-[15px] leading-[1.73em] opacity-70 lg:w-1/2">
+              <p className="text-[#021A13] text-sm lg:text-[15px] leading-[1.73em] opacity-70 lg:w-1/2">
               Сотрудники гостиницы заберут грязные вещи, а по завершении - доставят их обратно в номер, согласовав время с гостем. Благодаря современным стиральным машинам, обладающим функцией очистки деликатных тканей, мы можем предложить бережную стирку и сушку ваших вещей. </p>
             </div>
           </div>
@@ -49,10 +48,10 @@ const Laundry = () => {
       </section>
       <Gallery images={images} size="wide" />
 
-      <section className="py-8 px-5 md:py-12 lg:py-[70px]">
-        <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/images/services/laundry/image.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
-          <div className="flex flex-col gap-6 md:gap-10">
+      <section className="py-8 px-5 lg:pt-[70px]">
+        <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-20 max-w-[1400px] mx-auto items-center">
+          <img src="/images/services/laundry/image.jpg" alt="cafe" className="w-full h-full lg:w-[50%] lg:h-[50%] object-cover" />
+          <div className="flex flex-col gap-6 lg:gap-10">
             <Title size='medium'>
             стоимость
             </Title>
@@ -64,19 +63,17 @@ const Laundry = () => {
               <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
                 При этом стоит отметить, что используя качественные моющие средства, гипоаллергенные стиральные порошки, а также элитные кондиционеры и смягчители, мы можем гарантировать абсолютно безопасную и эффективную стирку любых вещей.
               </p>
-              <CustomButton variant="base1" size="default" className="w-max mt-5" onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}>
-                  Забронировать номер <ArrowIcon />
-              </CustomButton>
+              <BookingButton />
             </div>
           </div>
         </div>
       </section>
       
-      <section className="py-8 px-5 md:py-12 lg:py-[70px]">
-        <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">
-          <div className="flex flex-col gap-6 md:gap-10">
+      <section className="py-8 px-5 lg:pb-[70px]">
+        <div className="flex flex-col gap-8 lg:gap-10 max-w-[1400px] mx-auto">
+          <div className="flex flex-col gap-6 lg:gap-10">
             <Title>
-            уточнить стоимость <br className="hidden md:block" />
+            уточнить стоимость <br className="hidden lg:block" />
 и заказать услугу можно:
             </Title>
             

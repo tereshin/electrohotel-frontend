@@ -9,12 +9,13 @@ import AttractionsSection from "@/components/sections/attractions-section";
 
 const About = () => {
   const images = [
-    "/images/home/2.webp",
-    "/images/home/1.webp", 
+    "/images/home/1.webp",
+    "/images/home/6.webp", 
+    "/assets/images/front.jpg",
     "/images/home/3.webp",
     "/images/home/4.webp",
     "/images/home/5.webp",
-    "/images/home/6.webp"
+    "/images/home/2.webp"
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">

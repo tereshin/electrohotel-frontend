@@ -4,12 +4,11 @@ import GroupDiscountSection from "@/components/sections/GroupDiscountSection";
 import Title from "@/components/ui/Title";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
-import { CustomButton } from "@/components/ui/custom-button";
-import ArrowIcon from "@/components/icons/ArrowIcon";
+import { BookingButton } from "@/components/ui/booking-button";
 
 const CheckIn = () => {
   const images = [
-    "/images/services/check-in/1.webp",
+    "/images/services/check-in/2.jpeg",
     "/images/services/check-in/2.webp",
     "/images/services/check-in/3.webp"
   ];
@@ -44,9 +43,7 @@ const CheckIn = () => {
               <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
               Услуга ранний заезд и поздний выезд не бронируется заранее и оказывается по факту при наличии возможности.
               </p>
-              <CustomButton variant="base1" size="default" className="w-max mt-5" onClick={() => window.scrollTo({ top: document.getElementById('booking')?.offsetTop, behavior: 'smooth' })}>
-                  Забронировать номер <ArrowIcon />
-              </CustomButton>
+              <BookingButton />
             </div>
           </div>
         </div>

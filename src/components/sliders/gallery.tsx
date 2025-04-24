@@ -60,6 +60,7 @@ const Gallery: React.FC<GalleryProps> = ({ className, images, size = 'wide' }) =
                                     src={image} 
                                     alt={`Gallery image ${index + 1}`}
                                     className="w-full h-full object-cover absolute"
+                                    loading="lazy"
                                 />
                             </div>
                         </CarouselItem>

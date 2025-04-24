@@ -28,7 +28,9 @@ const AttractionsSection = () => {
               Добро пожаловать в Электросталь — город с уникальным сочетанием промышленной истории и советской культуры! Сегодня мы расскажем вам о главных достопримечательностях: от живописных парков и мемориальных комплексов до ледовых дворцов и современных кинотеатров, которые сделают ваше пребывание в нашем городе по-настоящему насыщенным и запоминающимся.
             </p>
             
-            <CustomButton variant="base2" className="w-max">
+            <CustomButton variant="base2" className="w-max" onClick={() => {
+              window.open('https://triptravel24.ru/32-13-dostoprimechatelnosti-jelektrostali.html', '_blank');
+            }}>
                 Подробнее
                 <ArrowIcon/>
             </CustomButton>

@@ -3,6 +3,7 @@ import { CustomButton } from './custom-button';
 import ArrowIcon from '../icons/ArrowIcon';
 import Title from './Title';
 import BookingDialog from '../booking-dialog';
+import { BookingButton } from './booking-button';
 
 interface PromotionProps {
   title: string;
@@ -67,15 +68,7 @@ const PromotionCard: React.FC<PromotionProps> = ({
               )}
             </div>
           </div>
-          
-          <CustomButton 
-            variant="base1" 
-            className="w-max"
-            onClick={() => setIsBookingOpen(true)}
-          >
-            Забронировать по акции
-            <ArrowIcon />
-          </CustomButton>
+          <BookingButton variant="base1"/>
         </div>
       </div>
 

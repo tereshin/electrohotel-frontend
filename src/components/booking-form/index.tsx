@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef, useImperativeHandle } from 'react';
 import { format, addDays } from 'date-fns';
 import { Calendar as CalendarIcon, Users, ChevronDown } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
@@ -14,13 +14,39 @@ interface BookingFormProps {
   color?: 'default' | 'white';
 }
 
-const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizontal', color = 'default' }) => {
-  const [checkInDate, setCheckInDate] = useState<Date>(new Date());
-  const [checkOutDate, setCheckOutDate] = useState<Date>(addDays(new Date(), 1));
+export interface BookingFormRef {
+  submitForm: () => void;
+}
+
+export const BookingForm = forwardRef<BookingFormRef, BookingFormProps>(({ className, variant = 'horizontal', color = 'default' }, ref) => {
+  const [checkInDate, setCheckInDate] = useState<Date>(() => {
+    const date = new Date();
+    date.setHours(0, 0, 0, 0);
+    return date;
+  });
+  const [checkOutDate, setCheckOutDate] = useState<Date>(() => {
+    const date = addDays(new Date(), 1);
+    date.setHours(0, 0, 0, 0);
+    return date;
+  });
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
   const [isFormValid, setIsFormValid] = useState(true);
   const [open, setOpen] = useState(false);
+  const [checkInOpen, setCheckInOpen] = useState(false);
+  const [checkOutOpen, setCheckOutOpen] = useState(false);
+
+  // Update check-out date when check-in date changes
+  React.useEffect(() => {
+    if (checkInDate) {
+      if (checkOutDate <= checkInDate || checkOutDate === checkInDate) {
+        const newDate = addDays(checkInDate, 1);
+        newDate.setHours(0, 0, 0, 0);
+        setCheckOutDate(newDate);
+      }
+    }
+  }, [checkInDate, checkOutDate]);
+
   // Validate form whenever inputs change
   React.useEffect(() => {
     if (checkInDate && checkOutDate && adults > 0) {
@@ -30,8 +56,10 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
     }
   }, [checkInDate, checkOutDate, adults]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = (e?: React.FormEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
     if (!isFormValid) return;
 
     // Format dates as DD-MM-YYYY
@@ -73,6 +101,11 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
     window.location.href = redirectUrl;
   };
 
+  // Expose the submit function through the ref
+  useImperativeHandle(ref, () => ({
+    submitForm: () => handleSubmit()
+  }));
+
   return (
     <div className={cn("rounded-lg mx-auto relative z-10 bg-transparent", className)}>
       <form 
@@ -85,7 +118,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
         {/* Check-in Date */}
         <div className="space-y-2">
           <label className="block text-sm font-medium">Заезд</label>
-          <Popover>
+          <Popover open={checkInOpen} onOpenChange={setCheckInOpen}>
             <PopoverTrigger asChild>
               <button 
                 type="button" 
@@ -102,9 +135,15 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
               <Calendar 
                 mode="single" 
                 selected={checkInDate} 
-                onSelect={setCheckInDate} 
+                onSelect={(date) => {
+                  if (date) {
+                    date.setHours(0, 0, 0, 0);
+                    setCheckInDate(date);
+                    setCheckInOpen(false);
+                  }
+                }}
                 disabled={(date) => date < new Date()} 
-                initialFocus 
+                  
                 className="pointer-events-auto" 
               />
             </PopoverContent>
@@ -114,7 +153,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
         {/* Check-out Date */}
         <div className="space-y-2">
           <label className="block text-sm font-medium">Выезд</label>
-          <Popover>
+          <Popover open={checkOutOpen} onOpenChange={setCheckOutOpen}>
             <PopoverTrigger asChild>
               <button 
                 type="button" 
@@ -131,9 +170,21 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
               <Calendar 
                 mode="single" 
                 selected={checkOutDate} 
-                onSelect={setCheckOutDate} 
-                disabled={(date) => date < (checkInDate || new Date())} 
-                initialFocus 
+                onSelect={(date) => {
+                  if (date && checkInDate) {
+                    date.setHours(0, 0, 0, 0);
+                    if (date <= checkInDate) {
+                      const newDate = addDays(checkInDate, 1);
+                      newDate.setHours(0, 0, 0, 0);
+                      setCheckOutDate(newDate);
+                    } else {
+                      setCheckOutDate(date);
+                    }
+                    setCheckOutOpen(false);
+                  }
+                }}
+                disabled={(date) => date <= (checkInDate || new Date())} 
+                  
                 className="pointer-events-auto" 
               />
             </PopoverContent>
@@ -201,6 +252,6 @@ const BookingForm: React.FC<BookingFormProps> = ({ className, variant = 'horizon
       </form>
     </div>
   );
-};
+});
 
-export default BookingForm;
+BookingForm.displayName = 'BookingForm';
