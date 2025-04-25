@@ -1,137 +1,268 @@
-
-import React from 'react';
 import Header from '@/components/header';
 import HeroSlider from '@/components/sliders/hero-slider';
 import RoomSlider from '@/components/sliders/room-slider';
 import PromotionsSlider from '@/components/sliders/promotions-slider';
 import TextHeroSlider from '@/components/sliders/text-hero-slider';
-import BookingForm from '@/components/booking-form';
+import { BookingForm } from '@/components/booking-form';
 import Footer from '@/components/footer';
-import TitleLarge from '@/components/ui/TitleLarge';
-
+import Title from '@/components/ui/Title';
+import { CustomButton } from '@/components/ui/custom-button';
+import ArrowIcon from '@/components/icons/ArrowIcon';
+import TestimonialSlider from '@/components/sliders/testimonial-slider';
+import GroupDiscountSection from '@/components/sections/GroupDiscountSection';
+import rooms from '@/lib/rooms';
+import promotions from '@/lib/promotions';
+import { useNavigate } from 'react-router-dom';
+import useYandexReviews from '@/hooks/useYandexReviews';
 // Sample data - In a real application, this would come from an API
 const heroSlides = [
   {
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+    image: "/images/home/1.webp"
   },
   {
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+    image: "/images/home/6.webp"
   },
   {
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
-    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+   image: "/assets/images/front.jpg"
+  },
+  {
+    title: "Гостиничный комплекс",
+    subtitle: "«Электросталь»",
+    image: "/images/home/3.webp"
+  },
+  {
+    title: "Гостиничный комплекс",
+    subtitle: "«Электросталь»",
+    image: "/images/home/4.webp"
+  },
+  {
+    title: "Гостиничный комплекс",
+    subtitle: "«Электросталь»",
+    image: "/images/home/5.webp"
+  },
+  {
+    title: "Гостиничный комплекс",
+    subtitle: "«Электросталь»",
+   image: "/images/home/2.webp"
   }
 ];
 
-const rooms = [
-  {
-    id: 1,
-    title: "Стандарт",
-    description: "Experience luxury with breathtaking ocean views, a private balcony, and premium amenities.",
-    image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    price: "From $299 per night"
-  },
-  {
-    id: 2,
-    title: "Эконом",
-    description: "Immerse yourself in tranquility with direct garden access and a private outdoor seating area.",
-    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    price: "From $259 per night"
-  },
-  {
-    id: 3,
-    title: "Комфорт",
-    description: "Spacious accommodation perfect for families, featuring connecting rooms and children's amenities.",
-    image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    price: "From $399 per night"
-  }
-];
 
-const promotions = [
-  {
-    id: 1,
-    title: "Summer Escape Package",
-    description: "Enjoy 20% off on stays of 3 nights or more, including breakfast and spa access.",
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    link: "#"
-  },
-  {
-    id: 2,
-    title: "Romantic Getaway",
-    description: "Special couple's package including champagne, dinner, and late checkout.",
-    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    link: "#"
-  },
-  {
-    id: 3,
-    title: "Early Bird Special",
-    description: "Book 60 days in advance and save 25% on your stay.",
-    image: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80",
-    link: "#"
-  }
-];
 
 const experienceSlides = [
   {
     id: 1,
-    title: "Luxury Spa Experience",
-    subtitle: "Wellness & Relaxation",
-    text: "Indulge in our world-class spa treatments, designed to rejuvenate your body and mind.",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+    title: "Кафетерий 24/7 с полным пансионом",
+    subtitle: "С заботой о вас",
+    text: "Кафетерий отеля представляет собой уютное пространство, оформленное в современном минималистичном стиле. Вы можете заказать полноценные завтраки, обеды или ужины через ресепшн отеля.",
+    image: "/images/services/1.jpg",
+    href: "/services/cafeteria",
   },
   {
     id: 2,
-    title: "Fine Dining",
-    subtitle: "Culinary Excellence",
-    text: "Experience exquisite cuisine prepared by our award-winning chefs using the finest ingredients.",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+    title: "ЭКОПАРК «АВАНГАРД» НАПРОТИВ ОТЕЛЯ",
+    subtitle: "С заботой о вас",
+    text: "Экопарк Авангард – одно из лучших мест для отдыха в городе Электросталь. На территории расположились пешеходные и велосипедные дорожки, игровые и спортивные площадки, а также площадка для выгула собак.",
+    image: "/images/services/2.jpg",
+    href: "/services/eco-park",
+  },
+  {
+    id: 3,
+    title: "Прачечная",
+    subtitle: "С заботой о вас",
+    text: "Часто случается так, что во время поездки у отдыхающих «заканчиваются» чистые вещи. И если вы остановились в отеле, стирать их приходится вручную, что отнимает время, силы и нервы. Благо, гости Гостиничного комплекса Электросталь могут воспользоваться прачечной.",
+    image: "/images/services/3.jpg",
+    href: "/services/laundry",
+  },
+  {
+    id: 4,
+    title: "Бесплатная парковка",
+    subtitle: "С заботой о вас",
+    text: "Для гостей Гостиничного комплекса Электросталь на закрытой территории гостиницы работает стоянка, где машина будет находится под круглосуточным наблюдением!",
+    image: "/images/services/4.jpg",
+    href: "/services/parking",
+  },
+  {
+    id: 5,
+    title: "Приватная территория",
+    subtitle: "С заботой о вас",
+    text: "Гостям нашего комплекса обеспечены тишина и спокойствие на собственной приватной территории в более чем 4400 м². Многолетние ёлки и клёны, ухоженный газон, лавочки и освещение дополнят Ваше путешествие столь необходимым уютом.",
+    image: "/images/services/5.jpg",
+    href: "/services/private-terrace",
+  },
+  {
+    id: 6,
+    title: "Обслуживание номеров",
+    subtitle: "С заботой о вас",
+    text: "Поддержание чистоты и порядка в номерах является одной из основных услуг гостиницы и входит в стоимость номера. Мытье поверхностей проводится регулярно, в отсутствие или присутствие гостей.",
+    image: "/images/services/6.jpg",
+    href: "/services/room-service",
+  },
+  {
+    id: 7,
+    title: "Ранний заезд / поздний выезд",
+    subtitle: "С заботой о вас",
+    text: "При наличии свободных мест, вы сможете заселиться без предварительного бронирования на время, пока выбранные номера не станут доступны для заезда. При этом мы предлагаем почасовую модель оплаты проживания в номерах.",
+    image: "/images/services/7.jpg",
+    href: "/services/check-in",
+  },
+  {
+    id: 8,
+    title: "Миграционная поддержка",
+    subtitle: "С заботой о вас",
+    text: "Мы понимаем, что, находясь вдали от дома, вы хотите чувствовать себя защищённо и уверенно. Именно поэтому мы предлагаем услугу миграционного учета, чтобы сделать ваше пребывание максимально легким и удобным.",
+    image: "/images/services/8.jpg",
+    href: "/services/migration",
   }
 ];
 
 const Index = () => {
+  const navigate = useNavigate();
+  const { testimonials, loading } = useYandexReviews();
+  
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="overflow-x-hidden">
+      <div className="min-h-screen bg-white max-w-[2048px] mx-auto">
       <Header />
       
       {/* Hero Section */}
       <section className="relative">
         <HeroSlider slides={heroSlides} />
-        <div className="absolute inset-x-0 bottom-[40px] md:bottom-[100px] z-10 max-w-[1400px] mx-auto px-4">
+        <div className="absolute inset-x-0 bottom-[40px] lg:bottom-[100px] z-10 max-w-[1460px] mx-auto px-4  -mt-20  text-white">
           <BookingForm />
         </div>
       </section>
 
-      {/* Our Rooms Section */}
-      <section className="py-8 md:py-14 px-6 md:px-10">
-        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+      {/* About Hotel Section */}
+      <section className="py-8 lg:py-10 px-4 lg:px-10 lg:mt-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
           <div className="text-center">
-            <TitleLarge>Наши номера</TitleLarge>
+            <Title>Об отеле</Title>
+          </div>
+          
+          <div className="flex flex-col lg:flex-row gap-10 items-center justify-between">
+            {/* Left column with text and button */}
+            <div className="w-full lg:max-w-[500px] flex flex-col gap-10 ">
+              <div className="flex flex-col gap-5">
+                <h2 className="text-2xl lg:text-3xl uppercase tracking-widest">
+                  Уютное и современное пространство для тех, кто ценит комфорт без лишней суеты
+                </h2>
+                <p className="text-base text-[#021A13] opacity-70">
+                  Отель расположен в самом центре города, в шаге от исторического, промышленного и делового центра Электростали. Здесь вас ждут уютные номера с лаконичным дизайном, бесплатным Wi-Fi и всем необходимым для отдыха: круглосуточный кафетерий, закрытая парковка, приватная территория и безупречный сервис. Небольшой формат позволяет создать камерную атмосферу, столь необходимую для командировок, туристических поездок или семейного отдыха.
+                </p>
+              </div>
+              
+              <CustomButton 
+                variant="base1" 
+                size="default" 
+                className="w-full lg:w-[309px] h-[76px] rounded-[90px] flex items-center justify-center gap-4"
+                onClick={() => navigate('/about')}
+              >
+                Узнать больше
+                <ArrowIcon />
+              </CustomButton>
+            </div>
+            
+            {/* Center image */}
+            <div className="w-full h-[0px] pb-[100%] lg:max-w-[431px] lg:h-[428px] lg:pb-0  relative overflow-hidden">
+              <img 
+                src="/assets/images/about.jpeg" 
+                alt="Отель Электросталь" 
+                className="w-full h-full object-cover absolute top-0 left-0 rounded-full"
+              />
+            </div>
+            
+            {/* Right column with features */}
+            <div className="w-full lg:w-[283px] flex flex-col gap-10 uppercase tracking-light">
+              {/* Feature 1 */}
+              <div className="flex gap-9 items-center">
+                <div className="w-[82px] h-[82px] min-w-[82px] rounded-full border border-[#01362A] flex items-center justify-center">
+                  <svg width="31" height="47" viewBox="0 0 31 47" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.5964 16.0163C24.5964 14.2409 24.0629 12.5054 23.0633 11.0292C22.0638 9.55301 20.6432 8.40247 18.981 7.72305C17.3189 7.04364 15.4899 6.86588 13.7254 7.21224C11.9609 7.5586 10.3401 8.41353 9.06791 9.66892C7.79576 10.9243 6.92942 12.5238 6.57843 14.2651C6.22745 16.0063 6.40759 17.8112 7.09607 19.4515C7.78455 21.0917 8.95045 22.4937 10.4463 23.48C11.9422 24.4664 13.7009 24.9928 15.5 24.9928C17.9117 24.9901 20.2238 24.0435 21.9291 22.3607C23.6344 20.6778 24.5936 18.3962 24.5964 16.0163ZM7.51771 16.0163C7.51781 14.4584 7.98605 12.9355 8.86322 11.6401C9.74039 10.3448 10.9871 9.33525 12.4457 8.73912C13.9043 8.143 15.5092 7.98707 17.0576 8.29107C18.606 8.59507 20.0282 9.34534 21.1445 10.447C22.2608 11.5487 23.021 12.9522 23.329 14.4802C23.6369 16.0082 23.4788 17.5921 22.8746 19.0314C22.2705 20.4707 21.2473 21.7009 19.9347 22.5665C18.622 23.432 17.0787 23.894 15.5 23.894C13.3836 23.8915 11.3547 23.0608 9.85821 21.5839C8.36176 20.1071 7.52004 18.1048 7.51771 16.0163ZM27.3232 38.6445C24.869 37.8232 22.3181 37.3165 19.733 37.1367C24.6828 30.5123 30.9917 21.8419 30.9917 16.2325C30.9917 12.178 29.3596 8.28948 26.4543 5.42248C23.549 2.55549 19.6087 0.944824 15.5 0.944824C11.3913 0.944824 7.45096 2.55549 4.5457 5.42248C1.64044 8.28948 0.00828722 12.178 0.00828722 16.2325C0.00828722 21.8414 6.31715 30.5112 11.2665 37.1367C8.66118 37.3165 6.09069 37.8303 3.61979 38.6649C0.627728 39.7791 0 41.0671 0 41.9498C0 45.1948 7.98592 46.9448 15.5 46.9448C23.0141 46.9448 31 45.1948 31 41.9508C31 40.673 29.729 39.5297 27.3232 38.6445ZM15.5 2.04472C19.3118 2.04892 22.9663 3.54511 25.6617 6.20504C28.357 8.86496 29.873 12.4714 29.8771 16.233C29.8771 21.731 23.1171 30.7642 18.1808 37.3601C17.204 38.6649 16.2717 39.911 15.5 40.9899C14.7283 39.911 13.796 38.6654 12.8192 37.3611C7.88285 30.7678 1.12287 21.732 1.12287 16.234C1.1267 12.4722 2.64262 8.86555 5.33798 6.2054C8.03334 3.54525 11.688 2.04892 15.5 2.04472ZM25.9057 44.5687C22.5145 45.4714 19.0119 45.9011 15.5 45.8454C11.988 45.9008 8.48547 45.4707 5.09433 44.5677C2.63936 43.8378 1.11406 42.8355 1.11406 41.9518C1.11406 40.4809 5.20051 38.6675 12.0382 38.1789H12.0449C13.218 39.7464 14.2337 41.1065 15.0411 42.2646C15.0923 42.3381 15.1608 42.3982 15.2407 42.4397C15.3207 42.4812 15.4097 42.5029 15.5 42.5029C15.5903 42.5029 15.6793 42.4812 15.7593 42.4397C15.8392 42.3982 15.9077 42.3381 15.9589 42.2646C16.7663 41.1065 17.7815 39.7469 18.9546 38.1799C25.8005 38.667 29.8859 40.4732 29.8859 41.9529C29.8859 42.8345 28.3606 43.8368 25.9057 44.5667V44.5687Z" fill="#021A13"/></svg>
+                </div>
+                <p>
+                  Центр города со своей территорией 4500&nbsp;м
+                </p>
+              </div>
+              
+              {/* Feature 2 */}
+              <div className="flex gap-9 items-center">
+                <div className="w-[82px] h-[82px] min-w-[82px] rounded-full border border-[#01362A] flex items-center justify-center">
+                <svg width="38" height="47" viewBox="0 0 38 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M38 20.478C38 13.8645 32.4754 8.4842 25.684 8.4842C24.3275 8.4842 23.0256 8.70718 21.8039 9.10371C20.5811 4.35504 16.138 0.944824 11.0726 0.944824C4.96743 0.944824 0 5.782 0 11.7283C0 17.489 4.66599 22.1958 10.509 22.4842V45.7949H9.20413C8.88039 45.7949 8.61765 46.0518 8.61765 46.3696C8.61765 46.6874 8.88039 46.9443 9.20413 46.9443H12.9411C13.2649 46.9443 13.5276 46.6874 13.5276 46.3696C13.5276 46.0518 13.2649 45.7949 12.9411 45.7949H11.682V22.4929C12.3013 22.4601 12.9142 22.3745 13.5165 22.2423C14.3704 27.8427 19.2035 32.1827 25.1228 32.4442V45.7954H23.5938C23.2701 45.7954 23.0074 46.0523 23.0074 46.3701C23.0074 46.6879 23.2701 46.9448 23.5938 46.9448H27.7737C28.0974 46.9448 28.3601 46.6879 28.3601 46.3701C28.3601 46.0523 28.0974 45.7954 27.7737 45.7954H26.2957V32.4419C32.8021 32.1281 38 26.8904 38 20.478ZM11.682 21.3435V14.3035L15.5621 10.6226C15.7943 10.4014 15.8008 10.0376 15.575 9.81001C15.3498 9.58128 14.9785 9.57668 14.7457 9.79679L11.6814 12.7036V8.63132C11.6814 8.31351 11.4187 8.05663 11.0949 8.05663C10.7712 8.05663 10.5084 8.31351 10.5084 8.63132V15.9994L7.39896 13.049C7.16613 12.8283 6.7943 12.834 6.56968 13.0622C6.34448 13.2898 6.35034 13.6535 6.58259 13.8748L10.5084 17.5994V21.3343C5.31228 21.0475 1.17236 16.8551 1.17236 11.7278C1.17236 6.41588 5.61314 2.09363 11.072 2.09363C15.6501 2.09363 19.661 5.20443 20.7025 9.51749C16.3884 11.3852 13.3681 15.5914 13.3681 20.478C13.3681 20.6843 13.3892 20.886 13.3998 21.09C12.8367 21.2217 12.2626 21.309 11.682 21.3435ZM14.541 20.478C14.541 14.4983 19.5396 9.63358 25.684 9.63358C31.8285 9.63358 36.8271 14.4983 36.8271 20.478C36.8271 26.2565 32.1552 30.9805 26.2957 31.2925V23.3296L30.6573 19.1918C30.8896 18.9706 30.896 18.6068 30.6702 18.3792C30.4456 18.1511 30.0738 18.1459 29.841 18.366L26.2957 21.7297V17.0138C26.2957 16.696 26.033 16.4391 25.7093 16.4391C25.3855 16.4391 25.1228 16.696 25.1228 17.0138V25.4163L21.5265 22.0044C21.2937 21.7843 20.9219 21.7889 20.6973 22.0176C20.472 22.2452 20.4779 22.609 20.7102 22.8302L25.1228 27.0168V31.2954C19.2405 31.0075 14.541 26.2738 14.541 20.478Z" fill="#1D3738"/>
+</svg>
+
+                </div>
+                <p>
+                  60 Га площадь парка "Авангард" (2 мн пешком)
+                </p>
+              </div>
+              
+              {/* Feature 3 */}
+              <div className="flex gap-9 items-center">
+                <div className="w-[82px] h-[82px] min-w-[82px] rounded-full border border-[#01362A] flex items-center justify-center">
+                <svg width="46" height="47" viewBox="0 0 46 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M45.425 0.944824H0.575C0.257178 0.944824 0 1.20228 0 1.51982C0 1.83737 0.257178 2.09482 0.575 2.09482H10.4937V9.02385C5.2925 12.8545 1.91199 19.0057 1.91199 25.9307C1.91199 37.518 11.372 46.9448 23 46.9448C34.628 46.9448 44.088 37.518 44.088 25.9307C44.088 19.0057 40.7075 12.8545 35.5062 9.02385V2.09482H45.425C45.7428 2.09482 46 1.83737 46 1.51982C46 1.20228 45.7428 0.944824 45.425 0.944824ZM42.938 25.9307C42.938 36.8837 33.9941 45.7948 23 45.7948C12.0059 45.7948 3.06199 36.8837 3.06199 25.9307C3.06199 14.9776 12.0059 6.06676 23 6.06676C33.9941 6.06676 42.938 14.9776 42.938 25.9307ZM34.3563 8.23803C31.0755 6.13965 27.1796 4.91676 23 4.91676C18.8204 4.91676 14.9245 6.13965 11.6438 8.23803V2.09482H34.3563V8.23803Z" fill="#1D3738"/>
+<path d="M9.84179 21.2843C9.82832 21.7026 9.56889 31.5821 14.0661 36.2242C15.5755 37.7821 17.4516 38.5719 19.6421 38.5719H23.7693C25.9603 38.5719 27.8364 37.7818 29.3457 36.2239C30.1222 35.4225 30.7539 34.463 31.2725 33.4251C32.5998 33.4165 33.9924 32.9818 35.2361 32.179C36.8151 31.1587 37.9213 29.6566 38.1954 28.1607C38.3812 27.1443 38.1836 26.2058 37.6237 25.4466C36.791 24.3173 35.2521 23.7735 33.5043 23.9559C33.6011 22.4503 33.5737 21.4137 33.5695 21.2843C33.56 20.974 33.3056 20.7275 32.9951 20.7275H10.4162C10.1057 20.7275 9.85134 20.974 9.84179 21.2843ZM36.6983 26.1288C37.065 26.6263 37.1914 27.2572 37.0639 27.9535C36.8466 29.1431 35.9296 30.3616 34.6123 31.2131C33.7347 31.7796 32.7512 32.1376 31.8027 32.2426C32.7596 29.8571 33.2054 27.2228 33.4088 25.1312C34.8396 24.9252 36.0786 25.2889 36.6983 26.1288ZM32.424 21.8775C32.41 24.0113 32.1034 31.7244 28.5197 35.4237C27.235 36.7498 25.6369 37.4219 23.7693 37.4219H19.6421C17.775 37.4219 16.1775 36.75 14.8933 35.4254C11.3119 31.7306 11.0025 24.0122 10.9879 21.8775H32.424Z" fill="#1D3738"/>
+<path d="M19.0779 17.611C19.5108 18.0049 19.7365 18.2334 19.7365 18.7267C19.7365 19.0443 19.9937 19.3017 20.3115 19.3017C20.6293 19.3017 20.8865 19.0443 20.8865 18.7267C20.8865 17.7019 20.3126 17.18 19.8516 16.7603C19.4187 16.3663 19.193 16.1378 19.193 15.6445C19.193 15.1512 19.4187 14.9227 19.8516 14.5288C20.3126 14.109 20.8865 13.5871 20.8865 12.5623C20.8865 12.2448 20.6293 11.9873 20.3115 11.9873C19.9937 11.9873 19.7365 12.2448 19.7365 12.5623C19.7365 13.0556 19.5108 13.2841 19.0779 13.6781C18.6168 14.0978 18.043 14.6197 18.043 15.6445C18.043 16.6693 18.6168 17.1912 19.0779 17.611Z" fill="#1D3738"/>
+<path d="M22.2954 14.48C22.2954 15.5047 22.8693 16.027 23.3303 16.4464C23.7638 16.8403 23.9895 17.0689 23.9895 17.5622C23.9895 17.8797 24.2467 18.1372 24.5645 18.1372C24.8823 18.1372 25.1395 17.8797 25.1395 17.5622C25.1395 16.5374 24.5656 16.0152 24.1046 15.5957C23.6711 15.2018 23.4454 14.9733 23.4454 14.48C23.4454 13.9867 23.6711 13.7581 24.1046 13.3642C24.5656 12.9448 25.1395 12.4225 25.1395 11.3978C25.1395 11.0802 24.8823 10.8228 24.5645 10.8228C24.2467 10.8228 23.9895 11.0802 23.9895 11.3978C23.9895 11.8911 23.7638 12.1196 23.3303 12.5135C22.8693 12.933 22.2954 13.4552 22.2954 14.48Z" fill="#1D3738"/>
+</svg>
+
+                </div>
+                <p>
+                  Уютное кафе (завтраки, обеды, ужины)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Our Rooms Section */}
+      <section className="py-8 lg:py-10 px-4 lg:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
+          <div className="text-center">
+            <Title>Наши номера</Title>
           </div>
           <RoomSlider rooms={rooms} />
         </div>
       </section>
 
       {/* Promotions Section */}
-      <section className="py-8 md:py-14 px-6 md:px-10">
-        <div className="max-w-content mx-auto flex flex-col gap-8 md:gap-14">
+      <section className="py-8 lg:py-10 px-4 lg:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
           <div className="text-center">
-            <TitleLarge>Акции</TitleLarge>
+            <Title>Акции</Title>
           </div>
           <PromotionsSlider promotions={promotions} />
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="py-14 max-w-[1600px] mx-auto">
-        <TextHeroSlider slides={experienceSlides} />
+      <section className="py-10 max-w-[1600px] mx-auto">
+        <TextHeroSlider slides={experienceSlides} navigate={navigate} />
       </section>
 
+      {/* Testimonial Section */}
+      <section className="py-8 lg:py-10 px-4 lg:px-10">
+        <div className="max-w-content mx-auto flex flex-col gap-8 lg:gap-14">
+          <div className="text-center">
+            <Title>Отзывы</Title>
+          </div>
+          {!loading && testimonials.length > 0 && <TestimonialSlider testimonials={testimonials} />}
+        </div>
+      </section>
+
+      {/* Group Discount Section */}
+      <GroupDiscountSection />
+
       <Footer />
+      </div>
     </div>
   );
 };

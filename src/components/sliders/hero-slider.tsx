@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -18,6 +17,7 @@ interface HeroSliderProps {
 const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
   const [current, setCurrent] = useState(0);
   const [transitioning, setTransitioning] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<{ [key: string]: boolean }>({});
 
   const nextSlide = () => {
     if (transitioning) return;
@@ -36,17 +36,18 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 6000);
+    }, 3000);
     return () => clearInterval(interval);
-  }, [current]);
+  }, [current, slides.length, transitioning]);
+
+  const handleImageLoad = (imageUrl: string) => {
+    setLoadedImages(prev => ({ ...prev, [imageUrl]: true }));
+  };
 
   if (!slides || slides.length === 0) return null;
 
   return (
-    <div className={cn("relative overflow-hidden min-h-[100dvh] w-full", className)}>
-
-    
-
+    <div className={cn("relative overflow-hidden h-[100dvh] max-h-[1000px] w-full", className)}>
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -59,11 +60,17 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
         >
           <div 
             className="absolute inset-0 bg-no-repeat bg-cover bg-center"
-            style={{ backgroundImage: `url(${slide.image})` }}
           >
+            <img
+              src={slide.image}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+              onLoad={() => handleImageLoad(slide.image)}
+            />
             <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           </div>
-          <div className="relative h-full max-h-[600px] max-w-content mx-auto flex flex-col items-center justify-center px-6 md:px-10 md:max-h-[100%]">
+          <div className="relative h-full max-h-[60dvh] max-w-content mx-auto flex flex-col items-center justify-center px-6 md:px-10 md:max-h-[100%]">
             {/* Pagination */}
             <div className="relative -top-4 left-0 right-0 flex justify-center space-x-2 z-10 w-max mx-auto">
               {slides.map((_, index) => (
@@ -90,17 +97,16 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
         </div>
       ))}
 
-
       {/* Navigation Buttons */}
       <button
-        className="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
+        className="hidden md:block absolute left-4 md:left-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
         onClick={prevSlide}
         aria-label="Previous slide"
       >
         <ChevronLeft className="w-6 h-6 text-hotel-off-white" />
       </button>
       <button
-        className="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
+        className="hidden md:block absolute right-4 md:right-10 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-30 hover:bg-opacity-50 backdrop-blur-sm rounded-full transition-all"
         onClick={nextSlide}
         aria-label="Next slide"
       >

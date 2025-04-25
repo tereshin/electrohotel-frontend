@@ -1,56 +1,53 @@
-import * as React from "react"
-import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import { ChevronDown } from "lucide-react"
+import React, { useState } from 'react';
+import Title from './Title';
+import ArrowIcon from '../icons/ArrowIcon';
 
-import { cn } from "@/lib/utils"
+interface AccordionProps {
+  question: string;
+  answer: string;
+}
 
-const Accordion = AccordionPrimitive.Root
+const Accordion: React.FC<AccordionProps> = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const AccordionItem = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item
-    ref={ref}
-    className={cn("border-b", className)}
-    {...props}
-  />
-))
-AccordionItem.displayName = "AccordionItem"
+  // Split answer by \n to create paragraphs
+  const paragraphs = answer.split('\n').filter(Boolean);
 
-const AccordionTrigger = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
-    <AccordionPrimitive.Trigger
-      ref={ref}
-      className={cn(
-        "flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200" />
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
-))
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+  return (
+    <div className="w-full">
+      <div className="flex flex-col gap-5">
+        <div 
+          className="flex items-center justify-between gap-6 cursor-pointer"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Title size="medium">
+            {question}
+          </Title>
+          <div className="relative w-14 h-14 flex-shrink-0">
+            <div className="w-full h-full rounded-full border border-[#093024] absolute"></div>
+            <div className={`absolute inset-0 flex items-center justify-center transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+              <div className="rotate-90">
+              <ArrowIcon/>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {isOpen && (
+          <div className="pl-0 pr-12 pb-2 transition-all duration-300 opacity-70">
+            <div className="flex flex-col gap-4">
+              {paragraphs.map((paragraph, index) => (
+                <p key={index} className="text-[15px] leading-[1.35em] text-[#021A13]">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="w-full h-[1px] bg-[#CCD1D0] mt-8"></div>
+    </div>
+  );
+};
 
-const AccordionContent = React.forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Content
-    ref={ref}
-    className="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
-    {...props}
-  >
-    <div className={cn("pb-4 pt-0", className)}>{children}</div>
-  </AccordionPrimitive.Content>
-))
-
-AccordionContent.displayName = AccordionPrimitive.Content.displayName
-
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export default Accordion;

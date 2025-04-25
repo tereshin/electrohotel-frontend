@@ -6,15 +6,23 @@ interface SliderNavigationProps {
   onPrev: () => void;
   onNext: () => void;
   className?: string;
+  ariaLabelPrev?: string;
+  ariaLabelNext?: string;
 }
 
-const SliderNavigation: React.FC<SliderNavigationProps> = ({ onPrev, onNext, className }) => {
+const SliderNavigation: React.FC<SliderNavigationProps> = ({ 
+  onPrev, 
+  onNext, 
+  className,
+  ariaLabelPrev = "Previous slide",
+  ariaLabelNext = "Next slide"
+}) => {
   return (
     <div className={cn("relative flex justify-center gap-4 items-center w-max", className)}>
         <button 
           onClick={onPrev}
-          className="rounded-full border border-[#021A13] p-4 transition-colors"
-          aria-label="Previous room"
+          className="rounded-full border border-current p-4 transition-colors"
+          aria-label={ariaLabelPrev}
         >
           <div className="rotate-180">
             <ArrowIcon />
@@ -22,8 +30,8 @@ const SliderNavigation: React.FC<SliderNavigationProps> = ({ onPrev, onNext, cla
         </button>
         <button 
           onClick={onNext}
-          className="rounded-full border border-[#021A13] p-4 transition-colors"
-          aria-label="Next room"
+          className="rounded-full border border-current p-4 transition-colors"
+          aria-label={ariaLabelNext}
         >
           <ArrowIcon />
         </button>

@@ -14,10 +14,10 @@ const buttonVariants = cva(
         small: "bg-transparent text-hotel-off-white border border-hotel-off-white hover:bg-hotel-dark-green hover:border-hotel-dark-green hover:text-hotel-off-white",
         largeIcon: "bg-transparent text-hotel-off-white border border-hotel-off-white hover:bg-hotel-dark-green hover:border-hotel-dark-green hover:text-hotel-off-white flex items-center gap-2",
         smallIcon: "bg-transparent text-hotel-off-white border border-hotel-off-white hover:bg-hotel-dark-green hover:border-hotel-dark-green hover:text-hotel-off-white flex items-center gap-1",
-        menu: "bg-transparent",
+        menu: "bg-transparent hover:bg-hotel-dark-green hover:text-hotel-off-white",
       },
       size: {
-        default: "h-[76px] px-9 md:px-12 py-3",
+        default: "h-[60px] md:h-[76px] px-6 md:px-9 py-3",
         sm: "h-9 px-3.5",
         lg: "h-11 px-8",
         icon: "h-9 w-9",
