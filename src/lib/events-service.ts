@@ -16,9 +16,7 @@ const CACHE_DURATION = 24 * 60 * 60 * 1000; // 1 day in milliseconds
 const AFISHA_URL = 'https://www.afisha.ru/electrostal/';
 
 // Определяем URL прокси в зависимости от окружения
-const PROXY_URL = process.env.NODE_ENV === 'development' 
-  ? 'http://localhost:3001/proxy' // Development proxy
-  : '/proxy'; // Production proxy - относительный путь
+const PROXY_URL = '/proxy.php';
 
 const parseAfishaEvents = (htmlString: string): EventData[] => {
   const events: EventData[] = [];
@@ -28,13 +26,13 @@ const parseAfishaEvents = (htmlString: string): EventData[] => {
   const doc = parser.parseFromString(htmlString, 'text/html');
   
   // Получаем все элементы событий
-  const eventElements = doc.querySelectorAll('body header+div [role="listitem"]');
+  const eventElements = doc.querySelectorAll('body main>section:first-child>div [data-test="ITEM"]');
   
   eventElements.forEach((element, index) => {
     const imageElement = element.querySelector('img[data-test="IMAGE"]');
-    const badgeElement = element.querySelector('[data-info="true"]>div:first-child');
-    const nameElement = element.querySelector('[data-info="true"]>div:first-child+div');
-    const metaElement = element.querySelector('[data-info="true"]>div:first-child+div+div');
+    const badgeElement = element.querySelector('[data-test="ITEM-BADGE"]');
+    const nameElement = element.querySelector('[data-test="ITEM-NAME"]');
+    const metaElement = element.querySelector('[data-test="ITEM-META"]');
     const buttonElement = element.querySelector('a[data-test="LINK LINK-BUTTON"]');
     
     if (imageElement && badgeElement && nameElement && metaElement && buttonElement) {
@@ -68,8 +66,7 @@ export const fetchAfishaEvents = async (): Promise<EventData[]> => {
   }
 
   try {
-    const url = new URL(PROXY_URL);
-    url.searchParams.append('url', AFISHA_URL);
+    const url = PROXY_URL+'?url='+AFISHA_URL;
 
     const response = await fetch(url.toString());
 

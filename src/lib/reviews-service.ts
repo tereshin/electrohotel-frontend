@@ -11,13 +11,8 @@ interface YandexReview {
 const CACHE_KEY = 'yandexReviewsCache';
 const CACHE_EXPIRY_KEY = 'yandexReviewsCacheExpiry';
 const CACHE_DURATION = 2 * 24 * 60 * 60 * 1000; // 2 days in milliseconds
-const YANDEX_REVIEWS_URL = 'https://yandex.ru/maps/org/elektrostal/1110996853/reviews/';
+const YANDEX_REVIEWS_URL = '/fetch-reviews.php';
 const BLACKLISTED_NAMES = ['Борис Бритва', '尤金胖的', 'Алексей Пронин'];
-
-// Определяем URL прокси в зависимости от окружения
-const PROXY_URL = process.env.NODE_ENV === 'development' 
-  ? 'http://localhost:3001/proxy' // Development proxy
-  : '/proxy'; // Production proxy - относительный путь
 
 // Функция для парсинга HTML с использованием регулярных выражений
 // Это запасной вариант, если DOMParser недоступен
@@ -126,18 +121,14 @@ export const fetchYandexReviews = async (): Promise<YandexReview[]> => {
   }
 
   try {
-    // Fetch fresh data
-    const response = await axios.get(PROXY_URL, {
-      params: {
-        url: YANDEX_REVIEWS_URL
-      },
-      headers: {
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7'
-      }
-    });
+    // Fetch fresh data from our PHP endpoint
+    const response = await axios.get(YANDEX_REVIEWS_URL);
     
-    const reviews = parseYandexReviews(response.data);
+    if (response.data.error) {
+      throw new Error(response.data.error);
+    }
+    
+    const reviews = parseYandexReviews(response.data.html);
     
     // Cache the results
     localStorage.setItem(CACHE_KEY, JSON.stringify(reviews));
