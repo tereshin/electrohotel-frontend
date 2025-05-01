@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { CustomButton } from '@/components/ui/custom-button';
 import ArrowIcon from '@/components/icons/ArrowIcon';
 import { BookingForm, BookingFormRef } from '@/components/booking-form';
+import { Fancybox } from '@fancyapps/ui';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import '@/styles/embla.css';
 
 interface RoomProps {
@@ -27,21 +29,31 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   useEffect(() => {
-    if (!emblaApi) return;
+    Fancybox.bind('[data-fancybox]', {
+      // Customize Fancybox options here
+      Thumbs: false,
+      Toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ['close'],
+        },
+      },
+    });
 
-    const autoplay = () => {
-      emblaApi.scrollNext();
+    return () => {
+      Fancybox.destroy();
     };
-
-    const interval = setInterval(autoplay, 3000);
-    return () => clearInterval(interval);
-  }, [emblaApi]);
+  }, []);
 
   const handleBookingClick = () => {
     if (bookingFormRef.current) {
       bookingFormRef.current.submitForm();
     }
   };
+
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
 
   return (
     <div className="flex flex-col max-w-[670px] w-full">
@@ -51,14 +63,38 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           <div className="embla__container flex">
             {room.gallery.map((image, index) => (
               <div className="embla__slide flex-[0_0_100%] min-w-0" key={index}>
-                <img
-                  src={image}
-                  alt={`${room.title} room - slide ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
+                <a
+                  href={image}
+                  data-fancybox={`gallery-${room.id}`}
+                  data-caption={`${room.title} - фото ${index + 1}`}
+                >
+                  <img
+                    src={image}
+                    alt={`${room.title} room - slide ${index + 1}`}
+                    className="w-full h-full object-cover cursor-pointer"
+                  />
+                </a>
               </div>
             ))}
           </div>
+        </div>
+        
+        {/* Navigation buttons */}
+        <div className="absolute top-1/2 left-4 right-4 flex justify-between -translate-y-1/2 pointer-events-none">
+          <button
+            onClick={scrollPrev}
+            className="w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-70 transition-all pointer-events-auto"
+          >
+            <div className="rotate-180">
+              <ArrowIcon />
+            </div>
+          </button>
+          <button
+            onClick={scrollNext}
+            className="w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-70 transition-all pointer-events-auto"
+          >
+            <ArrowIcon />
+          </button>
         </div>
         
         {/* Room features overlay */}

@@ -14,6 +14,7 @@
     "prod": "npm run build && cd server && npm start"
   },
   "dependencies": {
+    "@fancyapps/ui": "^5.0.36",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",

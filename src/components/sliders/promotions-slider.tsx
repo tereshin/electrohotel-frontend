@@ -109,7 +109,7 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
                   />
                 </div>
                 <div className="bg-white flex flex-col gap-4 items-start">
-                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green uppercase flex gap-4 items-center">
+                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green uppercase flex gap-4 items-center ">
                     {promo.title}
                     <ArrowIcon />
                   </h3>

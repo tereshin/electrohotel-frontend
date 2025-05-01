@@ -106,7 +106,7 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
                   </div>
                 </div>
                 <div className="bg-white flex flex-col gap-4 items-start">
-                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green truncate uppercase">{room.title}</h3>
+                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green truncate uppercase overflow-hidden text-ellipsis w-full">{room.title}</h3>
                   
                   <ul className="flex flex-col gap-3 text-sm md:text-[15px] leading-[1.73em] mb-4 lg:w-1/2 ml-2">
                     <li className="text-[15px] leading-[1.35em] opacity-70 flex gap-3">
