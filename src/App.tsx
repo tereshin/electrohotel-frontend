@@ -21,7 +21,6 @@ import RoomService from "./pages/services/RoomService";
 import CheckIn from "./pages/services/CheckIn";
 import Migration from "./pages/services/Migration";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfUse from "./pages/TermsOfUse" 
 
 const queryClient = new QueryClient();
 
@@ -49,7 +48,6 @@ const App = () => (
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfUse />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

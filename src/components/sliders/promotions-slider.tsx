@@ -1,9 +1,10 @@
 import React, { useState, useEffect, TouchEvent } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+// import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ArrowIcon from '../icons/ArrowIcon';
 import SliderNavigation from '../ui/slider-navigation';
 import { useNavigate } from 'react-router-dom';
+
 interface PromotionSlide {
   id: number;
   title: string;

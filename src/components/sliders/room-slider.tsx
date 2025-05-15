@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CustomButton } from '../ui/custom-button';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
-import ArrowIcon from '../icons/ArrowIcon';
 import SliderNavigation from '../ui/slider-navigation';
-import BookingDialog from '../booking-dialog';
 import { BookingButton } from '../ui/booking-button';
 
 interface RoomSlide {

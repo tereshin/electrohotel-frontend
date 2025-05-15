@@ -104,7 +104,6 @@ const Footer = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 text-sm">
               <p>Гостиница «Электросталь» © 2006 – 2025</p>
               <Link to="/privacy" className="hover:opacity-80 transition-opacity">Политика обработки персональных данных</Link>
-              <Link to="/terms" className="hover:opacity-80 transition-opacity">Правила использования сайта</Link>
             </div>
           </div>
         </div>

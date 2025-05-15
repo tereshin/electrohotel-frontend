@@ -73,17 +73,15 @@ const rooms = [
       price: "5 400 ₽",
       area: "25",
       gallery: [
-        "/assets/images/4.jpg",
+        "/images/rooms/comfort+terrace/7.jpg",
         "/images/rooms/comfort+terrace/1.jpg",
         "/images/rooms/comfort+terrace/2.jpg",
         "/images/rooms/comfort+terrace/3.jpg",
         "/images/rooms/comfort+terrace/4.jpg",
         "/images/rooms/comfort+terrace/5.jpg",
         "/images/rooms/comfort+terrace/6.jpg",
-        "/images/rooms/comfort+terrace/7.jpg",
         "/images/rooms/comfort+terrace/8.jpg",
-        "/images/rooms/comfort+terrace/9.jpg",
-        "/images/rooms/comfort+terrace/10.jpg"
+        "/images/rooms/comfort+terrace/9.jpg"
       ]
     },
     {
