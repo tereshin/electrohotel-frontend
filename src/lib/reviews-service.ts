@@ -151,13 +151,15 @@ export const fetchYandexReviews = async (): Promise<YandexReview[]> => {
 
 // Format the Yandex reviews to match the testimonial format used in the application
 export const formatYandexReviewsAsTestimonials = (reviews: YandexReview[]) => {
-  return reviews.map((review, index) => ({
-    id: `yandex-${index}`,
-    name: review.name,
-    date: review.date,
-    text: review.text,
-    image: review.image,
-    rating: review.rating,
-    source: '/images/testimonials/source1.png' // Yandex logo
-  }));
+  return reviews
+    .filter((review) => review.rating > 3)
+    .map((review, index) => ({
+      id: `yandex-${index}`,
+      name: review.name,
+      date: review.date,
+      text: review.text,
+      image: review.image,
+      rating: review.rating,
+      source: '/images/testimonials/source1.png' // Yandex logo
+    }));
 }; 
