@@ -6,6 +6,8 @@ import Title from "@/components/ui/Title";
 import FeatureIcon from "@/components/ui/FeatureIcon";
 import { BookingButton } from "@/components/ui/booking-button";
 import { ServiceContacts } from '../../components/ServiceContacts';
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 
 interface PriceItemProps {
   price: string;
@@ -17,7 +19,7 @@ const PriceItem: React.FC<PriceItemProps> = ({ price, label }) => (
     <span className="font-ttDrugs text-[18px] leading-[1.15] tracking-[0.06em] uppercase text-[#093024]">
       {price}
     </span>
-    <span className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70">
+    <span className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70">
       {label}
     </span>
   </div>
@@ -32,6 +34,12 @@ const Laundry = () => {
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/laundry"].title}
+        description={seo_config["services/laundry"].description}
+        keywords={seo_config["services/laundry"].keywords}
+        canonical_url={seo_config["services/laundry"].canonical_url}
+      />
       <FirstSection title="Прачечная" />
       <section className="bg-[#FAF6F1] py-8 px-5 lg:py-12 lg:py-[70px]">
         <div className="flex flex-col gap-8 lg:gap-10 max-w-[1400px] mx-auto">
@@ -60,7 +68,7 @@ const Laundry = () => {
               <div className="grid grid-cols-1 gap-5">
                 <PriceItem price="От 500 ₽" label="Стирка, сушка (1 загрузка до 3 кг) " />
               </div>
-              <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
+              <p className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
                 При этом стоит отметить, что используя качественные моющие средства, гипоаллергенные стиральные порошки, а также элитные кондиционеры и смягчители, мы можем гарантировать абсолютно безопасную и эффективную стирку любых вещей.
               </p>
               <BookingButton />

@@ -161,7 +161,7 @@ const Header = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <Link to="/about" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-tt-drugs-trial">О нас</Link>
+                <Link to="/about" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-viaoda-libre">О нас</Link>
               </motion.div>
               <motion.div
                 custom={1}
@@ -169,7 +169,7 @@ const Header = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <Link to="/rooms" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-tt-drugs-trial">Номера</Link>
+                <Link to="/rooms" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-viaoda-libre">Номера</Link>
               </motion.div>
               <motion.div
                 custom={2}
@@ -177,7 +177,7 @@ const Header = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <Link to="/promotions" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-tt-drugs-trial">Акции</Link>
+                <Link to="/promotions" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-viaoda-libre">Акции</Link>
               </motion.div>
               <motion.div
                 custom={3}
@@ -185,7 +185,7 @@ const Header = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <Link to="/services" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-tt-drugs-trial">Услуги</Link>
+                <Link to="/services" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-viaoda-libre">Услуги</Link>
               </motion.div>
               <motion.div
                 custom={4}
@@ -193,7 +193,7 @@ const Header = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <Link to="/contacts" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-tt-drugs-trial">Контакты</Link>
+                <Link to="/contacts" className="text-xl font-medium py-2 border-opacity-20 block uppercase font-viaoda-libre">Контакты</Link>
               </motion.div>
               <motion.div
                 custom={5}
@@ -201,7 +201,7 @@ const Header = () => {
                 initial="hidden"
                 animate="visible"
               >
-                <Link to="/faq" className="text-xl font-medium py-2 border-opacity-20 block mb-5 uppercase font-tt-drugs-trial">FAQ</Link>
+                <Link to="/faq" className="text-xl font-medium py-2 border-opacity-20 block mb-5 uppercase font-viaoda-libre">FAQ</Link>
               </motion.div>
 
               {/* Mobile phone & booking button */}
@@ -217,11 +217,11 @@ const Header = () => {
                     {/* Phone Numbers */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="flex flex-col gap-1">
-                        <a href="tel:+74965744272" className="text-xl font-tt-drugs-trial">+7 496 574 42 72</a>
+                        <a href="tel:+74965744272" className="text-xl font-viaoda-libre">+7 496 574 42 72</a>
                         <p className="text-xs text-hotel-off-white tracking-wider font-smoothing-auto">Звоните по бронированию отеля</p>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <a href="https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-xl font-tt-drugs-trial" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
+                        <a href="https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-xl font-viaoda-libre" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
                         <p className="text-xs text-hotel-off-white tracking-wider font-smoothing-auto">Пишите в WhatsApp и Telegram</p>
                       </div>
                     </div>
@@ -229,11 +229,11 @@ const Header = () => {
                     {/* Email and Address */}
                     <div className="grid grid-cols-1 gap-5">
                       <div className="flex flex-col gap-1">
-                        <a href="mailto:UTShotel@yandex.ru" className="text-xl font-tt-drugs-trial">UTShotel@yandex.ru</a>
+                        <a href="mailto:UTShotel@yandex.ru" className="text-xl font-viaoda-libre">UTShotel@yandex.ru</a>
                         <p className="text-xs text-hotel-off-white tracking-wider font-smoothing-auto">Пишите по любым вопросам</p>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <p className="text-xl font-tt-drugs-trial">г. Электросталь, ул. Расковой, д. 6</p>
+                        <p className="text-xl font-viaoda-libre">г. Электросталь, ул. Расковой, д. 6</p>
                         <p className="text-xs text-hotel-off-white tracking-wider font-smoothing-auto">Приезжайте в наш отель</p>
                       </div>
                     </div>

@@ -1,10 +1,18 @@
 import Footer from "@/components/footer";
 import FirstSection from "@/components/sections/first-section";
 import Title from "@/components/ui/Title";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config.privacy.title}
+        description={seo_config.privacy.description}
+        keywords={seo_config.privacy.keywords}
+        canonical_url={seo_config.privacy.canonical_url}
+      />
       <FirstSection title="Политика персональных данных" />
       <section className="px-5 md:my-16 lg:my-[60px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">

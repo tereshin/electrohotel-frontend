@@ -6,6 +6,8 @@ import MapSection from "@/components/sections/map-section";
 import EventsSlider from "@/components/sliders/events-slider";
 import Gallery from "@/components/sliders/gallery";
 import AttractionsSection from "@/components/sections/attractions-section";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 
 const About = () => {
   const images = [
@@ -19,6 +21,13 @@ const About = () => {
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config.about.title}
+        description={seo_config.about.description}
+        keywords={seo_config.about.keywords}
+        canonical_url={seo_config.about.canonical_url}
+        json_ld={seo_config.about.json_ld}
+      />
       <FirstSection title="Об отеле" />
       
       {/* About us */}

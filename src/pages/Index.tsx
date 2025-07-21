@@ -10,6 +10,8 @@ import { CustomButton } from '@/components/ui/custom-button';
 import ArrowIcon from '@/components/icons/ArrowIcon';
 import TestimonialSlider from '@/components/sliders/testimonial-slider';
 import GroupDiscountSection from '@/components/sections/GroupDiscountSection';
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 import rooms from '@/lib/rooms';
 import promotions from '@/lib/promotions';
 import { useNavigate } from 'react-router-dom';
@@ -128,6 +130,13 @@ const Index = () => {
   
   return (
     <div className="overflow-x-hidden">
+      <SEO 
+        title={seo_config.home.title}
+        description={seo_config.home.description}
+        keywords={seo_config.home.keywords}
+        canonical_url={seo_config.home.canonical_url}
+        json_ld={seo_config.home.json_ld}
+      />
       <div className="min-h-screen bg-white max-w-[2048px] mx-auto">
       <Header />
       

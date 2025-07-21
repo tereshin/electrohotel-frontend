@@ -12,7 +12,7 @@ const PriceItem: React.FC<PriceItemProps> = ({ price, label }) => (
     <span className="font-ttDrugs text-[18px] leading-[1.15] tracking-[0.06em] uppercase text-[#093024]">
       {price}
     </span>
-    <span className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70">
+    <span className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70">
       {label}
     </span>
   </div>
@@ -30,7 +30,7 @@ const OperatingHoursSection: React.FC = () => {
           </Title>
           
           <div className="flex flex-col gap-5">
-            <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
+            <p className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
               Мы используем только свежие продукты и работаем с проверенными партнерами - ведь именно качественные и свежие ингредиенты позволяют создавать вкусные блюда.
             </p>
             
