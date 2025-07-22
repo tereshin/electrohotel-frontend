@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { base_url } from "@/config";
 
 interface SeoProps {
   title: string;
@@ -16,7 +17,7 @@ const SEO = ({
   description,
   keywords,
   canonical_url,
-  og_image = "/images/cover.jpg",
+  og_image = "/images/cover.webp",
   og_type = "website",
   json_ld,
   no_index = false,
@@ -25,7 +26,6 @@ const SEO = ({
     ? title 
     : `${title} | Гостинничный комплекс «Электросталь»`;
 
-  const base_url = "https://electrohotel.ru";
   const full_canonical_url = canonical_url ? `${base_url}${canonical_url}` : base_url;
   const full_og_image = og_image.startsWith("http") ? og_image : `${base_url}${og_image}`;
 
@@ -60,7 +60,7 @@ const SEO = ({
       <meta name="twitter:image" content={full_og_image} />
       
       {/* VK */}
-      <meta property="vk:image" content="/images/vk.jpg" />
+      <meta property="vk:image" content="/images/vk.webp" />
       
       {/* JSON-LD Structured Data */}
       {json_ld && (

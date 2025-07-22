@@ -71,7 +71,7 @@ const RoomService = () => {
 
       <section className="py-8 px-5 md:pt-16 lg:pt-[100px]">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/images/services/room-service/image.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+          <img src="/images/services/room-service/image.webp" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 md:gap-10">
             <Title size='medium'>
             Мы ценим каждого гостя

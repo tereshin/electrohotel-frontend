@@ -22,7 +22,7 @@ const OperatingHoursSection: React.FC = () => {
   return (
     <section className="py-8 px-5 md:pb-16 lg:pb-[70px]">
       <div className="flex flex-col md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-        <img src="/images/services/cafeteria/1.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+        <img src="/images/services/cafeteria/1.webp" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
         <div className="flex flex-col gap-6 md:gap-10">
           <Title size='medium'>
             Время работы <br className="hidden md:block" />

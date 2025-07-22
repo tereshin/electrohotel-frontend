@@ -11,7 +11,7 @@ const AttractionsSection = () => {
         {/* Image side */}
         <div className="w-full md:w-1/2 h-[0px] pb-[80%] md:pb-[50%] relative">
           <img 
-            src="/images/about/1.jpg" 
+            src="/images/about/1.webp" 
             alt="Достопримечательности Электростали" 
             className="w-full h-full object-cover absolute top-0 left-0"
           />

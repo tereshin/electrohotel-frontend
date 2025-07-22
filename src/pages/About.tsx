@@ -13,7 +13,7 @@ const About = () => {
   const images = [
     "/images/home/1.webp",
     "/images/home/6.webp", 
-    "/assets/images/front.jpg",
+    "/assets/images/front.webp",
     "/images/home/3.webp",
     "/images/home/4.webp",
     "/images/home/5.webp",

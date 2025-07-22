@@ -98,7 +98,7 @@ const Header = () => {
               size="icon"
               className="rounded-full"
               aria-label="WhatsApp"
-              onClick={() => window.open('https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20', '_blank')}
+              onClick={() => window.open('https://wa.me/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20', '_blank')}
             >
               <WhatsAppIcon />
             </CustomButton>
@@ -119,9 +119,6 @@ const Header = () => {
               <div className="flex gap-4">
                 <a href="tel:+7 496 574 42 72" className="text-hotel-off-white flex items-center text-sm font-medium">
                   <span className="hidden md:inline">+7 496 574 42 72</span>
-                </a>
-                <a href="tel:+7 996 365 23 30" className="text-hotel-off-white flex items-center text-sm font-medium">
-                  <span className="hidden md:inline">+7 996 365 23 30</span>
                 </a>
               </div>
             )}
@@ -221,7 +218,7 @@ const Header = () => {
                         <p className="text-xs text-hotel-off-white tracking-wider font-smoothing-auto">Звоните по бронированию отеля</p>
                       </div>
                       <div className="flex flex-col gap-1">
-                        <a href="https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-xl font-viaoda-libre" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
+                        <a href="https://wa.me/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-xl font-viaoda-libre" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
                         <p className="text-xs text-hotel-off-white tracking-wider font-smoothing-auto">Пишите в WhatsApp и Telegram</p>
                       </div>
                     </div>

@@ -204,7 +204,7 @@ const defaultTestimonials: Testimonial[] = [
       "name":"Лариса Яшина",
       "text":"Жила тут месяц. Очень удобный номер был. Все нужное было. Хозяйка хорошая, умная и любящая людей женщина.",
       "date":"11 февраля",
-      "image":"/images/testimonials/avatar1.jpg",
+      "image":"/images/testimonials/avatar1.webp",
       "rating":5
    },
    {
@@ -240,7 +240,7 @@ const defaultTestimonials: Testimonial[] = [
       "name":"Сергей Л.",
       "text":"Отличные небольшие номера. Свежий ремонт, приветливый персонал отеля.",
       "date":"15 апреля",
-      "image":"/images/testimonials/avatar1.jpg",
+      "image":"/images/testimonials/avatar1.webp",
       "rating":5
    },
    {
@@ -261,7 +261,7 @@ const defaultTestimonials: Testimonial[] = [
       "name":"Олег Якупов",
       "text":"Останавливался в гостинице и был приятно удивлен качеством ремонта и чистотой, не всегда такое встретишь, даже в Москве)) Персонал дружелюбный.",
       "date":"16 июля 2024",
-      "image":"/images/testimonials/avatar1.jpg",
+      "image":"/images/testimonials/avatar1.webp",
       "rating":5
    },
    {

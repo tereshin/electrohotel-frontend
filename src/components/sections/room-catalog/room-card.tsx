@@ -18,13 +18,15 @@ interface RoomProps {
   area: string;
   image: string;
   gallery: string[];
+  url?: string; // Added url to RoomProps
 }
 
 interface RoomCardProps {
   room: RoomProps;
+  show_links?: boolean;
 }
 
-const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
+const RoomCard: React.FC<RoomCardProps> = ({ room, show_links = false }) => {
   const bookingFormRef = useRef<BookingFormRef>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
@@ -146,19 +148,28 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
             <span className="text-[#093024] text-[30px] font-light uppercase tracking-[0.6px]">{room.price}</span>
-            <span className="text-black opacity-50 text-[15px]">за 1 ночь</span>
+            <span className="text-black opacity-50 text-[15px]"> за 1 ночь</span>
           </div>
-          
-          <CustomButton
-            variant="base2"
-            size="default"
-            onClick={handleBookingClick}
-          >
-            <span className="flex items-center gap-4">
-              забронировать
+          {show_links ? (
+            <a
+              href={room.url}
+              className="inline-flex font-medium items-center justify-center whitespace-nowrap rounded-full uppercase font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none tracking-widest bg-hotel-dark-green text-hotel-off-white hover:bg-hotel-darker-green hover:text-hotel-off-white gap-4 h-[60px] md:h-[76px] px-6 md:px-9 py-3"
+            >
+              Подробнее
               <ArrowIcon />
-            </span>
-          </CustomButton>
+            </a>
+          ) : (
+            <CustomButton
+              variant="base2"
+              size="default"
+              onClick={handleBookingClick}
+            >
+              <span className="flex items-center gap-4">
+                Забронировать
+                <ArrowIcon />
+              </span>
+            </CustomButton>
+          )}
         </div>
       </div>
 

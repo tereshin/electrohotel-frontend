@@ -58,7 +58,7 @@ const Laundry = () => {
 
       <section className="py-8 px-5 lg:pt-[70px]">
         <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/images/services/laundry/image.jpg" alt="cafe" className="w-full h-full lg:w-[50%] lg:h-[50%] object-cover" />
+          <img src="/images/services/laundry/image.webp" alt="cafe" className="w-full h-full lg:w-[50%] lg:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 lg:gap-10">
             <Title size='medium'>
             стоимость

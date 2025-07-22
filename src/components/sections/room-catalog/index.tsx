@@ -2,7 +2,7 @@ import React from "react";
 import RoomCard from "./room-card"
 import rooms from '@/lib/rooms';
 
-const RoomCatalog: React.FC = () => {
+const RoomCatalog: React.FC<{ show_links?: boolean }> = ({ show_links = false }) => {
 
   // Create pairs of rooms for the rows
   const createRoomPairs = () => {
@@ -24,7 +24,7 @@ const RoomCatalog: React.FC = () => {
             <React.Fragment key={`pair-${pairIndex}`}>
               <div className="flex flex-col md:flex-row gap-8 md:gap-14 lg:gap-[60px] mb-12">
                 {pair.map((room) => (
-                  <RoomCard key={room.id} room={room} />
+                  <RoomCard key={room.id} room={room} show_links={show_links} />
                 ))}
                 
                 {/* If we have an odd number of rooms in the last row, add a spacer */}

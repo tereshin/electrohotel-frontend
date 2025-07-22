@@ -10,7 +10,7 @@ const GroupDiscountSection: React.FC = () => {
       <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-10 lg:gap-[60px] p-4 lg:py-10 lg:py-[60px] lg:px-6 lg:px-[60px]">
         {/* Left image column */}
         <div className="w-full lg:w-1/2 relative">
-          <div className="w-full bg-cover bg-center" style={{ backgroundImage: isMobile ? "url('/assets/images/group_discount_image-sm.jpg')" : "url('/assets/images/group_discount_image.jpg')" }}>
+          <div className="w-full bg-cover bg-center" style={{ backgroundImage: isMobile ? "url('/assets/images/group_discount_image-sm.webp')" : "url('/assets/images/group_discount_image.webp')" }}>
             <div className="pt-[85%]"></div>
           </div>
         </div>
@@ -40,7 +40,7 @@ const GroupDiscountSection: React.FC = () => {
             size="default" 
             className="mr-auto uppercase"
             onClick={() => {
-              window.open('https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20', '_blank');
+              window.open('https://wa.me/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20', '_blank');
             }}
           >
             забронировать по акции

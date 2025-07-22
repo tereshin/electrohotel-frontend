@@ -35,8 +35,8 @@ const EcoPark = () => {
 Электросталь находится <br className="hidden md:block" />
 в 3 минутах ходьбы от экопарка
             </Title>
-            <img src="/images/services/eco-park/1.jpg" alt="eco-park" className="hidden md:block w-full h-full object-cover" />
-            <img src="/images/services/eco-park/2.jpg" alt="eco-park" className="block md:hidden w-full object-cover" />
+            <img src="/images/services/eco-park/1.webp" alt="eco-park" className="hidden md:block w-full h-full object-cover" />
+            <img src="/images/services/eco-park/2.webp" alt="eco-park" className="block md:hidden w-full object-cover" />
           </div>
           
           
@@ -48,7 +48,7 @@ const EcoPark = () => {
           {/* Image side */}
           <div className="w-full md:w-1/2 h-[0px] pb-[80%] md:pb-[50%] relative">
             <img 
-              src="/images/services/eco-park/3.jpg" 
+              src="/images/services/eco-park/3.webp" 
               alt="eco-park" 
               className="w-full h-full object-cover absolute top-0 left-0"
             />
@@ -87,7 +87,7 @@ const EcoPark = () => {
           {/* Image side */}
           <div className="w-full md:w-1/2 h-[0px] pb-[80%] md:pb-[50%] relative">
             <img 
-              src="/images/services/eco-park/4.jpg" 
+              src="/images/services/eco-park/4.webp" 
               alt="eco-park" 
               className="w-full h-full object-cover absolute top-0 left-0"
             />

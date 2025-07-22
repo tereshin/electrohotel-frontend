@@ -42,7 +42,7 @@ const Parking = () => {
       <Gallery images={images} size="wide" />
       <section className="py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/assets/images/3.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+          <img src="/assets/images/3.webp" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 md:gap-10 w-full">
             <Title size='medium'>
             Мы гарантируем

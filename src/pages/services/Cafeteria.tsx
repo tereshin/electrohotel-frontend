@@ -12,7 +12,7 @@ import { useState } from "react";
 const Cafeteria = () => {
   const [showAllParagraphs, setShowAllParagraphs] = useState(false);
   const images = [
-    "/images/services/cafeteria/2.jpg",
+    "/images/services/cafeteria/2.webp",
     "/images/services/cafeteria/3.webp",
     "/images/services/cafeteria/4.webp"
   ];

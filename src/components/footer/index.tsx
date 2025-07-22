@@ -2,14 +2,14 @@ import FooterForm from './form';
 import Gallery from '../sliders/gallery';
 import { Link } from 'react-router-dom';
 const images = [
-  "/assets/images/1.jpg",
-  "/assets/images/2.jpg",
-  "/assets/images/3.jpg",
-  "/assets/images/4.jpg",
+  "/assets/images/1.webp",
+  "/assets/images/2.webp",
+  "/assets/images/3.webp",
+  "/assets/images/4.webp",
   "/images/home/3.webp",
-  "/assets/images/9.jpg",
-  "/assets/images/7.jpg",
-  "/assets/images/8.jpg",
+  "/assets/images/9.webp",
+  "/assets/images/7.webp",
+  "/assets/images/8.webp",
 ];
 const Footer = () => {
   return (
@@ -80,7 +80,7 @@ const Footer = () => {
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Звоните по бронированию отеля</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <a href="https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-2xl font-viaoda-libre" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
+                  <a href="https://wa.me/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-2xl font-viaoda-libre" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Пишите в WhatsApp и Telegram</p>
                 </div>
               </div>

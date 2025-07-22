@@ -49,7 +49,7 @@ const parseHTMLWithRegex = (htmlString: string): YandexReview[] => {
         name,
         text: textMatch[1].trim(),
         date: dateMatch[1].trim(),
-        image: imageMatch ? imageMatch[1] : '/images/testimonials/avatar1.jpg',
+        image: imageMatch ? imageMatch[1] : '/images/testimonials/avatar1.webp',
         rating: parseInt(ratingMatch[1] || '0', 10),
       };
       
@@ -88,7 +88,7 @@ const parseYandexReviews = (htmlString: string): YandexReview[] => {
             name,
             text: textElement.textContent?.trim() || '',
             date: dateElement.textContent?.trim() || '',
-            image: imageElement?.getAttribute('content') || '/images/testimonials/avatar1.jpg',
+            image: imageElement?.getAttribute('content') || '/images/testimonials/avatar1.webp',
             rating: parseInt(ratingElement.getAttribute('content') || '0', 10),
           };
 

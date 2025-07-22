@@ -132,4 +132,91 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Страница цен (общая) -->
+  <url>
+    <loc>https://electrohotel.ru/prices</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Цены - Комфорт -->
+  <url>
+    <loc>https://electrohotel.ru/prices/comfort</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Цены - Комфорт Плюс -->
+  <url>
+    <loc>https://electrohotel.ru/prices/comfort-plus</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Цены - Делюкс -->
+  <url>
+    <loc>https://electrohotel.ru/prices/deluxe</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Цены - Делюкс Сплит -->
+  <url>
+    <loc>https://electrohotel.ru/prices/deluxe-split</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Цены - Одноместный комфорт -->
+  <url>
+    <loc>https://electrohotel.ru/prices/odnomestnyi-komfort</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Цены - Двухкомнатный люкс -->
+  <url>
+    <loc>https://electrohotel.ru/prices/dvuhkomnatnyi-luks</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Цены - Комфорт плюс с террасой -->
+  <url>
+    <loc>https://electrohotel.ru/prices/comfort-plus-s-terrasoi</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Цены - Комфорт плюс с террасой на 2 человека -->
+  <url>
+    <loc>https://electrohotel.ru/prices/comfort-plus-s-terrasoi-na-2-cheloveka</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Письмо -->
+  <url>
+    <loc>https://electrohotel.ru/pismo</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Мероприятия -->
+  <url>
+    <loc>https://electrohotel.ru/events</loc>
+    <lastmod>2025-07-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset> 

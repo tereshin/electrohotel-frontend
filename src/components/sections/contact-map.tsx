@@ -12,7 +12,7 @@ const ContactMap: React.FC = () => {
             {/* Background Map Image */}
             <div 
               className="w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: 'url(/images/map-background.jpg)' }}
+              style={{ backgroundImage: 'url(/images/map-background.webp)' }}
             >
               {/* You can replace with an actual Google Maps embed */}
             </div>
@@ -42,22 +42,22 @@ const ContactMap: React.FC = () => {
             {/* Phone */}
             <FeatureIcon 
                 icon="/icons/phone-icon.svg" 
-                text="+7 496 574 42 72"
+                text="<a href='tel:+74965744272'>+7 496 574 42 72</a>"
                 caption="Звоните по бронированию отеля"
               />
             <FeatureIcon 
                 icon="/icons/phone-icon.svg" 
-                text="+7 996 365 23 30"
+                text="<a href='https://wa.me/79963652330'>+7 996 365 23 30</a>"
                 caption="Пишите в WhatsApp и Telegram"
               />
             <FeatureIcon 
                 icon="/icons/email-icon.svg" 
-                text="UTShotel@yandex.ru"
+                text="<a href='mailto:UTShotel@yandex.ru'>UTShotel@yandex.ru</a>"
               />
            
            <FeatureIcon 
                 icon="/icons/location-icon.svg" 
-                text="мо, г. Электросталь, ул. Расковой, д. 6"
+                text="МО, г. Электросталь, ул. Расковой, д. 6"
               />
           </div>
         </div>
