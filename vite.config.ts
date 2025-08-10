@@ -62,10 +62,10 @@ export default defineConfig(({ mode }) => {
       try {
         // Get all routes to pre-render
         const routePaths: string[] = [
-          "/",
+          "/",   
           "/services/parking",
-          "/services/cafeteria",  
           "/services",
+          "/services/cafeteria",  
           "/services/eco-park",
           "/services/laundry",
           "/services/private-terrace",
