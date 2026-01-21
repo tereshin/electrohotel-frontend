@@ -102,7 +102,7 @@ const Footer = () => {
           {/* Copyright */}
           <div className="border-t border-hotel-off-white border-opacity-10 pt-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 text-sm">
-              <p>Гостиница «Электросталь» © 2006 – 2025</p>
+              <p>Гостиница «Электросталь» © 2006 – 2026</p>
               <Link to="/privacy" className="hover:opacity-80 transition-opacity">Политика обработки персональных данных</Link>
             </div>
           </div>
