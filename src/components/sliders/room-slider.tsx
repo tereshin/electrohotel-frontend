@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CustomButton } from '../ui/custom-button';
+import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
-import ArrowIcon from '../icons/ArrowIcon';
 import SliderNavigation from '../ui/slider-navigation';
-import BookingDialog from '../booking-dialog';
 import { BookingButton } from '../ui/booking-button';
 
 interface RoomSlide {
@@ -106,7 +102,7 @@ const RoomSlider: React.FC<RoomSliderProps> = ({ rooms, className }) => {
                   </div>
                 </div>
                 <div className="bg-white flex flex-col gap-4 items-start">
-                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green truncate uppercase">{room.title}</h3>
+                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green truncate uppercase overflow-hidden text-ellipsis w-full">{room.title}</h3>
                   
                   <ul className="flex flex-col gap-3 text-sm md:text-[15px] leading-[1.73em] mb-4 lg:w-1/2 ml-2">
                     <li className="text-[15px] leading-[1.35em] opacity-70 flex gap-3">

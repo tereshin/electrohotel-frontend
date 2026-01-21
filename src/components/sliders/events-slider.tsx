@@ -105,7 +105,11 @@ const EventsSlider = () => {
   const translateX = -(currentSlide * (slideWidth + 60));
 
   if (eventsData.length === 0) {
-    return null;
+    return (
+      <div className="flex items-center justify-center h-full py-20">
+        Пока нет мероприятий
+      </div>
+    )
   }
   
   return (

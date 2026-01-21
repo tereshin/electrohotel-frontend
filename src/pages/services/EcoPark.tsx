@@ -5,6 +5,8 @@ import Gallery from "@/components/sliders/gallery";
 import Title from "@/components/ui/Title";
 import { CustomButton } from "@/components/ui/custom-button";
 import ArrowIcon from "@/components/icons/ArrowIcon";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 
 const EcoPark = () => {
   const images = [
@@ -17,6 +19,12 @@ const EcoPark = () => {
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/eco-park"].title}
+        description={seo_config["services/eco-park"].description}
+        keywords={seo_config["services/eco-park"].keywords}
+        canonical_url={seo_config["services/eco-park"].canonical_url}
+      />
       <FirstSection title="ЭКОПАРК «АВАНГАРД» НАПРОТИВ ОТЕЛЯ" />
       <Gallery images={images} size="wide" />
       <section className="py-8 px-5 md:py-12 lg:py-[70px]">
@@ -27,8 +35,8 @@ const EcoPark = () => {
 Электросталь находится <br className="hidden md:block" />
 в 3 минутах ходьбы от экопарка
             </Title>
-            <img src="/images/services/eco-park/1.jpg" alt="eco-park" className="hidden md:block w-full h-full object-cover" />
-            <img src="/images/services/eco-park/2.jpg" alt="eco-park" className="block md:hidden w-full object-cover" />
+            <img src="/images/services/eco-park/1.webp" alt="eco-park" className="hidden md:block w-full h-full object-cover" />
+            <img src="/images/services/eco-park/2.webp" alt="eco-park" className="block md:hidden w-full object-cover" />
           </div>
           
           
@@ -40,7 +48,7 @@ const EcoPark = () => {
           {/* Image side */}
           <div className="w-full md:w-1/2 h-[0px] pb-[80%] md:pb-[50%] relative">
             <img 
-              src="/images/services/eco-park/3.jpg" 
+              src="/images/services/eco-park/3.webp" 
               alt="eco-park" 
               className="w-full h-full object-cover absolute top-0 left-0"
             />
@@ -79,7 +87,7 @@ const EcoPark = () => {
           {/* Image side */}
           <div className="w-full md:w-1/2 h-[0px] pb-[80%] md:pb-[50%] relative">
             <img 
-              src="/images/services/eco-park/4.jpg" 
+              src="/images/services/eco-park/4.webp" 
               alt="eco-park" 
               className="w-full h-full object-cover absolute top-0 left-0"
             />

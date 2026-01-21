@@ -5,6 +5,9 @@ import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
 import Title from "@/components/ui/Title";
 import { BookingButton } from "@/components/ui/booking-button";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
+
 const images = [
   "/images/services/parking/1.webp",
   "/images/services/parking/2.webp",
@@ -13,6 +16,12 @@ const images = [
 const Parking = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/parking"].title}
+        description={seo_config["services/parking"].description}
+        keywords={seo_config["services/parking"].keywords}
+        canonical_url={seo_config["services/parking"].canonical_url}
+      />
       <FirstSection title="Бесплатная парковка" />
       <section className="bg-[#FAF6F1] py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">
@@ -33,7 +42,7 @@ const Parking = () => {
       <Gallery images={images} size="wide" />
       <section className="py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/assets/images/3.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+          <img src="/assets/images/3.webp" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 md:gap-10 w-full">
             <Title size='medium'>
             Мы гарантируем

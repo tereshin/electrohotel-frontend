@@ -19,7 +19,7 @@ const FeatureIcon = ({ icon, text, caption }: FeatureIconProps) => {
             </div>
           )}
           <div className="flex flex-col gap-2">
-            <p className="uppercase text-[#021A13] text-sm md:text-base tracking-[0.02em] leading-[1.4em]">{text}</p>
+            <p className="uppercase text-[#021A13] text-sm md:text-base tracking-[0.02em] leading-[1.4em]" dangerouslySetInnerHTML={{ __html: text }} />
             {caption && <p className="text-[#021A13] text-sm md:text-base tracking-[0.02em] leading-[1.4em]">{caption}</p>}
           </div>
         </div>

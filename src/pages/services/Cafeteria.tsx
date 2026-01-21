@@ -6,16 +6,25 @@ import Title from "@/components/ui/Title";
 import FeatureIcon from "@/components/ui/FeatureIcon";
 import OperatingHoursSection from "@/components/sections/services/OperatingHoursSection";
 import { ServiceContacts } from '../../components/ServiceContacts';
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 import { useState } from "react";
 const Cafeteria = () => {
   const [showAllParagraphs, setShowAllParagraphs] = useState(false);
   const images = [
-    "/images/services/cafeteria/2.jpg",
+    "/images/services/cafeteria/2.webp",
     "/images/services/cafeteria/3.webp",
     "/images/services/cafeteria/4.webp"
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/cafeteria"].title}
+        description={seo_config["services/cafeteria"].description}
+        keywords={seo_config["services/cafeteria"].keywords}
+        canonical_url={seo_config["services/cafeteria"].canonical_url}
+        json_ld={seo_config["services/cafeteria"].json_ld}
+      />
       <FirstSection title="Кафетерий 24/7 с полным пансионом" />
       <section className="bg-[#FAF6F1] py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">

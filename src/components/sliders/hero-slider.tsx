@@ -90,8 +90,8 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ slides, className }) => {
               ))}
             </div>
             <h1 className="text-hotel-off-white text-4xl md:text-5xl lg:text-7xl uppercase text-center max-w-4xl mb-6 tracking-wide animate-fade-in">
-              {slide.title}
-              <span className="block text-4xl md:text-7xl lg:text-8xl">{slide.subtitle}</span>
+              {slide.title} 
+              <span className="block text-4xl md:text-7xl lg:text-8xl"> {slide.subtitle}</span>
             </h1>
           </div>
         </div>

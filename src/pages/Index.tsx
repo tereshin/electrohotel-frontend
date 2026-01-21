@@ -10,6 +10,8 @@ import { CustomButton } from '@/components/ui/custom-button';
 import ArrowIcon from '@/components/icons/ArrowIcon';
 import TestimonialSlider from '@/components/sliders/testimonial-slider';
 import GroupDiscountSection from '@/components/sections/GroupDiscountSection';
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 import rooms from '@/lib/rooms';
 import promotions from '@/lib/promotions';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +19,7 @@ import useYandexReviews from '@/hooks/useYandexReviews';
 // Sample data - In a real application, this would come from an API
 const heroSlides = [
   {
-    title: "Гостиничный комплекс",
+    title: "Гостиничный комплекс ",
     subtitle: "«Электросталь»",
     image: "/images/home/1.webp"
   },
@@ -29,7 +31,7 @@ const heroSlides = [
   {
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
-   image: "/assets/images/front.jpg"
+   image: "/assets/images/front.webp"
   },
   {
     title: "Гостиничный комплекс",
@@ -46,7 +48,7 @@ const heroSlides = [
     subtitle: "«Электросталь»",
     image: "/images/home/5.webp"
   },
-  {
+  { 
     title: "Гостиничный комплекс",
     subtitle: "«Электросталь»",
    image: "/images/home/2.webp"
@@ -61,7 +63,7 @@ const experienceSlides = [
     title: "Кафетерий 24/7 с полным пансионом",
     subtitle: "С заботой о вас",
     text: "Кафетерий отеля представляет собой уютное пространство, оформленное в современном минималистичном стиле. Вы можете заказать полноценные завтраки, обеды или ужины через ресепшн отеля.",
-    image: "/images/services/1.jpg",
+    image: "/images/services/1.webp",
     href: "/services/cafeteria",
   },
   {
@@ -69,7 +71,7 @@ const experienceSlides = [
     title: "ЭКОПАРК «АВАНГАРД» НАПРОТИВ ОТЕЛЯ",
     subtitle: "С заботой о вас",
     text: "Экопарк Авангард – одно из лучших мест для отдыха в городе Электросталь. На территории расположились пешеходные и велосипедные дорожки, игровые и спортивные площадки, а также площадка для выгула собак.",
-    image: "/images/services/2.jpg",
+    image: "/images/services/2.webp",
     href: "/services/eco-park",
   },
   {
@@ -77,7 +79,7 @@ const experienceSlides = [
     title: "Прачечная",
     subtitle: "С заботой о вас",
     text: "Часто случается так, что во время поездки у отдыхающих «заканчиваются» чистые вещи. И если вы остановились в отеле, стирать их приходится вручную, что отнимает время, силы и нервы. Благо, гости Гостиничного комплекса Электросталь могут воспользоваться прачечной.",
-    image: "/images/services/3.jpg",
+    image: "/images/services/3.webp",
     href: "/services/laundry",
   },
   {
@@ -85,7 +87,7 @@ const experienceSlides = [
     title: "Бесплатная парковка",
     subtitle: "С заботой о вас",
     text: "Для гостей Гостиничного комплекса Электросталь на закрытой территории гостиницы работает стоянка, где машина будет находится под круглосуточным наблюдением!",
-    image: "/images/services/4.jpg",
+    image: "/images/services/4.webp",
     href: "/services/parking",
   },
   {
@@ -93,7 +95,7 @@ const experienceSlides = [
     title: "Приватная территория",
     subtitle: "С заботой о вас",
     text: "Гостям нашего комплекса обеспечены тишина и спокойствие на собственной приватной территории в более чем 4400 м². Многолетние ёлки и клёны, ухоженный газон, лавочки и освещение дополнят Ваше путешествие столь необходимым уютом.",
-    image: "/images/services/5.jpg",
+    image: "/images/services/5.webp",
     href: "/services/private-terrace",
   },
   {
@@ -101,7 +103,7 @@ const experienceSlides = [
     title: "Обслуживание номеров",
     subtitle: "С заботой о вас",
     text: "Поддержание чистоты и порядка в номерах является одной из основных услуг гостиницы и входит в стоимость номера. Мытье поверхностей проводится регулярно, в отсутствие или присутствие гостей.",
-    image: "/images/services/6.jpg",
+    image: "/images/services/6.webp",
     href: "/services/room-service",
   },
   {
@@ -109,7 +111,7 @@ const experienceSlides = [
     title: "Ранний заезд / поздний выезд",
     subtitle: "С заботой о вас",
     text: "При наличии свободных мест, вы сможете заселиться без предварительного бронирования на время, пока выбранные номера не станут доступны для заезда. При этом мы предлагаем почасовую модель оплаты проживания в номерах.",
-    image: "/images/services/7.jpg",
+    image: "/images/services/7.webp",
     href: "/services/check-in",
   },
   {
@@ -117,7 +119,7 @@ const experienceSlides = [
     title: "Миграционная поддержка",
     subtitle: "С заботой о вас",
     text: "Мы понимаем, что, находясь вдали от дома, вы хотите чувствовать себя защищённо и уверенно. Именно поэтому мы предлагаем услугу миграционного учета, чтобы сделать ваше пребывание максимально легким и удобным.",
-    image: "/images/services/8.jpg",
+    image: "/images/services/8.webp",
     href: "/services/migration",
   }
 ];
@@ -128,6 +130,13 @@ const Index = () => {
   
   return (
     <div className="overflow-x-hidden">
+      <SEO 
+        title={seo_config.home.title}
+        description={seo_config.home.description}
+        keywords={seo_config.home.keywords}
+        canonical_url={seo_config.home.canonical_url}
+        json_ld={seo_config.home.json_ld}
+      />
       <div className="min-h-screen bg-white max-w-[2048px] mx-auto">
       <Header />
       

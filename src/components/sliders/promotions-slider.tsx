@@ -1,9 +1,10 @@
 import React, { useState, useEffect, TouchEvent } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+// import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import ArrowIcon from '../icons/ArrowIcon';
 import SliderNavigation from '../ui/slider-navigation';
 import { useNavigate } from 'react-router-dom';
+
 interface PromotionSlide {
   id: number;
   title: string;
@@ -109,7 +110,7 @@ const PromotionsSlider: React.FC<PromotionsSliderProps> = ({ promotions, classNa
                   />
                 </div>
                 <div className="bg-white flex flex-col gap-4 items-start">
-                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green uppercase flex gap-4 items-center">
+                  <h3 className="text-xl font-normal font-medium text-hotel-darkest-green uppercase flex gap-4 items-center ">
                     {promo.title}
                     <ArrowIcon />
                   </h3>

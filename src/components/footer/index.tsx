@@ -2,14 +2,14 @@ import FooterForm from './form';
 import Gallery from '../sliders/gallery';
 import { Link } from 'react-router-dom';
 const images = [
-  "/assets/images/1.jpg",
-  "/assets/images/2.jpg",
-  "/assets/images/3.jpg",
-  "/assets/images/4.jpg",
+  "/assets/images/1.webp",
+  "/assets/images/2.webp",
+  "/assets/images/3.webp",
+  "/assets/images/4.webp",
   "/images/home/3.webp",
-  "/assets/images/9.jpg",
-  "/assets/images/7.jpg",
-  "/assets/images/8.jpg",
+  "/assets/images/9.webp",
+  "/assets/images/7.webp",
+  "/assets/images/8.webp",
 ];
 const Footer = () => {
   return (
@@ -25,7 +25,7 @@ const Footer = () => {
             {/* Navigation Column */}
             <div className="flex flex-col gap-8">
               <div className="border-b border-hotel-off-white border-opacity-10 pb-4">
-                <h3 className="text-xl uppercase font-tt-norms">Карта сайта</h3>
+                <h3 className="text-xl uppercase ">Карта сайта</h3>
               </div>
               <nav className="flex flex-col gap-5">
                 <Link to="/" className="text-hotel-off-white hover:opacity-80 transition-opacity">Главная</Link>
@@ -41,7 +41,7 @@ const Footer = () => {
             {/* Services Column */}
             <div className="flex flex-col gap-8">
               <div className="border-b border-hotel-off-white border-opacity-10 pb-4">
-                <h3 className="text-xl uppercase font-tt-norms">Услуги</h3>
+                <h3 className="text-xl uppercase ">Услуги</h3>
               </div>
               <nav className="flex flex-col gap-5">
                 <Link to="/services/cafeteria" className="text-hotel-off-white hover:opacity-80 transition-opacity">Уютное кафе</Link>
@@ -57,7 +57,7 @@ const Footer = () => {
             {/* Rooms Column */}
             <div className="flex flex-col gap-8">
               <div className="border-b border-hotel-off-white border-opacity-10 pb-4">
-                <h3 className="text-xl uppercase font-tt-norms">Номера</h3>
+                <h3 className="text-xl uppercase ">Номера</h3>
               </div>
               <nav className="flex flex-col gap-5">
                 <Link to="/rooms" className="text-hotel-off-white hover:opacity-80 transition-opacity">Стандарт одноместный</Link>
@@ -76,11 +76,11 @@ const Footer = () => {
               {/* Phone Numbers */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-3">
-                  <a href="tel:+74965744272" className="text-2xl font-tt-drugs-trial">+7 496 574 42 72</a>
+                  <a href="tel:+74965744272" className="text-2xl font-viaoda-libre">+7 496 574 42 72</a>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Звоните по бронированию отеля</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <a href="https://wa.clck.bar/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-2xl font-tt-drugs-trial" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
+                  <a href="https://wa.me/79963652330?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%BE%D0%B6%D0%BD%D0%BE%20%D0%BB%D0%B8%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%BD%D0%BE%D0%BC%D0%B5%D1%80%20%D0%BD%D0%B0%20" className="text-2xl font-viaoda-libre" target="_blank" rel="noopener noreferrer">+7 996 365 23 30</a>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Пишите в WhatsApp и Telegram</p>
                 </div>
               </div>
@@ -88,11 +88,11 @@ const Footer = () => {
               {/* Email and Address */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                 <div className="flex flex-col gap-3">
-                  <a href="mailto:UTShotel@yandex.ru" className="text-2xl font-tt-drugs-trial">UTShotel@yandex.ru</a>
+                  <a href="mailto:UTShotel@yandex.ru" className="text-2xl font-viaoda-libre">UTShotel@yandex.ru</a>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Пишите по любым вопросам</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                  <p className="text-2xl font-tt-drugs-trial">г. Электросталь, ул. <br/>Расковой, д. 6</p>
+                  <p className="text-2xl font-viaoda-libre">г. Электросталь, ул. <br/>Расковой, д. 6</p>
                   <p className="text-sm text-hotel-off-white tracking-wider font-smoothing-auto">Приезжайте в наш отель</p>
                 </div>
               </div>
@@ -104,7 +104,6 @@ const Footer = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 text-sm">
               <p>Гостиница «Электросталь» © 2006 – 2025</p>
               <Link to="/privacy" className="hover:opacity-80 transition-opacity">Политика обработки персональных данных</Link>
-              <Link to="/terms" className="hover:opacity-80 transition-opacity">Правила использования сайта</Link>
             </div>
           </div>
         </div>

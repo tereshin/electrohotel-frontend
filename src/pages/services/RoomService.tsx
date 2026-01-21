@@ -5,6 +5,8 @@ import Title from "@/components/ui/Title";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
 import { BookingButton } from "@/components/ui/booking-button";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 
 interface PriceItemProps {
   price: string;
@@ -16,7 +18,7 @@ const PriceItem: React.FC<PriceItemProps> = ({ price, label }) => (
     <span className="font-ttDrugs text-[18px] leading-[1.15] tracking-[0.06em] uppercase text-[#093024]">
       {price}
     </span>
-    <span className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70">
+    <span className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70">
       {label}
     </span>
   </div>
@@ -30,6 +32,12 @@ const RoomService = () => {
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/room-service"].title}
+        description={seo_config["services/room-service"].description}
+        keywords={seo_config["services/room-service"].keywords}
+        canonical_url={seo_config["services/room-service"].canonical_url}
+      />
       <FirstSection title="Обслуживание номеров" />
       <section className="bg-[#FAF6F1] py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">
@@ -63,7 +71,7 @@ const RoomService = () => {
 
       <section className="py-8 px-5 md:pt-16 lg:pt-[100px]">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/images/services/room-service/image.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+          <img src="/images/services/room-service/image.webp" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 md:gap-10">
             <Title size='medium'>
             Мы ценим каждого гостя
@@ -73,7 +81,7 @@ const RoomService = () => {
               <div className="grid grid-cols-1 gap-5">
                 <PriceItem price="От 550 ₽" label="Стирка, сушка (1 загрузка до 3 кг)" />
               </div>
-              <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
+              <p className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
                При этом стоит отметить, что используя качественные моющие средства, гипоаллергенные стиральные порошки, а также элитные кондиционеры и смягчители, мы можем гарантировать абсолютно безопасную и эффективную стирку любых вещей.
               </p>
               <BookingButton />

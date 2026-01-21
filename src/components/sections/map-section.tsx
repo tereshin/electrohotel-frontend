@@ -43,7 +43,7 @@ const MapSection = () => {
         {/* Map background image */}
         <div 
             className="absolute w-full h-full bg-cover bg-center"
-            style={{ backgroundImage: 'url(/images/map-background.jpg)' }}
+            style={{ backgroundImage: 'url(/images/map-background.webp)' }}
         />
 
         {/* Content overlay */}

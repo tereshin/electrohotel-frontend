@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { CustomButton } from '@/components/ui/custom-button';
 import ArrowIcon from '@/components/icons/ArrowIcon';
 import { BookingForm, BookingFormRef } from '@/components/booking-form';
+import { Fancybox } from '@fancyapps/ui';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import '@/styles/embla.css';
 
 interface RoomProps {
@@ -16,32 +18,44 @@ interface RoomProps {
   area: string;
   image: string;
   gallery: string[];
+  url?: string; // Added url to RoomProps
 }
 
 interface RoomCardProps {
   room: RoomProps;
+  show_links?: boolean;
 }
 
-const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
+const RoomCard: React.FC<RoomCardProps> = ({ room, show_links = false }) => {
   const bookingFormRef = useRef<BookingFormRef>(null);
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
 
   useEffect(() => {
-    if (!emblaApi) return;
+    Fancybox.bind('[data-fancybox]', {
+      // Customize Fancybox options here
+      Thumbs: false,
+      Toolbar: {
+        display: {
+          left: [],
+          middle: [],
+          right: ['close'],
+        },
+      },
+    });
 
-    const autoplay = () => {
-      emblaApi.scrollNext();
+    return () => {
+      Fancybox.destroy();
     };
-
-    const interval = setInterval(autoplay, 3000);
-    return () => clearInterval(interval);
-  }, [emblaApi]);
+  }, []);
 
   const handleBookingClick = () => {
     if (bookingFormRef.current) {
       bookingFormRef.current.submitForm();
     }
   };
+
+  const scrollPrev = () => emblaApi?.scrollPrev();
+  const scrollNext = () => emblaApi?.scrollNext();
 
   return (
     <div className="flex flex-col max-w-[670px] w-full">
@@ -51,14 +65,38 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
           <div className="embla__container flex">
             {room.gallery.map((image, index) => (
               <div className="embla__slide flex-[0_0_100%] min-w-0" key={index}>
-                <img
-                  src={image}
-                  alt={`${room.title} room - slide ${index + 1}`}
-                  className="w-full h-full object-cover"
-                />
+                <a
+                  href={image}
+                  data-fancybox={`gallery-${room.id}`}
+                  data-caption={`${room.title} - фото ${index + 1}`}
+                >
+                  <img
+                    src={image}
+                    alt={`${room.title} room - slide ${index + 1}`}
+                    className="w-full h-full object-cover cursor-pointer"
+                  />
+                </a>
               </div>
             ))}
           </div>
+        </div>
+        
+        {/* Navigation buttons */}
+        <div className="absolute top-1/2 left-4 right-4 flex justify-between -translate-y-1/2 pointer-events-none">
+          <button
+            onClick={scrollPrev}
+            className="w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-70 transition-all pointer-events-auto"
+          >
+            <div className="rotate-180">
+              <ArrowIcon />
+            </div>
+          </button>
+          <button
+            onClick={scrollNext}
+            className="w-10 h-10 flex items-center justify-center bg-black bg-opacity-50 text-white rounded-full hover:bg-opacity-70 transition-all pointer-events-auto"
+          >
+            <ArrowIcon />
+          </button>
         </div>
         
         {/* Room features overlay */}
@@ -110,19 +148,28 @@ const RoomCard: React.FC<RoomCardProps> = ({ room }) => {
         <div className="flex justify-between items-center">
           <div className="flex flex-col">
             <span className="text-[#093024] text-[30px] font-light uppercase tracking-[0.6px]">{room.price}</span>
-            <span className="text-black opacity-50 text-[15px]">за 1 ночь</span>
+            <span className="text-black opacity-50 text-[15px]"> за 1 ночь</span>
           </div>
-          
-          <CustomButton
-            variant="base2"
-            size="default"
-            onClick={handleBookingClick}
-          >
-            <span className="flex items-center gap-4">
-              забронировать
+          {show_links ? (
+            <a
+              href={room.url}
+              className="inline-flex font-medium items-center justify-center whitespace-nowrap rounded-full uppercase font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none tracking-widest bg-hotel-dark-green text-hotel-off-white hover:bg-hotel-darker-green hover:text-hotel-off-white gap-4 h-[60px] md:h-[76px] px-6 md:px-9 py-3"
+            >
+              Подробнее
               <ArrowIcon />
-            </span>
-          </CustomButton>
+            </a>
+          ) : (
+            <CustomButton
+              variant="base2"
+              size="default"
+              onClick={handleBookingClick}
+            >
+              <span className="flex items-center gap-4">
+                Забронировать
+                <ArrowIcon />
+              </span>
+            </CustomButton>
+          )}
         </div>
       </div>
 

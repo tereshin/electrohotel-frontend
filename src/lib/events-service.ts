@@ -26,13 +26,13 @@ const parseAfishaEvents = (htmlString: string): EventData[] => {
   const doc = parser.parseFromString(htmlString, 'text/html');
   
   // Получаем все элементы событий
-  const eventElements = doc.querySelectorAll('body main>section:first-child>div [data-test="ITEM"]');
+  const eventElements = doc.querySelectorAll('body [data-test="ITEM"]');
   
   eventElements.forEach((element, index) => {
     const imageElement = element.querySelector('img[data-test="IMAGE"]');
-    const badgeElement = element.querySelector('[data-test="ITEM-BADGE"]');
-    const nameElement = element.querySelector('[data-test="ITEM-NAME"]');
-    const metaElement = element.querySelector('[data-test="ITEM-META"]');
+    const badgeElement = element.querySelector('[data-info="true"] > div:first-child');
+    const nameElement = element.querySelector('[data-info="true"] > div:first-child+div');
+    const metaElement = element.querySelector('[data-info="true"] > div:last-child');
     const buttonElement = element.querySelector('a[data-test="LINK LINK-BUTTON"]');
     
     if (imageElement && badgeElement && nameElement && metaElement && buttonElement) {

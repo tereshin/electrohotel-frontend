@@ -49,7 +49,7 @@ const parseHTMLWithRegex = (htmlString: string): YandexReview[] => {
         name,
         text: textMatch[1].trim(),
         date: dateMatch[1].trim(),
-        image: imageMatch ? imageMatch[1] : '/images/testimonials/avatar1.jpg',
+        image: imageMatch ? imageMatch[1] : '/images/testimonials/avatar1.webp',
         rating: parseInt(ratingMatch[1] || '0', 10),
       };
       
@@ -88,7 +88,7 @@ const parseYandexReviews = (htmlString: string): YandexReview[] => {
             name,
             text: textElement.textContent?.trim() || '',
             date: dateElement.textContent?.trim() || '',
-            image: imageElement?.getAttribute('content') || '/images/testimonials/avatar1.jpg',
+            image: imageElement?.getAttribute('content') || '/images/testimonials/avatar1.webp',
             rating: parseInt(ratingElement.getAttribute('content') || '0', 10),
           };
 
@@ -151,13 +151,15 @@ export const fetchYandexReviews = async (): Promise<YandexReview[]> => {
 
 // Format the Yandex reviews to match the testimonial format used in the application
 export const formatYandexReviewsAsTestimonials = (reviews: YandexReview[]) => {
-  return reviews.map((review, index) => ({
-    id: `yandex-${index}`,
-    name: review.name,
-    date: review.date,
-    text: review.text,
-    image: review.image,
-    rating: review.rating,
-    source: '/images/testimonials/source1.png' // Yandex logo
-  }));
+  return reviews
+    .filter((review) => review.rating > 3)
+    .map((review, index) => ({
+      id: `yandex-${index}`,
+      name: review.name,
+      date: review.date,
+      text: review.text,
+      image: review.image,
+      rating: review.rating,
+      source: '/images/testimonials/source1.png' // Yandex logo
+    }));
 }; 

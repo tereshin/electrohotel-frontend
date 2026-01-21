@@ -8,6 +8,8 @@ import {
 import { Pagination, PaginationContent, PaginationItem, PaginationLink } from "@/components/ui/pagination";
 import SliderNavigation from '@/components/ui/slider-navigation';
 import { cn } from "@/lib/utils";
+import { Fancybox } from '@fancyapps/ui';
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 
 interface GalleryProps {
     className?: string;
@@ -42,6 +44,24 @@ const Gallery: React.FC<GalleryProps> = ({ className, images, size = 'wide' }) =
         return () => clearInterval(interval);
     }, [api, current, images.length]);
 
+    useEffect(() => {
+        Fancybox.bind('[data-fancybox="gallery"]', {
+            // Customize Fancybox options here
+            Thumbs: false,
+            Toolbar: {
+                display: {
+                    left: [],
+                    middle: [],
+                    right: ['close'],
+                },
+            },
+        });
+
+        return () => {
+            Fancybox.destroy();
+        };
+    }, []);
+
     const goToSlide = (index: number) => {
         api?.scrollTo(index);
     };
@@ -56,12 +76,18 @@ const Gallery: React.FC<GalleryProps> = ({ className, images, size = 'wide' }) =
                     {images.map((image, index) => (
                         <CarouselItem key={index} className="h-full">
                             <div className={cn("h-full relative", size === 'narrow' ? 'pb-[100%]' : 'pb-[100%] md:pb-[35%]')}>
-                                <img 
-                                    src={image} 
-                                    alt={`Gallery image ${index + 1}`}
-                                    className="w-full h-full object-cover absolute"
-                                    loading="lazy"
-                                />
+                                <a
+                                    href={image}
+                                    data-fancybox="gallery"
+                                    data-caption={`Галерея - фото ${index + 1}`}
+                                >
+                                    <img 
+                                        src={image} 
+                                        alt={`Gallery image ${index + 1}`}
+                                        className="w-full h-full object-cover absolute cursor-pointer"
+                                        loading="lazy"
+                                    />
+                                </a>
                             </div>
                         </CarouselItem>
                     ))}

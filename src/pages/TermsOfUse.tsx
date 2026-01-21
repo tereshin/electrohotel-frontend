@@ -1,10 +1,18 @@
 import Footer from "@/components/footer";
 import FirstSection from "@/components/sections/first-section";
 import Title from "@/components/ui/Title";
+import SEO from '@/components/ui/SEO';
 
 const TermsOfUse = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title="Правила использования сайта"
+        description="Пользовательское соглашение и правила использования сайта гостиничного комплекса Электросталь. Условия пользования материалами и сервисами сайта."
+        keywords="пользовательское соглашение, правила использования, условия пользования, соглашение сайта"
+        canonical_url="/terms"
+        no_index={true}
+      />
       <FirstSection title="Правила использования сайта" />
       <section className="px-5 md:my-16 lg:my-[60px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">

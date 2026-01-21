@@ -5,6 +5,8 @@ import Title from "@/components/ui/Title";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
 import { BookingButton } from "@/components/ui/booking-button";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 
 const CheckIn = () => {
   const images = [
@@ -14,6 +16,12 @@ const CheckIn = () => {
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/check-in"].title}
+        description={seo_config["services/check-in"].description}
+        keywords={seo_config["services/check-in"].keywords}
+        canonical_url={seo_config["services/check-in"].canonical_url}
+      />
       <FirstSection title="Ранний заезд / поздний выезд" />
       <section className="bg-[#FAF6F1] py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">
@@ -33,14 +41,14 @@ const CheckIn = () => {
 
       <section className="py-8 px-5 md:pt-16 lg:pt-[100px]">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/images/services/check-in/image.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+          <img src="/images/services/check-in/image.webp" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 md:gap-10">
             <Title size='medium'>
             не бронируется заранее
             </Title>
             
             <div className="flex flex-col gap-5">
-              <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
+              <p className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
               Услуга ранний заезд и поздний выезд не бронируется заранее и оказывается по факту при наличии возможности.
               </p>
               <BookingButton />

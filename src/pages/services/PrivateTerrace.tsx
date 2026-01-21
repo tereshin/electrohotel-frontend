@@ -4,6 +4,9 @@ import GroupDiscountSection from "@/components/sections/GroupDiscountSection";
 import Title from "@/components/ui/Title";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
+
 const PrivateTerrace = () => {
   const images = [
     "/images/services/private-terrace/1.webp",
@@ -12,6 +15,12 @@ const PrivateTerrace = () => {
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/private-terrace"].title}
+        description={seo_config["services/private-terrace"].description}
+        keywords={seo_config["services/private-terrace"].keywords}
+        canonical_url={seo_config["services/private-terrace"].canonical_url}
+      />
       <FirstSection title="Приватная территория" />
       <section className="bg-[#FAF6F1] py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">

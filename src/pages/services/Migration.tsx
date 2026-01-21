@@ -5,6 +5,8 @@ import Title from "@/components/ui/Title";
 import { ServiceContacts } from "@/components/ServiceContacts";
 import Gallery from "@/components/sliders/gallery";
 import { BookingButton } from "@/components/ui/booking-button";
+import SEO from '@/components/ui/SEO';
+import { seo_config } from '@/lib/seo-config';
 
 const Migration = () => {
   const images = [
@@ -14,6 +16,12 @@ const Migration = () => {
   ];
   return (
     <div className="min-h-screen bg-white overflow-x-hidden max-w-[2048px] mx-auto">
+      <SEO 
+        title={seo_config["services/migration"].title}
+        description={seo_config["services/migration"].description}
+        keywords={seo_config["services/migration"].keywords}
+        canonical_url={seo_config["services/migration"].canonical_url}
+      />
       <FirstSection title="Миграционная поддержка" />
       <section className="bg-[#FAF6F1] py-8 px-5 md:py-12 lg:py-[70px]">
         <div className="flex flex-col gap-8 md:gap-10 max-w-[1400px] mx-auto">
@@ -33,7 +41,7 @@ const Migration = () => {
 
       <section className="py-8 px-5 md:pt-16 lg:pt-[100px]">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-20 max-w-[1400px] mx-auto items-center">
-          <img src="/images/services/migration/image.jpg" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
+          <img src="/images/services/migration/image.webp" alt="cafe" className="w-full h-full md:w-[50%] md:h-[50%] object-cover" />
           <div className="flex flex-col gap-6 md:gap-10">
             <Title size='medium'>
             Для успешного оформления миграционного учета вам понадобятся документы:
@@ -54,7 +62,7 @@ const Migration = () => {
                   Виза — при наличии, если ваша страна требует визу для въезда.
                 </li>
               </ul>
-              <p className="font-ttNorms text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
+              <p className=" text-[15px] leading-[1.35] text-[#021A13] opacity-70 max-w-[600px]">
               Важно! Для того чтобы мы могли качественно и своевременно оказать данную услугу, пожалуйста, предупреждайте нас о необходимости миграционного учета заранее при бронировании номера. Это позволит избежать лишних хлопот и спокойно наслаждаться вашим отдыхом.
               </p>
               <BookingButton />
