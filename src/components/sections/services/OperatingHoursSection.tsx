@@ -35,9 +35,9 @@ const OperatingHoursSection: React.FC = () => {
             </p>
             
             <div className="grid grid-cols-3 gap-5">
-              <PriceItem price="350 ₽" label="Стоимость завтрака" />
+              <PriceItem price="500 ₽" label="Стоимость завтрака" />
               <PriceItem price="750 ₽" label="Стоимость обеда" />
-              <PriceItem price="650 ₽" label="Стоимость ужина" />
+              <PriceItem price="700 ₽" label="Стоимость ужина" />
             </div>
             <BookingButton />
           </div>

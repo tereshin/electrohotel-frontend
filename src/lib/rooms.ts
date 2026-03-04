@@ -6,7 +6,7 @@ const rooms = [
       capacity: "Подходит для размещения 1 гостя",
       bed: "Одноместная кровать Smart Slip",
       image: "/images/rooms/1.webp",
-      price: "3 800 ₽",
+      price: "3 900 ₽",
       area: "14",
       gallery: [
         "/images/rooms/standart/1.webp",
@@ -27,7 +27,7 @@ const rooms = [
       capacity: "Подходит для размещения 1-2 гостей",
       bed: "Двухместная кровать Premier Lux",
       image: "/images/rooms/2.webp",
-      price: "4 600 ₽",
+      price: "4 700 ₽",
       area: "16",
       gallery: [
         "/images/rooms/comfort/1.webp",
@@ -73,7 +73,7 @@ const rooms = [
       capacity: "Подходит для размещения 1-2 гостей",
       bed: "Двухместная кровать Premier Lux / Две одноместные кровати Smart Slip",
       image: "/assets/images/4.webp",
-      price: "5 400 ₽",
+      price: "5 500 ₽",
       area: "25",
       gallery: [
         "/images/rooms/comfort+terrace/7.webp",
@@ -137,7 +137,7 @@ const rooms = [
       capacity: "Подходит для размещения 1-3 гостей",
       bed: "Две одноместные кровати Smart Slip + эргономичный диван",
       image: "/images/rooms/6.webp",
-      price: "6 400 ₽",
+      price: "6 500 ₽",
       area: "26",
       gallery: [
         "/images/rooms/deluxe-2/1.webp",
