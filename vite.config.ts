@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import fs from "fs";
+import http from "http";
 import dotenv from "dotenv";
 // Load environment variables
 dotenv.config();
@@ -93,20 +94,48 @@ export default defineConfig(({ mode }) => {
         ];
         
         console.log(`Found ${routePaths.length} routes to pre-render`);
-        
-        // Launch a local server to serve the built files
-        const { createServer } = await import('vite');
-        const server = await createServer({
-          configFile: false,
-          root: path.join(__dirname, "dist"),
-          server: {
-            port: 3333,
-            strictPort: true,
-          },
+
+        // Use a simple static file server (not Vite) to avoid injecting @vite/client
+        // and other dev scripts that break Mango integration
+        const distPath = path.join(__dirname, "dist");
+        const server = http.createServer((req, res) => {
+          const urlPath = (req.url?.split("?")[0] || "/").replace(/^\//, "") || "index.html";
+          const filePath = path.join(
+            distPath,
+            urlPath === "index.html" || !urlPath ? "index.html" : path.extname(urlPath) ? urlPath : path.join(urlPath, "index.html")
+          );
+          fs.readFile(filePath, (err, data) => {
+            if (err) {
+              // SPA fallback: serve index.html for client routes
+              fs.readFile(path.join(distPath, "index.html"), (fallbackErr, fallbackData) => {
+                if (fallbackErr) {
+                  res.writeHead(404);
+                  res.end("Not found");
+                  return;
+                }
+                res.writeHead(200, { "Content-Type": "text/html" });
+                res.end(fallbackData);
+              });
+              return;
+            }
+            const ext = path.extname(filePath);
+            const contentTypes: Record<string, string> = {
+              ".html": "text/html",
+              ".js": "application/javascript",
+              ".css": "text/css",
+              ".json": "application/json",
+              ".ico": "image/x-icon",
+              ".png": "image/png",
+              ".jpg": "image/jpeg",
+              ".svg": "image/svg+xml",
+              ".webp": "image/webp",
+            };
+            res.writeHead(200, { "Content-Type": contentTypes[ext] || "application/octet-stream" });
+            res.end(data);
+          });
         });
-        
-        await server.listen();
-        console.log("Started local server for pre-rendering");
+        await new Promise<void>((resolve) => server.listen(3333, "127.0.0.1", resolve));
+        console.log("Started static server for pre-rendering (port 3333)");
         
         // Launch Puppeteer to visit each page
         const puppeteer = await import('puppeteer');
@@ -126,9 +155,13 @@ export default defineConfig(({ mode }) => {
             // Navigate to page and wait until network is idle
             await page.goto(url, { waitUntil: 'networkidle2'});
             
-            // Get the fully rendered HTML
-            const html = await page.content();
-            
+            // Get the fully rendered HTML and remove dynamically inserted script duplicates
+            // (Mango init uses insertBefore, so mango.js ends up in head; we keep only the original in body)
+            let html = await page.content();
+            html = html
+              .replace(/\s*<script[^>]*mango-office\.ru\/widgets\/mango\.js[^>]*>\s*<\/script>/gi, "")
+              .replace(/\s*<script[^>]*mc\.yandex\.ru\/metrika\/tag\.js[^>]*>\s*<\/script>/gi, "");
+
             // Determine the output path
             const routePath = route === '/' ? '/index.html' : `${route}/index.html`;
             const outputPath = path.join(__dirname, "dist", routePath);
@@ -146,7 +179,7 @@ export default defineConfig(({ mode }) => {
         
         // Close browser and server
         await browser.close();
-        await server.close();
+        await new Promise<void>((resolve) => server.close(() => resolve()));
         
         console.log("✅ All pages pre-rendered successfully!");
       } catch (error) {
