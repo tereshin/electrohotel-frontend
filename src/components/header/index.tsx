@@ -5,6 +5,7 @@ import { CustomButton } from '@/components/ui/custom-button';
 import { useIsMobile } from '@/hooks/use-mobile';
 import LogoIcon from '../icons/LogoIcon';
 import WhatsAppIcon from '../icons/WhatsAppIcon';
+import MaxIcon from '../icons/MaxIcon';
 import TelegramIcon from '../icons/TelegramIcon';
 import MenuIcon from '../icons/MenuIcon';
 import { Link } from 'react-router-dom';
@@ -79,7 +80,7 @@ const Header = () => {
           )}
 
           {/* Desktop & Tablet Actions */}
-          <div className="flex items-center space-x-4 md:space-x-6">
+          <div className="flex items-center lg:space-x-3 space-x-1 pl-4 lg:pl-0">
             {/* Booking Button - Desktop & Tablet only */}
             {!isMobile && !isTablet && (
               <CustomButton
@@ -103,6 +104,22 @@ const Header = () => {
               <WhatsAppIcon />
             </CustomButton>
 
+            {/* MAX messenger */}
+            <CustomButton
+              variant="smallIcon"
+              size="icon"
+              className="rounded-full"
+              aria-label="MAX"
+              onClick={() =>
+                window.open(
+                  'https://max.ru/u/f9LHodD0cOJA3K4yqq1Fut4jtRG-es7uy3auuQr7FSHjIO54vD8F6vovk1g',
+                  '_blank',
+                )
+              }
+            >
+              <MaxIcon />
+            </CustomButton>
+
             {/* Telegram Button */}
             <CustomButton
               variant="smallIcon"
@@ -116,7 +133,7 @@ const Header = () => {
 
             {/* Phone - Desktop & Tablet only */}
             {!isMobile && (
-              <div className="flex gap-4">
+              <div className="flex gap-4 pl-2">
                 <a href="tel:+7 496 574 42 72" className="text-hotel-off-white flex items-center text-sm font-medium">
                   <span className="hidden md:inline">+7 496 574 42 72</span>
                 </a>
