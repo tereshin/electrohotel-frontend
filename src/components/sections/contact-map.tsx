@@ -48,7 +48,7 @@ const ContactMap: React.FC = () => {
             <FeatureIcon 
                 icon="/icons/phone-icon.svg" 
                 text="<a href='https://wa.me/79963652330'>+7 996 365 23 30</a>"
-                caption="Пишите в WhatsApp и Telegram"
+                caption="Пишите в Max, WhatsApp и Telegram"
               />
             <FeatureIcon 
                 icon="/icons/email-icon.svg" 
