@@ -9,6 +9,7 @@ import TelegramIcon from '../icons/TelegramIcon';
 import MenuIcon from '../icons/MenuIcon';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import MaxIcon from '../icons/MaxIcon';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -102,7 +103,21 @@ const Header = () => {
             >
               <WhatsAppIcon />
             </CustomButton>
-
+            {/* MAX messenger */}
+            <CustomButton
+              variant="smallIcon"
+              size="icon"
+              className="rounded-full"
+              aria-label="MAX"
+              onClick={() =>
+                window.open(
+                  'https://max.ru/u/f9LHodD0cOJA3K4yqq1Fut4jtRG-es7uy3auuQr7FSHjIO54vD8F6vovk1g',
+                  '_blank',
+                )
+              }
+            >
+              <MaxIcon />
+            </CustomButton>
             {/* Telegram Button */}
             <CustomButton
               variant="smallIcon"
@@ -144,7 +159,7 @@ const Header = () => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuOpen && (isMobile || isTablet) && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -202,7 +217,7 @@ const Header = () => {
               </motion.div>
 
               {/* Mobile phone & booking button */}
-              <motion.div 
+              <motion.div
                 variants={contactInfoVariants}
                 initial="hidden"
                 animate="visible"
