@@ -80,7 +80,7 @@ const Header = () => {
           )}
 
           {/* Desktop & Tablet Actions */}
-          <div className="flex items-center space-x-4 md:space-x-6">
+          <div className="flex items-center space-x-2 md:space-x-6">
             {/* Booking Button - Desktop & Tablet only */}
             {!isMobile && !isTablet && (
               <CustomButton
