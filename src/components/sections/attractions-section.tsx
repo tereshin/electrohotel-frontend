@@ -29,7 +29,7 @@ const AttractionsSection = () => {
             </p>
             
             <CustomButton variant="base2" className="w-max" onClick={() => {
-              window.open('https://triptravel24.ru/32-13-dostoprimechatelnosti-jelektrostali.html', '_blank');
+              window.open('https://tur-ray.ru/elektrostal-attractions.html', '_blank');
             }}>
                 Подробнее
                 <ArrowIcon/>
