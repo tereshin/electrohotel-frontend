@@ -10,7 +10,6 @@ import { seo_config } from '@/lib/seo-config';
 
 const CheckIn = () => {
   const images = [
-    "/images/services/check-in/2.jpeg",
     "/images/services/check-in/2.webp",
     "/images/services/check-in/3.webp"
   ];
